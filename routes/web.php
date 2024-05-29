@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\apicontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,5 @@ Route::get('/login', function () {
 Route::get('/registration', function () {
     return view('registration');
 });
-
+Route::get('/posts',[apicontroller::class,'getallpost']); 
 
