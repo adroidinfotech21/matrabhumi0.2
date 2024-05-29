@@ -24,4 +24,5 @@ Route::get('/registration', function () {
     return view('registration');
 });
 Route::get('/posts',[apicontroller::class,'getallpost']); 
+Route::get('/user',[apicontroller::class,'adduser']); 
 
