@@ -48,7 +48,8 @@
               <!-- <li><a href="#"><i class="icon-icons215"></i>Submit Property</a></li> -->
               <li><a href="#"><i class="icon-icons215"></i>My Property</a></li>
               <li><a href="#"><i class="icon-icons230"></i>Profile</a></li>
-              <li><a href="login.html"><i class="icon-icons179"></i>Login / Register</a></li>
+              <li><a href="{{url('/login')}}"><i class="icon-icons179"></i>Login </a></li>
+              <li><a href="{{url('/registration')}}"><i class="icon-icons179"></i>Sigup </a></li>
             </ul>
           </div>
         </div>
