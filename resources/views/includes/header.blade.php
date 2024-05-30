@@ -48,7 +48,10 @@
               <!-- <li><a href="#"><i class="icon-icons215"></i>Submit Property</a></li> -->
               <li><a href="#"><i class="icon-icons215"></i>My Property</a></li>
               <li><a href="#"><i class="icon-icons230"></i>Profile</a></li>
-              <li><a href="{{url('/login')}}"><i class=""></i>Login </a></li>
+              <li><a href="{{url('/login')}}"><i class=""></i>Login </a>
+            
+            
+            </li>
               <li><a href="{{url('/registration')}}"><i class="icon-icons179"></i>Sigup </a></li>
             </ul>
           </div>
@@ -78,18 +81,7 @@
           <ul class="nav navbar-nav navbar-right" data-in="fadeIn" data-out="fadeOut">
             <li class="dropdown active">
               <a href="#." class="dropdown-toggle" data-toggle="dropdown">Home </a>
-              <ul class="dropdown-menu">
-                <!-- <li><a href="index.html">Home Style 1</a></li>
-                <li><a href="index2.html">Home Style 2</a></li>
-                <li><a href="index3.html">Home Style 3</a></li>
-                <li><a href="index4.html">Home Style 4</a></li>
-                <li> <a href="index5.html">Home Style 5</a></li>
-                <li> <a href="index6.html">Home Style 6</a></li>
-                <li> <a href="index7.html">Home Style 7</a></li>
-                <li> <a href="index8.html">Home Style 8</a></li>
-                <li> <a href="index9.html">Home Style 9</a></li>
-                <li> <a href="fullscreen.html">Home Fullscreen<span>new</span></a></li> -->
-              </ul>
+              
             </li>
             <li class="dropdown megamenu-fw">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Buy Property</a>
