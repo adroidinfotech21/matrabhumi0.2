@@ -1,5 +1,5 @@
 
-@include('includes/header');
+@include('includes/header')
   <!-- Advance Search -->
   <div class="blue_navi">
     <div class="container">
@@ -1297,5 +1297,5 @@
     </div>
   </section>
   <!--Partners Ends-->
-  @include('includes/footer');
+  @include('includes/footer')
 

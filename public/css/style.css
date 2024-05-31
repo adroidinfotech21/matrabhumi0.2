@@ -67,7 +67,7 @@ body {
   width: 100%;
   overflow-x: hidden;
   font-size: 100%;
-  color: #1f1d22;
+  color: #080808;
   font-size: 15px;
 }
 
@@ -633,7 +633,7 @@ pager>li {
 }
 
 .button_s {
-  background: #ffd119;
+  background: #F88017;
   border: medium none;
   display: inline-block;
   height: 40px;
@@ -659,7 +659,7 @@ pager>li {
 }
 
 a.back-to {
-  background: #FFD119;
+  background: #F88017;
   border-radius: 50%;
   bottom: 60px;
   display: none;
@@ -902,7 +902,7 @@ header {
 }
 
 .topbar.white {
-  background: #fff;
+  background: #4A6D67;
 }
 
 .topbar.border {
@@ -1116,9 +1116,7 @@ nav.navbar.bootsnav {
   margin-left: 0 !important;
 }
 
-.navbar-brand>img {
-  width: 100%;
-}
+.navbar-brand>img {}
 
 .layout_boxed nav.navbar.bootsnav.navbar-sticky .navbar-brand,
 .layout_default nav.navbar.bootsnav.navbar-sticky .navbar-brand,
@@ -1467,15 +1465,15 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content.bg .col-menu {
 }
 
 .white_cap .price {
-  background: #ffd119;
-  color: #191919;
+  background: #F88017;
+  color: #ffffff;
   font-size: 14px;
   padding: 5px 15px;
   margin: 5px 5px 0 0;
 }
 
 .topper {
-  background: #000;
+  background: #F88017;
   display: inline-block;
   padding: 10px;
   color: #fff;
@@ -1785,7 +1783,7 @@ button {
 }
 
 .blue_navi {
-  background: #1f3f81;
+  background: #4A6D67;
   padding: 20px 10px 0 10px;
   position: static;
 }
@@ -1816,7 +1814,7 @@ button {
 }
 
 .advanced {
-  background: #6291f1;
+  background: #F88017;
   color: #fff;
   padding: 5px 20px;
   display: inline-block;
@@ -2993,8 +2991,8 @@ i.icon-safety-shower {
 
 .property_item .price.lighter .tag,
 .property_item .price.lighter {
-  background: #ffd119;
-  color: #212121;
+  background: #F88017;
+  color: #ffffff;
 }
 
 .feature_item .btn-more,
@@ -3076,7 +3074,8 @@ i.icon-safety-shower {
 }
 
 #parallax_four {
-  background: url(../images/Untitled\ design\ \(40\).png) no-repeat;
+  /* background: url(../images/Untitled\ design\ \(40\).png) no-repeat; */
+  background-color: #4A6D67;
 }
 
 #testinomial {
@@ -4132,7 +4131,7 @@ i.icon-safety-shower {
 /* ------------ Listings ------ */
 .tag_t,
 #agent-2-slider .feature .tag-2 {
-  background: #FFD119;
+  background: #F88017;
   right: 10px;
 }
 
@@ -4155,7 +4154,7 @@ i.icon-safety-shower {
 
 .tag_t,
 #agent-2-slider .feature .tag-2 {
-  color: #333;
+  color: #ffffff;
 }
 
 .property_meta.transparent {
@@ -4227,8 +4226,8 @@ i.icon-safety-shower {
 }
 
 .listing_inner_full>span a {
-  background: #1d1d1d;
-  color: #898989;
+  background: #F88017;
+  color: #ffffff;
   padding: 8px 11px;
 }
 
@@ -4990,7 +4989,7 @@ footer .footer_panel .media-body span>i {
 }
 
 .footer_third {
-  background: #1f3f81;
+  background: #4A6D67;
 }
 
 .footer_fourth {
@@ -5066,7 +5065,7 @@ footer .footer_panel .media-body span>i {
 }
 
 .contacts {
-  background: #173471;
+  background: #F88017;
 }
 
 .footer_fourth .contacts {
@@ -5624,4 +5623,3 @@ footer .footer_panel .media-body span>i {
     font-size: 12px;
   }
 }
-
