@@ -18,7 +18,9 @@
   <link rel="stylesheet" type="text/css" href="css/range-Slider.min.css">
   <link rel="stylesheet" type="text/css" href="css/search.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/registration.css">
   <link rel="icon" href="images/icon.png">
+
 </head>
 
 <body>
