@@ -54,7 +54,7 @@
             
             
             </li>
-            <li><a href="{{url('/registration')}}" style="color:white"><i class=""></i> Sigup </a>
+            <li><a href="{{url('/register')}}" style="color:white"><i class=""></i> Sigup </a>
             
             
             </li>              
