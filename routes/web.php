@@ -23,8 +23,5 @@ Route::get('/index', function () {
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/register', function () {
-    return view('registration');
-});
-Route::post('/register', [ApiController::class, 'addUser'])->name('adduser');
+
 
