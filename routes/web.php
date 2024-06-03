@@ -17,12 +17,14 @@ use App\Http\Controllers\apicontroller;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/index', function () {
+    return view('index');
+});
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/registration', function () {
+Route::get('/register', function () {
     return view('registration');
 });
-Route::get('/posts',[apicontroller::class,'getallpost']); 
-Route::get('/user',[apicontroller::class,'adduser']); 
+Route::post('/register', [ApiController::class, 'addUser'])->name('adduser');
 

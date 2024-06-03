@@ -50,11 +50,14 @@
               <!-- <li><a href="#"><i class="icon-icons215"></i>Submit Property</a></li> -->
               <li><a href="#" style="color:white"><i class="icon-icons215"></i>My Property</a></li>
               <li><a href="#" style="color:white"><i class="icon-icons230"></i>Profile</a></li>
-              <li><a href="{{url('/login')}}" style="color:white"><i class=""></i>Login </a>
+              <li><a href="{{url('/login')}}" style="color:white"><i class=""></i>Login  </a>
             
             
             </li>
-              <li><a href="{{url('/registration')}}" style="color:white"><i class="icon-icons179"></i>Sigup </a></li>
+            <li><a href="{{url('/registration')}}" style="color:white"><i class=""></i> Sigup </a>
+            
+            
+            </li>              
             </ul>
           </div>
         </div>
@@ -76,7 +79,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
             <i class="fa fa-bars"></i>
           </button>
-          <a class="navbar-brand" href="index3.html"><img src="{{asset('images/newupdatelogo.png')}}" class="logo" alt="" width="180px" ></a>
+          <a class="navbar-brand" href="{{ url('/index')}}"><img src="{{asset('images/newupdatelogo.png')}}" class="logo" alt="" width="180px" ></a>
         </div>
         <!-- End Header Navigation -->
         <div class="collapse navbar-collapse" id="navbar-menu">

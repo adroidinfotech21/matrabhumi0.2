@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-md-3 col-sm-6">
           <div class="footer_panel bottom30">
-            <a href="#." class="logo bottom30"><img src="{{asset('images/newupdatelogo.png')}}" alt="logo" width="180px"></a>
+            <a href="#." class="logo bottom30"><img src="{{asset('images/footer_logo.png')}}" alt="logo" width="180px"></a>
             <p class="bottom15">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
               tempor cum consectetuer
               adipiscing.
@@ -107,7 +107,7 @@
       <div class="copyright_simple">
         <div class="row">
           <div class="col-md-6 col-sm-5 top20 bottom20">
-            <p>Copyright &copy; 2017 <span>Castle</span>. All rights reserved.</p>
+            <p>Copyright &copy; 2024 <span>Matrabhumi</span>. All rights reserved.</p>
           </div>
           <div class="col-md-6 col-sm-7 text-right top15 bottom10">
             <ul class="social_share">

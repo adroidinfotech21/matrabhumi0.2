@@ -4533,7 +4533,7 @@ aside .search-propertie-filters {
 
 /* ---------------------- Page Banner/ Titles ---------------------- */
 .page-banner {
-  background: url(../images/page-benner-bg.jpg) no-repeat;
+  background: url(../images/logo_logo0.1.png) no-repeat;
   background-size: cover !important;
   width: 100%;
   background-attachment: fixed;
@@ -4871,7 +4871,7 @@ h1.bold-text {
   color: #fff;
   border: none;
   border-radius: 0;
-  background: #1F3F81;
+  background: #4A6D67;
 }
 
 #login .profile-login .nav-tabs {
@@ -4884,15 +4884,15 @@ h1.bold-text {
 
 #login .profile-login .nav>li>a:hover {
   color: #fff;
-  background: #1f3f81;
+  background: #F88017;
   border: none;
   border-radius: 0;
 }
 
 #login .profile-login .btn-slide {
-  background: #ffd119;
+  background: #F88017;
   width: 100%;
-  color: #191919;
+  color: #ffffff;
   padding: 12px;
   font-weight: bold;
   text-transform: uppercase;
@@ -4914,8 +4914,8 @@ h1.bold-text {
 }
 
 #login .profile-login .lost-pass {
-  border-bottom: 1px solid #ffd119;
-  color: #ffd119;
+  border-bottom: 1px solid #F88017;
+  color: #F88017;
   font-size: 14px;
   transition: color 1000ms ease 0s, background-color 1500ms ease 0s;
 }
