@@ -39,4 +39,4 @@ Route::get('/admin', function () {
 Route::get('/registeruser', function () {
     return view('admin.registeruser');
 });
-
+Route::get('/registeruser', [RegisterController::class, 'fetchData']);

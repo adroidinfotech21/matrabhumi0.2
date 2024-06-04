@@ -9,6 +9,26 @@ use Illuminate\Support\Facades\Log; // Add Log facade
 
 class RegisterController extends Controller
 {
+
+
+    public function fetchData()
+{
+    try {
+        $response = Http::get('https://nplled.smggreen.com/api/AspNetUser'); // Replace with your API endpoint
+        $data = $response->json(); // Automatically decode JSON response
+
+        \Log::info('API Response:', $data); // Log the data to see its structure
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Error fetching data: ' . $e->getMessage());
+    }
+
+    return view('admin.registeruser', compact('data')); // Pass data to the view
+}
+
+
+
+
+
     public function register(Request $request)
     {
         // Validate the request data

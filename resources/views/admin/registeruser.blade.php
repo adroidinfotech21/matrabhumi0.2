@@ -37,7 +37,7 @@ dashbord matrabhumi
                         <div class="col-lg-12">
                             <div class="card alert">
                                 <div class="card-header pr">
-                                    <h4>All Exam Resutl</h4>
+                                    <h4> All Users</h4>
                                     <div class="search-action">
                                         <div class="search-type dib">
                                             <input class="form-control input-rounded" placeholder="Search by exam" type="text">
@@ -66,201 +66,33 @@ dashbord matrabhumi
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table student-data-table m-t-20">
+                                        <pre>{{ print_r($data, true) }}</pre>
+                                        @if(!empty($data))
+                                        <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th><label><input type="checkbox" value=""></label>Exam Name</th>
-                                                    <th>Subject</th>
-                                                    <th>Grade Point</th>
-                                                    <th>Percent Form</th>
-                                                    <th>Percent Upto</th>
-                                                    <th>Date</th>
+                                                    <th>User Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone Number</th>
+                                                    <th>Role Name</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Mathmatics</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>English</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        90.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Mathmatics</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Mathmatics</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        83.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>English</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Mathmatics</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Mathmatics</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        80.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Social</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Mathmatics</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Bangla</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        81.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Mathmatics</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>English</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Class Test</td>
-                                                    <td>Mathmatics</td>
-                                                    <td>
-                                                        4.00
-                                                    </td>
-                                                    <td>
-                                                        95.00
-                                                    </td>
-                                                    <td>
-                                                        100
-                                                    </td>
-                                                    <td>20/04/2017</td>
-                                                </tr>
+                                                @foreach($data as $item)
+                                                    <tr>
+                                                        <td>{{ $item['userName'] ?? 'N/A' }}</td>
+                                                        <td>{{ $item['email'] ?? 'N/A' }}</td>
+                                                        <td>{{ $item['phoneNumber'] ?? 'N/A' }}</td>
+                                                        <td>{{ $item['roleName'] ?? 'N/A' }}</td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
+                                        </table>
+                                    @else
+                                        <p>No data available.</p>
+                                    @endif
+                                    
+                                 
                                         </table>
                                     </div>
                                 </div>
