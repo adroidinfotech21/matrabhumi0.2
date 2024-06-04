@@ -23,11 +23,20 @@ Route::get('/index', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/test', function () {
+    return view('test');
+});
 Route::get('/register', function () {
     return view('register');
 })->name('register.form');
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
+Route::get('/admin', function () {
+    return view('admin.dashbord');
+});
 
+Route::get('/registeruser', function () {
+    return view('admin.registeruser');
+});
 
