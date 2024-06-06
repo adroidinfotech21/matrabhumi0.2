@@ -7,29 +7,7 @@ dashbord matrabhumi
 
 @section('content')
 <div class="main">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <h1>Hello, <span>Welcome Here</span></h1>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li class="active">Student</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                </div>
-                <!-- /# row -->
+         
                 
                 
                  
@@ -64,42 +42,43 @@ dashbord matrabhumi
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <pre>{{ print_r($data, true) }}</pre>
-                                        @if(!empty($data))
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>User Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Role Name</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($data as $item)
-                                                    <tr>
-                                                        <td>{{ $item['userName'] ?? 'N/A' }}</td>
-                                                        <td>{{ $item['email'] ?? 'N/A' }}</td>
-                                                        <td>{{ $item['phoneNumber'] ?? 'N/A' }}</td>
-                                                        <td>{{ $item['roleName'] ?? 'N/A' }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    @else
-                                        <p>No data available.</p>
-                                    @endif
-                                    
-                                 
-                                        </table>
+                                <div class="container mt-5">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                {{-- <pre>{{ dd($userData) }}</pre> <!-- Debugging line to inspect data structure --> --}}
+                                                @if(!empty($userData) && is_array($userData))
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                              
+                                                                <th>User Name</th>
+                                                                <th>Email</th>
+                                                                <th>Phone Number</th>
+                                                                <th>Role Name</th>
+                                                                <th>Date</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach($userData as $item)
+                                                                <tr>
+                                                             
+                                                                    <td>{{ $item['userName'] ?? 'N/A' }}</td>
+                                                                    <td>{{ $item['email'] ?? 'N/A' }}</td>
+                                                                    <td>{{ $item['phoneNumber'] ?? 'N/A' }}</td>
+                                                                    <td>{{ $item['roleName'] ?? 'N/A' }}</td>
+                                                                    <td>{{ now()->format('d/m/y') }}</td> <!-- Displaying the current date -->
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                @else
+                                                    <p>No data available.</p>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- /# column -->
-                    </div>
                     <!-- /# row -->
                     <div class="row">
                         <div class="col-md-3">
