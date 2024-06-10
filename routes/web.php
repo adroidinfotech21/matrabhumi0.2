@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,8 @@ Route::get('/register', function () {
     return view('register');
 })->name('register.form');
 
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+///admin route
 
 Route::get('/admin', function () {
     return view('admin.dashbord');
@@ -39,4 +41,41 @@ Route::get('/admin', function () {
 Route::get('/registeruser', function () {
     return view('admin.registeruser');
 });
+
 Route::get('/registeruser', [RegisterController::class, 'fetchData']);
+
+
+//user register route
+
+Route::post('register', [RegisterController::class, 'register'])->name('register.submit');
+
+Route::get('verify-otp', function () {
+    return view('verify_otp');
+})->name('verify.otp.form');
+
+Route::post('verify-otp', [RegisterController::class, 'verifyOtp'])->name('verify.otp');
+
+
+//login rout
+
+
+
+
+
+
+
+
+
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+// Route::get('/verify-otp', [LoginController::class, 'showOtpForm'])->name('verify.otp.form');
+// Route::post('/verify-otp', [LoginController::class, 'verifyOtp'])->name('verify.otp');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard'); // Ensure this route is protected
+
+
+
+
+// 

@@ -18,7 +18,7 @@
     <div class="center-wrapper">
     <div class="form-container">
         <h2>Registration Form</h2>
-        <form action="{{ route('register') }}" method="post">
+        <form action="{{ route('register.submit') }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="name">Name:</label>
