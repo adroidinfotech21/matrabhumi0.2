@@ -4534,12 +4534,12 @@ aside .search-propertie-filters {
 /* ---------------------- Page Banner/ Titles ---------------------- */
 .page-banner {
   background: url(../images/logo_logo0.1.png) no-repeat;
-  background-size: cover !important;
+
   width: 100%;
-  background-attachment: fixed;
+
   background-position: center center;
-  position: relative;
-  z-index: 1;
+
+
 }
 
 .page-banner-bg {

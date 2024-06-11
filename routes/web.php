@@ -67,15 +67,25 @@ Route::post('verify-otp', [RegisterController::class, 'verifyOtp'])->name('verif
 
 
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
+
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-// Route::get('/verify-otp', [LoginController::class, 'showOtpForm'])->name('verify.otp.form');
-// Route::post('/verify-otp', [LoginController::class, 'verifyOtp'])->name('verify.otp');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard'); // Ensure this route is protected
+
+// Route for sending the OTP
+Route::post('/send-otp', [LoginController::class, 'sendOtp'])->name('send.otp');
+
+// Route for displaying the OTP verification form
+Route::get('/verify-login-otp', function () {
+    return view('verify-login-otp'); // Ensure you have a verify-login-otp.blade.php file in your resources/views directory
+})->name('verify.otp.login');
+
+// Route for verifying the OTP
+Route::post('/verify-login-otp', [LoginController::class, 'verifyOtp'])->name('verify.otp.login.new');
 
 
-
+Route::get('/user-profile', function () {
+    return view('user-profile'); // Ensure you have a user-profile.blade.php file
+})->name('user.profile');
+//logout
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // 
