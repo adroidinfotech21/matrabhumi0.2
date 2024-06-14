@@ -20,6 +20,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/registration.css">
   <link rel="stylesheet" type="text/css" href="css/registrationform.css">
+  <link rel="stylesheet" type="text/css" href="css/addproperty.css">
 
   <link rel="icon" href="images/icon.png">
 
@@ -44,22 +45,22 @@
       <div class="container">
         <div class="row">
           <div class="col-md-5">
-            <!-- <p>We are Best in Town With 40 years of Experience.</p> -->
+            <p style="color:white;">Property at your Fingertips </p>
           </div>
           <div class="col-md-7 text-right">
             <ul class="breadcrumb_top text-right">
-              <li><a href="#" style="color:white"><i class="icon-icons43" ></i>Favorites</a></li>
+              <li><a href="#" style="color:white"><i class="icon-icons43"></i>Favorites</a></li>
               <!-- <li><a href="#"><i class="icon-icons215"></i>Submit Property</a></li> -->
               <li><a href="#" style="color:white"><i class="icon-icons215"></i>My Property</a></li>
               <li><a href="#" style="color:white"><i class="icon-icons230"></i>Profile</a></li>
-              <li><a href="{{url('/login')}}" style="color:white"><i class=""></i>Login  </a>
-            
-            
-            </li>
-            <li><a href="{{url('/register')}}" style="color:white"><i class=""></i> Sigup </a>
-            
-            
-            </li>              
+              <li><a href="{{url('/login')}}" style="color:white"><i class=""></i>Login </a>
+
+
+              </li>
+              <li><a href="{{url('/register')}}" style="color:white"><i class=""></i> Sigup </a>
+
+
+              </li>
             </ul>
           </div>
         </div>
@@ -71,7 +72,11 @@
           <div class="upper-column info-box first">
             <!-- <div class="icons"><i class="icon-telephone114"></i></div> -->
             <ul>
-              <li style="line-height: 2.5;"><strong>Add Property</strong></li>
+              <li style="line-height: 2.5;">
+                <a href="{{ url('/addproperty') }}">
+                  <strong>Add Property</strong>
+                </a>
+              </li>
               <!-- <li>+1 900 234 567 - 68</li> -->
             </ul>
           </div>
@@ -81,14 +86,15 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
             <i class="fa fa-bars"></i>
           </button>
-          <a class="navbar-brand" href="{{ url('/index')}}"><img src="{{asset('images/newupdatelogo.png')}}" class="logo" alt="" width="180px" ></a>
+          <a class="navbar-brand" href="{{ url('/index')}}"><img src="{{asset('images/newupdatelogo.png')}}"
+              class="logo" alt="" width="180px"></a>
         </div>
         <!-- End Header Navigation -->
         <div class="collapse navbar-collapse" id="navbar-menu">
           <ul class="nav navbar-nav navbar-right" data-in="fadeIn" data-out="fadeOut">
             <li class="dropdown active">
               <a href="#." class="dropdown-toggle" data-toggle="dropdown">Home </a>
-              
+
             </li>
             <li class="dropdown megamenu-fw">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Buy Property</a>

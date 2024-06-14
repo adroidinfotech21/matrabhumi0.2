@@ -1,0 +1,55 @@
+.addpropertyform {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+
+    max-width: 600px;
+
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.form-group label {
+
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.form-group h3 {
+    margin-top: 1.5em;
+    color: #333;
+}
+
+.submitproperty {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submitproperty:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}

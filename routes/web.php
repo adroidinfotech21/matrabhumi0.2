@@ -59,15 +59,6 @@ Route::post('verify-otp', [RegisterController::class, 'verifyOtp'])->name('verif
 //login rout
 
 
-
-
-
-
-
-
-
-
-
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // Route for sending the OTP
@@ -88,4 +79,8 @@ Route::get('/user-profile', function () {
 //logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// 
+//add property module
+
+Route::get('/addproperty', function () {
+    return view('addproperty.addproperty');
+});
