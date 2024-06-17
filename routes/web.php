@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PropertyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +86,5 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/addproperty', function () {
     return view('addproperty.addproperty');
 });
+Route::get('/addproperty', [PropertyController::class, 'propertyTypeForm']);
+Route::post('/addproperty', [PropertyController::class, 'propertyAddSubmit']);
