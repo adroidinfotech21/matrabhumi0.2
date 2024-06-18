@@ -41,7 +41,7 @@
 @endif
 
 <!-- My Properties  -->
-<form id="propertyForm" class="addpropertyform" method="POST" action="">
+<form id="propertyForm" class="addpropertyform" method="POST" action="{{ route('addproperty') }}">
     @csrf
     <div style="margin-bottom:60px; margin-top:20px;">
         <div>
