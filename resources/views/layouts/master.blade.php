@@ -39,7 +39,8 @@
             <div class="nano-content">
                 <ul>
                     <li class="label">User Module</li>
-                    <li class="active"><a class="sidebar-sub-toggle"><i class="ti-user"></i> User Opration  <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li class="active"><a class="sidebar-sub-toggle"><i class="ti-user"></i> User Opration <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="{{ url('registeruser')}}">Register Users</a></li>
                             <li><a href="index-v1.html">Dashboard 2</a></li>
@@ -48,8 +49,10 @@
                             <li><a href="index-ecommerce-v2.html">Dashboard 6</a></li>
                         </ul>
                     </li>
-                    <li class="label">School</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i>Management <span class="badge badge-primary">28</span><span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li class="label">Property approved</li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i>Management <span
+                                class="badge badge-primary">28</span><span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="school-student.html">Student</a></li>
                             <li><a href="school-student-profile.html">Student Profile</a></li>
@@ -83,7 +86,9 @@
                     </li>
 
                     <li class="label">Restaurant</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Restaurant<span class="badge badge-primary">7</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Restaurant<span
+                                class="badge badge-primary">7</span> <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="restaurant-menu-one.html">Menu One</a></li>
                             <li><a href="restaurant-menu-two.html">Menu Two</a></li>
@@ -96,7 +101,8 @@
                     </li>
 
                     <li class="label">Apps</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i>  Charts  <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Charts <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="chart-flot.html">Flot</a></li>
                             <li><a href="chart-morris.html">Morris</a></li>
@@ -112,7 +118,8 @@
                     <li><a href="app-profile.html"><i class="ti-user"></i> Profile</a></li>
                     <li><a href="app-widget-card.html"><i class="ti-layout-grid2-alt"></i> Widget</a></li>
                     <li class="label">Features</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> UI Elements <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> UI Elements <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="ui-accordion.html">Accordion</a></li>
                             <li><a href="ui-alerts.html">Alerts</a></li>
@@ -127,7 +134,8 @@
                             <li><a href="ui-wells.html">Wells</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Components <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Components <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="uc-calendar.html">Calendar</a></li>
                             <li><a href="uc-carousel.html">Carousel</a></li>
@@ -145,7 +153,8 @@
                             <li><a href="uc-rating-jRate.html">jRate</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid4-alt"></i> Table <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid4-alt"></i> Table <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="table-basic.html">Basic</a></li>
                             <li><a href="table-data.html">Datatable</a></li>
@@ -154,12 +163,14 @@
                             <li><a href="table-jsgrid.html">Editable </a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> Icons <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> Icons <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="font-themify.html">Themify</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-map"></i> Maps <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-map"></i> Maps <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="gmaps.html">Basic</a></li>
                             <li><a href="vector-map.html">Vector Map</a></li>
@@ -168,13 +179,15 @@
                     <li class="label">Form</li>
                     <li><a href="form-basic.html"><i class="ti-view-list-alt"></i> Basic Form </a></li>
                     <li class="label">Miscellaneous</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-files"></i> Invoice <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-files"></i> Invoice <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="invoice.html">Basic</a></li>
                             <li><a href="invoice-editable.html">Editable</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Pages <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Pages <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="page-login.html">Login</a></li>
                             <li><a href="page-register.html">Register</a></li>
@@ -192,7 +205,8 @@
 
     <div class="header">
         <div class="pull-left">
-            <div class="logo"><a href="index.html"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Matrabhumi Admin</span></a></div>
+            <div class="logo"><a href="index.html"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Matrabhumi
+                        Admin</span></a></div>
             <div class="hamburger sidebar-toggle">
                 <span class="line"></span>
                 <span class="line"></span>
@@ -211,40 +225,44 @@
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg"
+                                            alt="" />
                                         <div class="notification-content">
                                             <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr.  Ajay</div>
+                                            <div class="notification-heading">Mr. Ajay</div>
                                             <div class="notification-text">5 members joined today </div>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg"
+                                            alt="" />
                                         <div class="notification-content">
                                             <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr.  Ajay</div>
+                                            <div class="notification-heading">Mr. Ajay</div>
                                             <div class="notification-text">likes a photo of you</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg"
+                                            alt="" />
                                         <div class="notification-content">
                                             <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr.  Ajay</div>
+                                            <div class="notification-heading">Mr. Ajay</div>
                                             <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg"
+                                            alt="" />
                                         <div class="notification-content">
                                             <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr.  Ajay</div>
+                                            <div class="notification-heading">Mr. Ajay</div>
                                             <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
                                         </div>
                                     </a>
@@ -266,40 +284,44 @@
                             <ul>
                                 <li class="notification-unread">
                                     <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/1.jpg" alt="" />
+                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/1.jpg"
+                                            alt="" />
                                         <div class="notification-content">
                                             <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr.  Ajay</div>
+                                            <div class="notification-heading">Mr. Ajay</div>
                                             <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="notification-unread">
                                     <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/2.jpg" alt="" />
+                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/2.jpg"
+                                            alt="" />
                                         <div class="notification-content">
                                             <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr.  Ajay</div>
+                                            <div class="notification-heading">Mr. Ajay</div>
                                             <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg" alt="" />
+                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/3.jpg"
+                                            alt="" />
                                         <div class="notification-content">
                                             <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr.  Ajay</div>
+                                            <div class="notification-heading">Mr. Ajay</div>
                                             <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/2.jpg" alt="" />
+                                        <img class="pull-left m-r-10 avatar-img" src="assets/images/avatar/2.jpg"
+                                            alt="" />
                                         <div class="notification-content">
                                             <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr.  Ajay</div>
+                                            <div class="notification-heading">Mr. Ajay</div>
                                             <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
                                         </div>
                                     </a>
@@ -311,7 +333,8 @@
                         </div>
                     </div>
                 </li>
-                <li class="header-icon dib"><img class="avatar-img" src="assets/images/avatar/1.jpg" alt="" /> <span class="user-avatar"> Ajay <i class="ti-angle-down f-s-10"></i></span>
+                <li class="header-icon dib"><img class="avatar-img" src="assets/images/avatar/1.jpg" alt="" /> <span
+                        class="user-avatar"> Ajay <i class="ti-angle-down f-s-10"></i></span>
                     <div class="drop-down dropdown-profile">
                         <div class="dropdown-content-heading">
                             <span class="text-left">Upgrade Now</span>
@@ -339,7 +362,7 @@
 
 
     <div class="content-wrap">
-       @yield('content')
+        @yield('content')
     </div>
 
 
@@ -379,7 +402,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
-    @yield('scripts')
+@yield('scripts')
 </body>
 
 </html>
