@@ -91,5 +91,6 @@ Route::get('/addproperty', function () {
 
 
 Route::get('/addproperty', [PropertyController::class, 'propertyTypeForm'])->name('property.form');
-Route::post('/addproperty', [PropertyController::class, 'propertyAddSubmit'])->name('submit.property');
+Route::get('/addproperty', [PropertyController::class, 'getPropertyPossessionStatus'])->name('property.form');
+// Route::post('/addproperty', [PropertyController::class, 'propertyAddSubmit'])->name('submit.property');
 

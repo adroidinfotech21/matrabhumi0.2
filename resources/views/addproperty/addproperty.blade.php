@@ -1,115 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
+@if ($errors->any())
+    <div>
+        <strong>Whoops! Something went wrong.</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell or Rent your Property</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        function validateCharacterCount(event) {
-            const textarea = event.target;
-            const maxCharacters = 200;
-            const charCount = textarea.value.length;
-            const charCountDisplay = document.getElementById('charCount');
+@if (session('success'))
+    <div>
+        {{ session('success') }}
+    </div>
+@endif
 
-            if (charCount > maxCharacters) {
-                textarea.value = textarea.value.substring(0, maxCharacters);
-            }
-
-            charCountDisplay.textContent = `${textarea.value.length}/${maxCharacters} characters`;
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('propertyType').addEventListener('change', function () {
-                const propertyType = this.value;
-                const filter = 'Month'; // Adjust this filter value as needed
-
-                fetch('https://nplled.smggreen.com/api/DropDown', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ filter })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            const details = data.data;
-                            let detailsHtml = '';
-
-                            details.forEach(detail => {
-                                if (detail.ddlType === 'Bedrooms') {
-                                    detailsHtml += `
-                                        <div class="dropdown-group">
-                                            <label for="bedrooms">Bedrooms:</label>
-                                            <select id="bedrooms" name="bedrooms" class="dropdown">
-                                                ${detail.ddlText.map(option => `<option value="${option.ddlValue}">${option.ddlText}</option>`).join('')}
-                                            </select>
-                                        </div>`;
-                                }
-                                // Add more conditions here if you have other types like "Month", "PossessionStatus", etc.
-                            });
-
-                            document.getElementById('propertyDetails').innerHTML = detailsHtml;
-                        } else {
-                            alert('Unable to fetch property details');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching property details:', error);
-                        alert('Error fetching property details. Please try again later.');
-                    });
-            });
-        });
-    </script>
-</head>
-
-<body>
-    <div class="container">
-        <h2>Sell or Rent your Property</h2>
-        <p>You are posting this property for <mark>free</mark></p>
-        <div class="form-container">
-            <form>
-                <div class="input-name">
-                    <h3>Property Details</h3>
-                </div>
-                <div class="option-group">
-                    <p>For
-                        <label for="sale" class="option-label">
-                            <input type="radio" id="sale" name="option" value="sale">Sale
-                        </label>
-                        <label for="rent" class="option-label">
-                            <input type="radio" id="rent" name="option" value="rent">Rent
-                        </label>
-                        <label for="pg" class="option-label">
-                            <input type="radio" id="pg" name="option" value="pg">PG/Hostel
-                        </label>
-                    </p>
-                </div>
-                <div class="dropdown-group">
-                    <label for="propertyType">Property Type:</label>
-                    <select id="propertyType" name="propertyType" class="dropdown">
-                        <option>Select</option>
-                        <option value="house">House</option>
-                        <option value="flat">Flat</option>
-                        <option value="villa">Villa</option>
-                        <option value="bungalow">Bungalow</option>
-                        <option value="penthouse">Penthouse</option>
-                        <option value="floor_apartment">Builder Floor Apartment</option>
-                        <option value="commercial">All Commercial</option>
-                        <option value="studio">Studio Apartment</option>
-                        <option value="agriculture">Agriculture Land</option>
-                        <option value="industry">Industrial Shed</option>
-                    </select>
-                </div>
-                <div id="propertyDetails"></div>
-                <!-- Your other form fields here -->
-
-            </form>
+<!-- My Properties -->
+<form id="propertyForm" class="addpropertyform" method="POST" action="{{ route('property.form') }}">
+    @csrf
+    <div style="margin-bottom:60px; margin-top:20px;">
+        <div>
+            <h1>Sell or Rent your Property</h1>
+            <p>You are posting this property for <strong style="background-color:#F88017;color:white;padding:5px;">FREE!</strong></p>
+        </div>
+        <div>
+            <img src="" alt="">
         </div>
     </div>
-</body>
+    <div style="margin-bottom:60px; margin-top:20px;">
+        <span style="color:#7c807d;">Listing Package</span> &nbsp; &nbsp; &nbsp;<span>1 Standard Listing - Free</span>
+    </div>
 
-</html>
+    <div class="form-group">
+        <label for="propertyType" style="color:black">Property Type</label>
+        <select id="propertyType" name="propertyType" onchange="showFields()">
+            @foreach($propertyTypes as $propertyType)
+                <option value="{{ $propertyType['id'] }}">{{ $propertyType['name'] }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <!-- Residential Fields -->
+    <div id="residentialFields" class="hidden">
+        <h3>Property Location</h3>
+        <div class="form-group">
+            <label for="city" style="color:black;">City</label>
+            <input type="text" id="city" name="city">
+        </div>
+        <div class="form-group">
+            <label for="locality" style="color:black;">Locality</label>
+            <input type="text" id="locality" name="locality">
+        </div>
+
+        <h3>Property Features</h3>
+        <div class="form-group">
+            <label for="bedrooms" style="color:black;">Bedrooms</label>
+            <input type="number" id="bedrooms" name="bedrooms">
+        </div>
+        <div class="form-group">
+            <label for="balconies" style="color:black;">Balconies</label>
+            <input type="number" id="balconies" name="balconies">
+        </div>
+        <div class="form-group">
+            <label for="floorNo" style="color:black;">Floor No.</label>
+            <input type="number" id="floorNo" name="floorNo">
+        </div>
+        <div class="form-group">
+            <label for="totalFloors" style="color:black;">Total Floors</label>
+            <input type="number" id="totalFloors" name="totalFloors">
+        </div>
+        <div class="form-group">
+            <label for="furnishedStatus" style="color:black;">Furnished Status</label>
+            <input type="text" id="furnishedStatus" name="furnishedStatus">
+        </div>
+        <div class="form-group">
+            <label for="bathrooms" style="color:black;">Bathrooms</label>
+            <input type="number" id="bathrooms" name="bathrooms">
+        </div>
+        <div class="form-group">
+            <label for="seats" style="color:black;">Number of Seats</label>
+            <input type="number" id="seats" name="seats">
+        </div>
+        <div class="form-group">
+            <label for="meetingRooms" style="color:black;">Cabin/Meeting Rooms</label>
+            <input type="number" id="meetingRooms" name="meetingRooms">
+        </div>
+        <div class="form-group">
+            <label for="openHours" style="color:black;">Open Hours</label>
+            <input type="text" id="openHours" name="openHours">
+        </div>
+
+        <h3>Furnishing Details</h3>
+        <div class="form-group">
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Cupboards"> Cupboards</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Study Table"> Study Table</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="AC"> AC</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Geyser"> Geyser</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Washing Machine"> Washing Machine</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Wifi"> Wifi</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Fridge"> Fridge</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Cooler"> Cooler</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="TV"> TV</label>
+        </div>
+    </div>
+
+    <!-- Commercial Fields -->
+    <div id="commercialFields" class="hidden">
+        <div class="form-group">
+            <label for="officeSpace" style="color:black;">Office Space (sq ft)</label>
+            <input type="number" id="officeSpace" name="officeSpace">
+        </div>
+        <div class="form-group">
+            <label for="parkingSpaces" style="color:black;">Number of Parking Spaces</label>
+            <input type="number" id="parkingSpaces" name="parkingSpaces">
+        </div>
+    </div>
+
+    <!-- Agricultural Fields -->
+    <div id="agriculturalFields" class="hidden">
+        <div class="form-group">
+            <label for="cropType" style="color:black;">Type of Crops</label>
+            <input type="text" id="cropType" name="cropType">
+        </div>
+        <div class="form-group">
+            <label for="landArea" style="color:black;">Land Area (acres)</label>
+            <input type="number" id="landArea" name="landArea">
+        </div>
+    </div>
+
+    <button class="submitproperty" type="submit">Submit</button>
+</form>
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    function showFields() {
+        var propertyType = document.getElementById('propertyType').value;
+
+        // Hide all field sections initially
+        document.getElementById('residentialFields').classList.add('hidden');
+        document.getElementById('commercialFields').classList.add('hidden');
+        document.getElementById('agriculturalFields').classList.add('hidden');
+
+        // Show fields based on the selected property type
+        if (propertyType == '1') {
+            document.getElementById('residentialFields').classList.remove('hidden');
+        } else if (propertyType == '2') {
+            document.getElementById('commercialFields').classList.remove('hidden');
+        } else if (propertyType == '3') {
+            document.getElementById('agriculturalFields').classList.remove('hidden');
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showFields(); // Call showFields function when the page loads
+    });
+</script>

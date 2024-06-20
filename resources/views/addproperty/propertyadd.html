@@ -41,7 +41,7 @@
         </select>
     </div>
 
-    <div id="residentialFields">
+    <div id="residentialFields" class="hidden">
         <h3>Property Location</h3>
         <div class="form-group">
             <label for="city" style="color:black;">City</label>
@@ -147,12 +147,12 @@
         document.getElementById('commercialFields').classList.add('hidden');
         document.getElementById('agriculturalFields').classList.add('hidden');
 
-        // Show residential fields by default
-        if (propertyType == 1) {
+        // Show fields based on the selected property type
+        if (propertyType == '1') {
             document.getElementById('residentialFields').classList.remove('hidden');
-        } else if (propertyType == 2) {
+        } else if (propertyType == '2') {
             document.getElementById('commercialFields').classList.remove('hidden');
-        } else if (propertyType == 3) {
+        } else if (propertyType == '3') {
             document.getElementById('agriculturalFields').classList.remove('hidden');
         }
     }

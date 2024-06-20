@@ -34,21 +34,38 @@ class PropertyController extends Controller
             return view('addproperty.addproperty', ['propertyTypes' => []])->withErrors(['error' => 'Failed to fetch property types.']);
         }
     }
-    public function getPropertyDetails(Request $request)
+    public function getPropertyPossessionStatus()
     {
-        $propertyType = $request->query('propertyType');
-        $filter = $request->query('filter', 'Month'); // Default filter value, adjust as needed
+        try {
+            // Make HTTP GET request to API endpoint
+            $response = Http::get('https://nplled.smggreen.com/api/DropDown', [
+                'filter' => 'PossessionStatus',
+            ]);
 
-        // Example: Fetch property details from your API based on $propertyType and $filter
-        $response = Http::get('https://nplled.smggreen.com/api/DropDown', [
-            'filter' => $filter,
-        ]);
-
-        if ($response->successful()) {
-            $propertyDetails = $response->json()['data'];
-            return response()->json(['success' => true, 'data' => $propertyDetails]);
+            // Check if the request was successful (status code 200-299)
+            if ($response->successful()) {
+                // Extract the 'data' array from the JSON response
+                $propertyPossessionStatus = $response->json()['data'];
+                dd($propertyPossessionStatus);
+                // Optionally, you can return this data as a JSON response
+                return response()->json([
+                    'success' => true,
+                    'data' => $propertyPossessionStatus
+                ]);
+            } else {
+                // Handle the case where the API request was not successful
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to fetch Possession Status options'
+                ], $response->status());
+            }
+        } catch (\Exception $e) {
+            // Handle any exceptions that occur during the API request
+            return response()->json([
+                'success' => false,
+                'message' => 'Exception occurred: ' . $e->getMessage()
+            ], 500); // Internal Server Error status code
         }
-
-        return response()->json(['success' => false, 'message' => 'Failed to fetch property details'], 500);
     }
+
 }
