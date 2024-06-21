@@ -6,17 +6,7 @@
     --bg-hvr: #b64a3c;
   }
   
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
-  }
-  
-  body{
-    background: var(--bg-clr);
-    font-size: 12px;
-  }
+
   
   .flex_align_justify{
     display: flex;
