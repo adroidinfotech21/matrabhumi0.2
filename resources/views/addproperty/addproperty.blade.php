@@ -1,28 +1,3 @@
-@include('includes/header')
-
-
-<!-- Page Banner Start-->
-<section class="page-banner padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="text-uppercase">Favorite properties</h1>
-                <p>Serving you since 1999. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-                <ol class="breadcrumb text-center">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Pages</a></li>
-                    <li class="active">My properties</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Page Banner End -->
-<style>
-    .hidden {
-        display: none;
-    }
-</style>
 @if ($errors->any())
     <div>
         <strong>Whoops! Something went wrong.</strong>
@@ -40,14 +15,13 @@
     </div>
 @endif
 
-<!-- My Properties  -->
-<form id="propertyForm" class="addpropertyform" method="POST" action="{{ route('addproperty') }}">
+<!-- My Properties -->
+<form id="propertyForm" class="addpropertyform" method="POST" action="{{ route('property.form') }}">
     @csrf
     <div style="margin-bottom:60px; margin-top:20px;">
         <div>
             <h1>Sell or Rent your Property</h1>
-            <p>You are posting this property for <strong style="background-color:#F88017;color:white;padding:5px;">
-                    FREE!</strong></p>
+            <p>You are posting this property for <strong style="background-color:#F88017;color:white;padding:5px;">FREE!</strong></p>
         </div>
         <div>
             <img src="" alt="">
@@ -61,12 +35,13 @@
         <label for="propertyType" style="color:black">Property Type</label>
         <select id="propertyType" name="propertyType" onchange="showFields()">
             @foreach($propertyTypes as $propertyType)
-                <option value="{{ $propertyType['id'] }}">{{ $propertyType['propertyTypeName'] }}</option>
+                <option value="{{ $propertyType['id'] }}">{{ $propertyType['name'] }}</option>
             @endforeach
         </select>
     </div>
 
-    <div id="residentialFields">
+    <!-- Residential Fields -->
+    <div id="residentialFields" class="hidden">
         <h3>Property Location</h3>
         <div class="form-group">
             <label for="city" style="color:black;">City</label>
@@ -117,14 +92,11 @@
 
         <h3>Furnishing Details</h3>
         <div class="form-group">
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Cupboards">
-                Cupboards</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Study Table"> Study
-                Table</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Cupboards"> Cupboards</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Study Table"> Study Table</label><br>
             <label style="color:black;"><input type="checkbox" name="furnishing[]" value="AC"> AC</label><br>
             <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Geyser"> Geyser</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Washing Machine"> Washing
-                Machine</label><br>
+            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Washing Machine"> Washing Machine</label><br>
             <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Wifi"> Wifi</label><br>
             <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Fridge"> Fridge</label><br>
             <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Cooler"> Cooler</label><br>
@@ -132,6 +104,7 @@
         </div>
     </div>
 
+    <!-- Commercial Fields -->
     <div id="commercialFields" class="hidden">
         <div class="form-group">
             <label for="officeSpace" style="color:black;">Office Space (sq ft)</label>
@@ -143,6 +116,7 @@
         </div>
     </div>
 
+    <!-- Agricultural Fields -->
     <div id="agriculturalFields" class="hidden">
         <div class="form-group">
             <label for="cropType" style="color:black;">Type of Crops</label>
@@ -167,23 +141,22 @@
     function showFields() {
         var propertyType = document.getElementById('propertyType').value;
 
+        // Hide all field sections initially
         document.getElementById('residentialFields').classList.add('hidden');
         document.getElementById('commercialFields').classList.add('hidden');
         document.getElementById('agriculturalFields').classList.add('hidden');
 
-        if (propertyType == 1) {
+        // Show fields based on the selected property type
+        if (propertyType == '1') {
             document.getElementById('residentialFields').classList.remove('hidden');
-        } else if (propertyType == 2) {
+        } else if (propertyType == '2') {
             document.getElementById('commercialFields').classList.remove('hidden');
-        } else if (propertyType == 3) {
+        } else if (propertyType == '3') {
             document.getElementById('agriculturalFields').classList.remove('hidden');
         }
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        showFields();
+        showFields(); // Call showFields function when the page loads
     });
 </script>
-
-
-@include('includes/footer')

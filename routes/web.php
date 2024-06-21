@@ -92,5 +92,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/addproperty', function () {
     return view('addproperty.addproperty');
 });
-Route::get('/addproperty', [PropertyController::class, 'propertyTypeForm']);
-Route::post('/addproperty', [PropertyController::class, 'propertyAddSubmit']);
+// routes/web.php
+
+
+
+Route::get('/addproperty', [PropertyController::class, 'propertyTypeForm'])->name('property.form');
+Route::get('/addproperty', [PropertyController::class, 'getPropertyPossessionStatus'])->name('property.form');
+// Route::post('/addproperty', [PropertyController::class, 'propertyAddSubmit'])->name('submit.property');
+
