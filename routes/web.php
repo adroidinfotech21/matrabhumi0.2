@@ -34,6 +34,10 @@ Route::get('/terms_&_condition', function () {
     return view('terms_&_condition');
 });
 
+Route::get('privacy_policies', function () {
+    return view('privacy_policies');
+});
+
 
 Route::get('/register', function () {
     return view('register');
