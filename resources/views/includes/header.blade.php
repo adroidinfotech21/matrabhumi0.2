@@ -22,6 +22,7 @@
   <link rel="stylesheet" type="text/css" href="css/registrationform.css">
   <link rel="stylesheet" type="text/css" href="css/addproperty.css">
   <link rel="stylesheet" type="text/css" href="css/terms&condition.css">
+  <link rel="stylesheet" type="text/css" href="css/privacypolicies.css">
 
   <link rel="icon" href="images/icon.png">
 
