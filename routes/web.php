@@ -29,6 +29,12 @@ Route::get('/login', function () {
 Route::get('/test', function () {
     return view('test');
 });
+
+Route::get('/terms_&_condition', function () {
+    return view('terms_&_condition');
+});
+
+
 Route::get('/register', function () {
     return view('register');
 })->name('register.form');

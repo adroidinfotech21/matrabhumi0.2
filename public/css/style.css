@@ -179,7 +179,7 @@ h4 {
 
 p {
   font-size: 15px;
-  color: #676767;
+  color: #0b0c0c;
 }
 
 .padding {
@@ -1799,7 +1799,7 @@ button {
 .opened {
   display: none;
   position: relative;
-  background: #1f3f81;
+  background: #022915;
   left: 0;
   right: 0;
   margin: 0 -10px;
@@ -1843,7 +1843,7 @@ button {
 .tp_overlay .nstSlider .bar,
 .blue_navi .checkedBox,
 .tp_overlay .checkedBox {
-  background: #ffd119;
+  background: #F88017;
 }
 
 .blue_navi .more-filter .text-1,
@@ -2390,7 +2390,7 @@ i.icon-safety-shower {
 }
 
 .f-p-links>li a {
-  background: #173471;
+  background: #0d464d;
   color: #fff;
   display: block;
   font-size: 15px;
@@ -2399,12 +2399,12 @@ i.icon-safety-shower {
 }
 
 .f-p-links>li a.active {
-  background: #ffd119;
-  color: #191919;
+  background: #0d464d;
+  color: #ebe9f0;
 }
 
 .f-p-links>li a:hover {
-  background: #ffd119;
+  background: #07bad1;
   color: #191919;
 }
 
@@ -4194,7 +4194,7 @@ i.icon-safety-shower {
 }
 
 .listing_inner_full:after {
-  background: #1d1d1d;
+  background: #42b638;
   content: "";
   display: block;
   height: 100%;

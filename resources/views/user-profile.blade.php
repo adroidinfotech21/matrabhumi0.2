@@ -124,7 +124,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        {{-- <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-6 col-xs-12 profile-form margin40">
                     <h3 class="bottom30 margin40">My Social Network</h3>
@@ -218,7 +218,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
     <!-- Profile end -->
 
