@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Validator;
 
 class PropertyController extends Controller
 {
@@ -36,78 +35,1007 @@ class PropertyController extends Controller
             return view('addproperty.addproperty', ['propertyTypes' => []])->withErrors(['error' => 'Failed to fetch property types.']);
         }
     }
-
-    public function getTransactionTypes()
+    public function filterData(Request $request)
     {
-        $client = new Client();
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "SharedOfficeSpace"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
 
         try {
-            $response = $client->get('https://your-api-endpoint/get-transaction-types'); // Assuming GET request
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
 
             if ($response->getStatusCode() === 200) {
                 $data = json_decode($response->getBody(), true);
 
                 if (isset($data['success']) && $data['success']) {
-                    return response()->json($data);
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
                 } else {
-                    return response()->json(['success' => false, 'message' => 'Failed to fetch transaction types']);
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
                 }
             } else {
-                // Handle other status codes (already implemented)
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
             }
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'API request failed: ' . $e->getMessage()]);
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
         }
     }
-
-    public function registerProperty(Request $request)
+    public function filterData1(Request $request)
     {
-        // Validation rules for property data
-        $rules = [
-            'packageID' => 'required|integer',
-            'transactionType' => 'required|integer',
-            'addressLine1' => 'required|string|max:255',
-            // ... Add validation rules for other properties
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "Month"
         ];
 
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            // Handle validation errors
-            return back()->withErrors($validator);
-        }
-
-        // Prepare data from the request (assuming field names match API requirements)
-        $data = [
-            "packageID" => $request->input('packageID'),
-            "transactionType" => $request->input('transactionType'),
-            "data" => [
-                "addressLine1" => $request->input('addressLine1'),
-                // ... Add other property details for nested "data" key
-            ]
-        ];
-
-        // Send the POST request with the data
-        $client = new Client();
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
 
         try {
-            $response = $client->post('https://your-api-endpoint/register-property', [
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
                 'headers' => [
-                    'Content-Type' => 'application/json' // Set content type to JSON
+                    'Content-Type' => 'application/json'
                 ],
-                'json' => $data
+                'json' => $filterData
             ]);
 
-            if ($response->getStatusCode() === 201) {
-                // Handle successful registration (e.g., redirect to success page)
-                return redirect('/success');
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
             } else {
-                // Handle registration failure (e.g., display error message)
-                $error = json_decode($response->getBody(), true)['message'];
-                return back()->withErrors(['error' => $error]);
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
             }
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Property registration failed: ' . $e->getMessage()]);
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
         }
     }
+    public function filterData2(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "PossessionStatus"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData3(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "PriceIncludes"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData4(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "ShowPriceAs"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData5(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "TransactionType"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData6(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "anyConstructionDone"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData7(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "attachedBalcony"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData8(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "attachedBathroom"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData9(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "boundaryWallMade"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData02(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "cabinMeetingRoom"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData03(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "CommonArea"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+
+    public function filterData04(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "cornerShop"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData05(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "mainRoadFacing"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData06(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "floor"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData07(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "FurnishedStatus"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData08(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "inGatedColony"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData09(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "Bedroom"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData11(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "maintenanceChargeFrequency"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+    public function filterData12(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "noticePeriod"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData13(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "NearSchool"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData14(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "NearHospital"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function filterData15(Request $request)
+    {
+        // The filter data you need to send
+        $filterData = [
+            "filter" => "nearMarket"
+        ];
+
+        // Send the POST request with the filter data
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'json' => $filterData
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+
+                if (isset($data['success']) && $data['success']) {
+                    // Prepare options for the dropdown based on the API response
+                    $options = [];
+                    foreach ($data['data'] as $item) {
+                        $options[] = [
+                            'value' => $item['ddlValue'],
+                            'text' => $item['ddlText'],
+                        ];
+                    }
+
+                    // Pass the options and data to the view
+                    return view('property.form', compact('options', 'data'));
+                } else {
+                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
+                }
+            } else {
+                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
+        }
+    }
+
+
 }
