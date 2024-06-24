@@ -42,6 +42,10 @@ Route::get('legal_title_check', function () {
     return view('legal_title_check');
 });
 
+Route::get('property_lawyers', function () {
+    return view('property_lawyers');
+});
+
 
 
 Route::get('/register', function () {
