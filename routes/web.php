@@ -38,6 +38,15 @@ Route::get('privacy_policies', function () {
     return view('privacy_policies');
 });
 
+Route::get('legal_title_check', function () {
+    return view('legal_title_check');
+});
+
+Route::get('property_lawyers', function () {
+    return view('property_lawyers');
+});
+
+
 
 Route::get('/register', function () {
     return view('register');
