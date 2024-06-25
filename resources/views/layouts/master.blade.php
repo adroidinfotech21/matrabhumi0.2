@@ -85,18 +85,21 @@
                         </ul>
                     </li>
 
-                    <li class="label">Restaurant</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Restaurant<span
+                    <li class="label">Advertisement_Block</li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Advertisement Block<span
                                 class="badge badge-primary">7</span> <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="restaurant-menu-one.html">Menu One</a></li>
-                            <li><a href="restaurant-menu-two.html">Menu Two</a></li>
-                            <li><a href="restaurant-menu-three.html">Menu Three</a></li>
-                            <li><a href="restaurant-favourite-list.html">Favourite</a></li>
-                            <li><a href="restaurant-order-list.html">Order List</a></li>
-                            <li><a href="restaurant-booking.html">Booking</a></li>
-                            <li><a href="restaurant-upload-menu.html">Upload Menu</a></li>
+                            <li><a href="restaurant-menu-one.html">Advertisement Block 1</a></li>
+                            <li><a href="restaurant-menu-two.html">Advertisement Block 2</a></li>
+                            <li><a href="restaurant-menu-three.html">Advertisement Block 3</a></li>
+                            <li><a href="restaurant-favourite-list.html">Advertisement Block 4</a></li>
+                            <li><a href="restaurant-order-list.html">Advertisement Block 5</a></li>
+                            <li><a href="restaurant-booking.html">Advertisement Block 6</a></li>
+                            <li><a href="restaurant-upload-menu1.html">Advertisement Block 7</a></li>
+                            <li><a href="restaurant-upload-menu2.html">Advertisement Block 8</a></li>
+                            <li><a href="restaurant-upload-menu3.html">Advertisement Block 9</a></li>
+                            <li><a href="restaurant-upload-menu4.html">Advertisement Block 10</a></li>
                         </ul>
                     </li>
 
