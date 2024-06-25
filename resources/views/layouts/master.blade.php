@@ -85,12 +85,10 @@
                         </ul>
                     </li>
 
-                    <li class="label">Restaurant</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Restaurant<span
-                                class="badge badge-primary">7</span> <span
-                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <!-- <li class="label">Advertisement Block</li> -->
+                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Advertisement Block </a>
                         <ul>
-                            <li><a href="restaurant-menu-one.html">Menu One</a></li>
+                            <li><a href="{{ url('Add_block')}}">Advertisement Block 1</a></li>
                             <li><a href="restaurant-menu-two.html">Menu Two</a></li>
                             <li><a href="restaurant-menu-three.html">Menu Three</a></li>
                             <li><a href="restaurant-favourite-list.html">Favourite</a></li>

@@ -53,6 +53,9 @@ Route::get('/admin', function () {
 Route::get('/registeruser', function () {
     return view('admin.registeruser');
 });
+Route::get('/AdvertisementBlock1.', function () {
+    return view('admin.AdvertisementBlock1.');
+});
 
 Route::get('/registeruser', [RegisterController::class, 'fetchData']);
 
@@ -102,6 +105,7 @@ Route::get('/addproperty', function () {
 
 Route::get('/addproperty', [PropertyController::class, 'propertyTypeForm'])->name('property.form');
 Route::post('/addproperty', [PropertyController::class, 'filterData']);
+Route::post('/addproperty', [PropertyController::class, 'registerProperty']);
 
 // Route::post('/addproperty', [PropertyController::class, 'propertyAddSubmit'])->name('submit.property');
 

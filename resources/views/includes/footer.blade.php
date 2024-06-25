@@ -264,6 +264,7 @@
 <script src="js/custom.js"></script>
 <script src="js/functions.js"></script>
 <script src="js/addproperty.js"></script>
+<script src="js/propertyadd.js"></script>
 
 
 </body>
