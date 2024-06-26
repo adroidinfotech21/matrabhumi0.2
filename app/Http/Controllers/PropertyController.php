@@ -1038,4 +1038,156 @@ class PropertyController extends Controller
     }
 
 
+    public function registerProperty(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'propertyImage' => 'required|array|min:3|max:10',
+            'propertyImage.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            // Add other validation rules for other fields as needed
+        ]);
+
+        // Handle image uploads
+        $imagePaths = [];
+        if ($request->hasFile('propertyImage')) {
+            foreach ($request->file('propertyImage') as $file) {
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $filePath = $file->storeAs('uploads/property_images', $filename, 'public');
+                $imagePaths[] = $filePath;
+            }
+        }
+
+        // Assuming you receive the property registration data from a form or request
+        $propertyData = [
+            "propertyTypeID" => $request->input('sharedOfficeSpace'),
+            "propertyDetailsForID" => 5,
+            "month" => $request->input('Month'),
+            "bedroom" => $request->input('bedroom'),
+            "balcony" => 1,
+            "floor" => $request->input('Month'),
+            "bathroom" => 2,
+            "furnishedStatus" => $request->input('furnishedStatus'),
+            "cabinMeetingRoom" => $request->input('cabinMeetingRoom'),
+            "transactionType" => $request->input('transactionType'),
+            "possessionStatus" => $request->input('possessionStatus'),
+            "showPriceAs" => $request->input('showPriceAs'),
+            "priceIncludes" => $request->input('priceIncludes'),
+            "maintenanceChargeFrequency" => $request->input('maintenanceChargeFrequency'),
+            "noticePeriod" => $request->input('noticePeriod'),
+            "userID" => 123,
+            "cornerShop" => $request->input('cornerShop'),
+            "mainRoadFacing" => $request->input('mainRoadFacing'),
+            "sharedOfficeSpace" => true,
+            "attachedBathroom" => $request->input('attachedBathroom'),
+            "attachedBalcony" => $request->input('attachedBalcony'),
+            "commonArea" => $request->input('commonArea'),
+            "anyConstructionDone" => $request->input('anyConstructionDone'),
+            "boundaryWallMade" => $request->input('boundaryWallMade'),
+            "inGatedColony" => $request->input('inGatedColony'),
+            "addressLine1" => "123 Main St",
+            "addressLine2" => "Apt 101",
+            "city" => "Bhopal",
+            "state" => "Madhya Pradesh",
+            "zipCode" => "462042",
+            "country" => "India",
+            "latitude" => 40.7128,
+            "longitude" => -74.006,
+            "builtUpArea" => 1500.5,
+            "carpetArea" => 1200.75,
+            "plotArea" => 2000,
+            "unitOfArea" => "sq.ft",
+            "price" => 250000,
+            "currency" => "INR",
+            "ownerName" => "ram",
+            "ownerContactNumber" => "6260322230",
+            "ownerEmail" => "ramsharma4981@gmail.com",
+            "parkingSpaces" => 2,
+            "powerBackup" => true,
+            "waterSupply" => true,
+            "security" => false,
+            "gym" => true,
+            "swimmingPool" => false,
+            "clubHouse" => false,
+            "lift" => true,
+            "listingTitle" => "Beautiful Apartment for Sale",
+            "listingDescription" => "Spacious 3-bedroom apartment with modern amenities.",
+            "propertyStatus" => "Available",
+            "listingType" => "Sale",
+            "dateAvailable" => "2024-07-01",
+            "CreatedDate" => "2024-07-01",
+            "agentID" => 456,
+            "propertyAge" => 5,
+            "ownershipType" => "Freehold",
+            "registrationNumber" => "ABC123",
+            "legalClearance" => true,
+            "nearSchool" => $request->input('nearSchool'),
+            "nearHospital" => $request->input('nearHospital'),
+            "nearMarket" => $request->input('nearMarket'),
+            "nearPublicTransport" => true,
+            "nearPark" => true,
+            "earthquakeResistant" => true,
+            "fireSafety" => true,
+            "rainwaterHarvesting" => false,
+            "greenBuilding" => true,
+            "numberOfFloors" => 10,
+            "flooringType" => "Tiles",
+            "facingDirection" => "North",
+            "garden" => true,
+            "terrace" => false,
+            "rooftop" => true,
+            "electricityAvailable" => true,
+            "waterAvailable" => true,
+            "gasConnection" => false,
+            "internetConnection" => true,
+            "cableTV" => true,
+            "mortgageStatus" => false,
+            "mortgageProvider" => "No",
+            "mortgageAmount" => 0.00,
+            "emiAmount" => 0.00,
+            "petFriendly" => true,
+            "handicapAccessible" => false,
+            "floorPlan" => "https://example.com/floor-plan.pdf",
+            "virtualTour" => "https://example.com/virtual-tour",
+            "imageSiteView" => "https://example.com/virtual-tour",
+            "imageExteriorView" => "https://example.com/virtual-tour",
+            "imageCommonArea" => "https://example.com/virtual-tour",
+            "imageLivingRoom" => "https://example.com/virtual-tour",
+            "imageBedroom" => "https://example.com/virtual-tour",
+            "imageBathroom" => "https://example.com/virtual-tour",
+            "imageKitchen" => "https://example.com/virtual-tour",
+            "imageFloorPlan" => "https://example.com/virtual-tour",
+            "imageMasterPlan" => "https://example.com/virtual-tour",
+            "imageLocationMap" => "https://example.com/virtual-tour",
+            "imageOther" => "https://example.com/virtual-tour",
+            "askedPrice" => 500000,
+            // Add other relevant fields as needed
+        ];
+
+        // Send the POST request to the API
+        try {
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer YOUR_API_TOKEN', // Replace with your actual API token if required
+            ])->post('https://nplled.smggreen.com/api/PropertyRegistration', $propertyData);
+
+            if ($response->successful()) {
+                $responseData = $response->json();
+
+                if (isset($responseData['success']) && $responseData['success']) {
+                    // Handle successful registration
+                    return response()->json(['message' => 'Property registered successfully', 'data' => $responseData['data']], $response->status());
+                } else {
+                    // Handle API response indicating failure
+                    return response()->json(['error' => 'Failed to register property. API response: ' . ($responseData['message'] ?? 'Unknown error')], $response->status());
+                }
+            } else {
+                // Handle non-success status codes
+                return response()->json(['error' => 'API returned status code ' . $response->status()], $response->status());
+            }
+        } catch (\Exception $e) {
+            // Handle exceptions
+            return response()->json(['error' => 'API request failed: ' . $e->getMessage()], 500);
+        }
+    }
+
 }
