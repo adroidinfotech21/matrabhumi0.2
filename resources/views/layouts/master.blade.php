@@ -85,6 +85,7 @@
                         </ul>
                     </li>
 
+<<<<<<< HEAD
                     <li class="label">Advertisement_Block</li>
                     <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Advertisement Block<span
                                 class="badge badge-primary">7</span> <span
@@ -100,6 +101,18 @@
                             <li><a href="restaurant-upload-menu2.html">Advertisement Block 8</a></li>
                             <li><a href="restaurant-upload-menu3.html">Advertisement Block 9</a></li>
                             <li><a href="restaurant-upload-menu4.html">Advertisement Block 10</a></li>
+=======
+                    <!-- <li class="label">Advertisement Block</li> -->
+                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Advertisement Block </a>
+                        <ul>
+                            <li><a href="{{ url('Add_block')}}">Advertisement Block 1</a></li>
+                            <li><a href="restaurant-menu-two.html">Menu Two</a></li>
+                            <li><a href="restaurant-menu-three.html">Menu Three</a></li>
+                            <li><a href="restaurant-favourite-list.html">Favourite</a></li>
+                            <li><a href="restaurant-order-list.html">Order List</a></li>
+                            <li><a href="restaurant-booking.html">Booking</a></li>
+                            <li><a href="restaurant-upload-menu.html">Upload Menu</a></li>
+>>>>>>> 328fd00632d1ac9e8eaf2ab732c3c80e7fca952f
                         </ul>
                     </li>
 
