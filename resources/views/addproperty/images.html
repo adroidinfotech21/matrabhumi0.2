@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Image Upload</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .preview {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>Upload Images</h2>
+            <form id="upload-form">
+                <label for="floorPlan">Floor Plan:</label>
+                <input type="file" id="floorPlan" name="floorPlan" accept="image/*"><br><br>
+
+                <label for="virtualTour">Virtual Tour:</label>
+                <input type="file" id="virtualTour" name="virtualTour" accept="image/*"><br><br>
+
+                <label for="imageSiteView">Site View:</label>
+                <input type="file" id="imageSiteView" name="imageSiteView" accept="image/*"><br><br>
+
+                <label for="imageExteriorView">Exterior View:</label>
+                <input type="file" id="imageExteriorView" name="imageExteriorView" accept="image/*"><br><br>
+
+                <label for="imageCommonArea">Common Area:</label>
+                <input type="file" id="imageCommonArea" name="imageCommonArea" accept="image/*"><br><br>
+
+                <label for="imageLivingRoom">Living Room:</label>
+                <input type="file" id="imageLivingRoom" name="imageLivingRoom" accept="image/*"><br><br>
+
+                <label for="imageBedroom">Bedroom:</label>
+                <input type="file" id="imageBedroom" name="imageBedroom" accept="image/*"><br><br>
+
+                <label for="imageBathroom">Bathroom:</label>
+                <input type="file" id="imageBathroom" name="imageBathroom" accept="image/*"><br><br>
+
+                <label for="imageKitchen">Kitchen:</label>
+                <input type="file" id="imageKitchen" name="imageKitchen" accept="image/*"><br><br>
+
+                <label for="imageFloorPlan">Image Floor Plan:</label>
+                <input type="file" id="imageFloorPlan" name="imageFloorPlan" accept="image/*"><br><br>
+
+                <label for="imageMasterPlan">Master Plan:</label>
+                <input type="file" id="imageMasterPlan" name="imageMasterPlan" accept="image/*"><br><br>
+
+                <label for="imageLocationMap">Location Map:</label>
+                <input type="file" id="imageLocationMap" name="imageLocationMap" accept="image/*"><br><br>
+
+                <label for="imageOther">Other Images:</label>
+                <input type="file" id="imageOther" name="imageOther" accept="image/*"><br><br>
+
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Image Previews</h2>
+            <div id="previews"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const previews = document.getElementById('previews');
+            previews.innerHTML = ''; // Clear previous previews
+
+            const formData = new FormData(event.target);
+
+            for (const [name, file] of formData.entries()) {
+                if (file && file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.className = 'preview';
+                    img.alt = name;
+                    img.src = URL.createObjectURL(file);
+                    previews.appendChild(img);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

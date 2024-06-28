@@ -1,163 +1,285 @@
-@if ($errors->any())
-<div>
-    <strong>Whoops! Something went wrong.</strong>
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
 
-@if (session('success'))
-<div>
-    {{ session('success') }}
-</div>
-@endif
-
-<!-- My Properties  -->
-<form id="propertyForm" class="addpropertyform" method="POST" action="{{ route('addproperty') }}">
-    @csrf
-    <div style="margin-bottom:60px; margin-top:20px;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{ route('property.form') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+    
+        <!-- Property Type Dropdown -->
         <div>
-            <h1>Sell or Rent your Property</h1>
-            <p>You are posting this property for <strong style="background-color:#F88017;color:white;padding:5px;">
-                    FREE!</strong></p>
+            <label for="propertyType">Property Type</label>
+            <select id="propertyType" name="propertyType" class="" required>
+                <option value="" disabled selected>Select a property type</option>
+                @foreach ($propertyTypes as $propertyType)
+                    <option value="{{ $propertyType['id'] }}">{{ $propertyType['name'] }}</option>
+                @endforeach
+            </select>
         </div>
+    
+        <!-- Other Dropdowns -->
         <div>
-            <img src="" alt="">
+            <label for="sharedOfficeSpace">Shared Office Space:</label>
+            <select id="sharedOfficeSpace" name="sharedOfficeSpace">
+                <option value="">Loading...</option>
+            </select>
         </div>
-    </div>
-    <div style="margin-bottom:60px; margin-top:20px;">
-        <span style="color:#7c807d;">Listing Package</span> &nbsp; &nbsp; &nbsp;<span>1 Standard Listing - Free</span>
-    </div>
+    
+        <div>
+            <label for="Month">Month:</label>
+            <select id="Month" name="Month">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="PossessionStatus">Possession Status:</label>
+            <select id="PossessionStatus" name="PossessionStatus">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="PriceIncludes">Price Includes:</label>
+            <select id="PriceIncludes" name="PriceIncludes">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="ShowPriceAs">Show Price As:</label>
+            <select id="ShowPriceAs" name="ShowPriceAs">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="TransactionType">Transaction Type:</label>
+            <select id="TransactionType" name="TransactionType">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="anyConstructionDone">Any Construction Done:</label>
+            <select id="anyConstructionDone" name="anyConstructionDone">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="attachedBalcony">Attached Balcony:</label>
+            <select id="attachedBalcony" name="attachedBalcony">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="attachedBathroom">Attached Bathroom:</label>
+            <select id="attachedBathroom" name="attachedBathroom">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="boundaryWallMade">Boundary Wall Made:</label>
+            <select id="boundaryWallMade" name="boundaryWallMade">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="cabinMeetingRoom">Cabin Meeting Room:</label>
+            <select id="cabinMeetingRoom" name="cabinMeetingRoom">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="CommonArea">Common Area:</label>
+            <select id="CommonArea" name="CommonArea">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="cornerShop">Corner Shop:</label>
+            <select id="cornerShop" name="cornerShop">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="mainRoadFacing">Main Road Facing:</label>
+            <select id="mainRoadFacing" name="mainRoadFacing">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="floor">Floor:</label>
+            <select id="floor" name="floor">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="FurnishedStatus">Furnished Status:</label>
+            <select id="FurnishedStatus" name="FurnishedStatus">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="inGatedColony">In Gated Colony:</label>
+            <select id="inGatedColony" name="inGatedColony">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="Bedroom">Bedroom:</label>
+            <select id="Bedroom" name="Bedroom">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="maintenanceChargeFrequency">Maintenance Charge Frequency:</label>
+            <select id="maintenanceChargeFrequency" name="maintenanceChargeFrequency">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="noticePeriod">Notice Period:</label>
+            <select id="noticePeriod" name="noticePeriod">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="NearSchool">Near School:</label>
+            <select id="NearSchool" name="NearSchool">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="NearHospital">Near Hospital:</label>
+            <select id="NearHospital" name="NearHospital">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="nearMarket">Near Market:</label>
+            <select id="nearMarket" name="nearMarket">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="propertyImage">Upload Property Images:</label>
+            <input type="file" id="propertyImage" name="propertyImage[]" multiple><br><br>
+        </div>
+    
+        <div>
+            <button type="submit" name="submit">Submit Details</button>
+        </div>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the form element
+            const form = document.querySelector('form');
+        
+            // Add an event listener to handle form submission
+            form.addEventListener('submit', function (event) {
+                // Get form field values
+                const propertyType = document.getElementById('propertyType').value;
+                const sharedOfficeSpace = document.getElementById('sharedOfficeSpace').value;
+                const month = document.getElementById('Month').value;
+                const possessionStatus = document.getElementById('PossessionStatus').value;
+                const priceIncludes = document.getElementById('PriceIncludes').value;
+                const showPriceAs = document.getElementById('ShowPriceAs').value;
+                const transactionType = document.getElementById('TransactionType').value;
+                const anyConstructionDone = document.getElementById('anyConstructionDone').value;
+                const attachedBalcony = document.getElementById('attachedBalcony').value;
+                const attachedBathroom = document.getElementById('attachedBathroom').value;
+                const boundaryWallMade = document.getElementById('boundaryWallMade').value;
+                const cabinMeetingRoom = document.getElementById('cabinMeetingRoom').value;
+                const commonArea = document.getElementById('CommonArea').value;
+                const cornerShop = document.getElementById('cornerShop').value;
+                const mainRoadFacing = document.getElementById('mainRoadFacing').value;
+                const floor = document.getElementById('floor').value;
+                const furnishedStatus = document.getElementById('FurnishedStatus').value;
+                const inGatedColony = document.getElementById('inGatedColony').value;
+                const bedroom = document.getElementById('Bedroom').value;
+                const maintenanceChargeFrequency = document.getElementById('maintenanceChargeFrequency').value;
+                const noticePeriod = document.getElementById('noticePeriod').value;
+                const nearSchool = document.getElementById('NearSchool').value;
+                const nearHospital = document.getElementById('NearHospital').value;
+                const nearMarket = document.getElementById('nearMarket').value;
+                const propertyImage = document.getElementById('propertyImage').files;
+        
+                // Validate required fields
+                const requiredFields = [
+                    { field: propertyType, name: 'Property Type' },
+                    { field: sharedOfficeSpace, name: 'Shared Office Space' },
+                    { field: month, name: 'Month' },
+                    { field: possessionStatus, name: 'Possession Status' },
+                    { field: priceIncludes, name: 'Price Includes' },
+                    { field: showPriceAs, name: 'Show Price As' },
+                    { field: transactionType, name: 'Transaction Type' },
+                    { field: anyConstructionDone, name: 'Any Construction Done' },
+                    { field: attachedBalcony, name: 'Attached Balcony' },
+                    { field: attachedBathroom, name: 'Attached Bathroom' },
+                    { field: boundaryWallMade, name: 'Boundary Wall Made' },
+                    { field: cabinMeetingRoom, name: 'Cabin Meeting Room' },
+                    { field: commonArea, name: 'Common Area' },
+                    { field: cornerShop, name: 'Corner Shop' },
+                    { field: mainRoadFacing, name: 'Main Road Facing' },
+                    { field: floor, name: 'Floor' },
+                    { field: furnishedStatus, name: 'Furnished Status' },
+                    { field: inGatedColony, name: 'In Gated Colony' },
+                    { field: bedroom, name: 'Bedroom' },
+                    { field: maintenanceChargeFrequency, name: 'Maintenance Charge Frequency' },
+                    { field: noticePeriod, name: 'Notice Period' },
+                    { field: nearSchool, name: 'Near School' },
+                    { field: nearHospital, name: 'Near Hospital' },
+                    { field: nearMarket, name: 'Near Market' }
+                ];
+        
+                // Check if any required field is empty
+                let isValid = true;
+                let missingFields = [];
+        
+                requiredFields.forEach(function (item) {
+                    if (item.field === '') {
+                        isValid = false;
+                        missingFields.push(item.name);
+                    }
+                });
+        
+                if (propertyImage.length < 3 || propertyImage.length > 10) {
+                    isValid = false;
+                    missingFields.push('Property Images (must be between 3 and 10 images)');
+                }
+        
+                // If form is not valid, prevent submission and show an alert
+                if (!isValid) {
+                    event.preventDefault();
+                    alert('Please fill out the following fields: \n' + missingFields.join('\n'));
+                }
+            });
+        });
+        </script>
+            
+</body>
+</html>
 
-    <div class="form-group">
-        <label for="propertyType" style="color:black">Property Type</label>
-        <select id="propertyType" name="propertyType" onchange="showFields()">
-            @foreach($propertyTypes as $propertyType)
-            <option value="{{ $propertyType['id'] }}">{{ $propertyType['propertyTypeName'] }}</option>
-            @endforeach
-        </select>
-    </div>
 
-    <div id="residentialFields" class="hidden">
-        <h3>Property Location</h3>
-        <div class="form-group">
-            <label for="city" style="color:black;">City</label>
-            <input type="text" id="city" name="city">
-        </div>
-        <div class="form-group">
-            <label for="locality" style="color:black;">Locality</label>
-            <input type="text" id="locality" name="locality">
-        </div>
-
-        <h3>Property Features</h3>
-        <div class="form-group">
-            <label for="bedrooms" style="color:black;">Bedrooms</label>
-            <input type="number" id="bedrooms" name="bedrooms">
-        </div>
-        <div class="form-group">
-            <label for="balconies" style="color:black;">Balconies</label>
-            <input type="number" id="balconies" name="balconies">
-        </div>
-        <div class="form-group">
-            <label for="floorNo" style="color:black;">Floor No.</label>
-            <input type="number" id="floorNo" name="floorNo">
-        </div>
-        <div class="form-group">
-            <label for="totalFloors" style="color:black;">Total Floors</label>
-            <input type="number" id="totalFloors" name="totalFloors">
-        </div>
-        <div class="form-group">
-            <label for="furnishedStatus" style="color:black;">Furnished Status</label>
-            <input type="text" id="furnishedStatus" name="furnishedStatus">
-        </div>
-        <div class="form-group">
-            <label for="bathrooms" style="color:black;">Bathrooms</label>
-            <input type="number" id="bathrooms" name="bathrooms">
-        </div>
-        <div class="form-group">
-            <label for="seats" style="color:black;">Number of Seats</label>
-            <input type="number" id="seats" name="seats">
-        </div>
-        <div class="form-group">
-            <label for="meetingRooms" style="color:black;">Cabin/Meeting Rooms</label>
-            <input type="number" id="meetingRooms" name="meetingRooms">
-        </div>
-        <div class="form-group">
-            <label for="openHours" style="color:black;">Open Hours</label>
-            <input type="text" id="openHours" name="openHours">
-        </div>
-
-        <h3>Furnishing Details</h3>
-        <div class="form-group">
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Cupboards">
-                Cupboards</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Study Table"> Study
-                Table</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="AC"> AC</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Geyser"> Geyser</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Washing Machine"> Washing
-                Machine</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Wifi"> Wifi</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Fridge"> Fridge</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="Cooler"> Cooler</label><br>
-            <label style="color:black;"><input type="checkbox" name="furnishing[]" value="TV"> TV</label>
-        </div>
-    </div>
-
-    <div id="commercialFields" class="hidden">
-        <div class="form-group">
-            <label for="officeSpace" style="color:black;">Office Space (sq ft)</label>
-            <input type="number" id="officeSpace" name="officeSpace">
-        </div>
-        <div class="form-group">
-            <label for="parkingSpaces" style="color:black;">Number of Parking Spaces</label>
-            <input type="number" id="parkingSpaces" name="parkingSpaces">
-        </div>
-    </div>
-
-    <div id="agriculturalFields" class="hidden">
-        <div class="form-group">
-            <label for="cropType" style="color:black;">Type of Crops</label>
-            <input type="text" id="cropType" name="cropType">
-        </div>
-        <div class="form-group">
-            <label for="landArea" style="color:black;">Land Area (acres)</label>
-            <input type="number" id="landArea" name="landArea">
-        </div>
-    </div>
-
-    <button class="submitproperty" type="submit">Submit</button>
-</form>
-
-<style>
-    .hidden {
-        display: none;
-    }
-</style>
-
-<script>
-    function showFields() {
-        var propertyType = document.getElementById('propertyType').value;
-
-        // Hide all field sections initially
-        document.getElementById('residentialFields').classList.add('hidden');
-        document.getElementById('commercialFields').classList.add('hidden');
-        document.getElementById('agriculturalFields').classList.add('hidden');
-
-        // Show fields based on the selected property type
-        if (propertyType == '1') {
-            document.getElementById('residentialFields').classList.remove('hidden');
-        } else if (propertyType == '2') {
-            document.getElementById('commercialFields').classList.remove('hidden');
-        } else if (propertyType == '3') {
-            document.getElementById('agriculturalFields').classList.remove('hidden');
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        showFields(); // Call showFields function when the page loads
-    });
-</script>

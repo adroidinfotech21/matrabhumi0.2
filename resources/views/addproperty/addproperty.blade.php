@@ -14,28 +14,37 @@
     @endif
 
     <!-- Property form -->
-    <form action="{{ route('property.form') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('property.form')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <!-- Property Type Dropdown -->
         <div>
             <label for="propertyType">Property Type</label>
             <select id="propertyType" name="propertyType" class="" required>
-                <option value="" disabled selected>Select a property type</option>
+                <option value="">Select a property type</option>
                 @foreach ($propertyTypes as $propertyType)
                     <option value="{{ $propertyType['id'] }}">{{ $propertyType['name'] }}</option>
                 @endforeach
             </select>
         </div>
 
+        <div>
+            <span>citiy</span><input type="text" name="city">
+        </div>
+        <div>
+            <span>loction</span><input type="text" name="loction">
+        </div>
         <!-- Other Dropdowns -->
         <div>
-            <label for="sharedOfficeSpace">Shared Office Space:</label>
-            <select id="sharedOfficeSpace" name="sharedOfficeSpace">
-                <option value="">Loading...</option>
-            </select>
+            <label for="sharedOfficeSpace">Shared Office Space:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="sharedOfficeSpace" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="sharedOfficeSpace" value="false">
         </div>
+        <div>
 
+        </div>
         <div>
             <label for="Month">Month:</label>
             <select id="Month" name="Month">
@@ -72,59 +81,66 @@
         </div>
 
         <div>
-            <label for="anyConstructionDone">Any Construction Done:</label>
-            <select id="anyConstructionDone" name="anyConstructionDone">
-                <option value="">Loading...</option>
-            </select>
+            <label for="anyConstructionDone">Any Construction Done:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="anyConstructionDone" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="anyConstructionDone" value="false">
         </div>
 
         <div>
-            <label for="attachedBalcony">Attached Balcony:</label>
-            <select id="attachedBalcony" name="attachedBalcony">
-                <option value="">Loading...</option>
-            </select>
+            <label for="attachedBalcony">Attached Balcony:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="attachedBalcony" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="attachedBalcony" value="false">
         </div>
 
         <div>
-            <label for="attachedBathroom">Attached Bathroom:</label>
-            <select id="attachedBathroom" name="attachedBathroom">
-                <option value="">Loading...</option>
-            </select>
+            <label for="attachedBathroom">Attached Bathroom:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="attachedBathroom" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="attachedBathroom" value="false">
         </div>
 
         <div>
-            <label for="boundaryWallMade">Boundary Wall Made:</label>
-            <select id="boundaryWallMade" name="boundaryWallMade">
-                <option value="">Loading...</option>
-            </select>
+            <label for="boundaryWallMade">Boundary Wall Made:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="boundaryWallMade" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="boundaryWallMade" value="false">
         </div>
 
         <div>
-            <label for="cabinMeetingRoom">Cabin Meeting Room:</label>
+            <label for="cabinMeetingRoom">Cabin Meeting Room:</label><br>
             <select id="cabinMeetingRoom" name="cabinMeetingRoom">
                 <option value="">Loading...</option>
             </select>
         </div>
 
         <div>
-            <label for="CommonArea">Common Area:</label>
-            <select id="CommonArea" name="CommonArea">
-                <option value="">Loading...</option>
-            </select>
+            <label for="CommonArea">Common Area:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="CommonArea" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="CommonArea" value="false">
         </div>
 
         <div>
-            <label for="cornerShop">Corner Shop:</label>
-            <select id="cornerShop" name="cornerShop">
-                <option value="">Loading...</option>
-            </select>
+            <label for="cornerShop">Corner Shop:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="cornerShop" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="cornerShop" value="false">
         </div>
 
         <div>
-            <label for="mainRoadFacing">Main Road Facing:</label>
-            <select id="mainRoadFacing" name="mainRoadFacing">
-                <option value="">Loading...</option>
-            </select>
+            <label for="mainRoadFacing">Main Road Facing:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="mainRoadFacing" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="mainRoadFacing" value="false">
         </div>
 
         <div>
@@ -142,10 +158,11 @@
         </div>
 
         <div>
-            <label for="inGatedColony">In Gated Colony:</label>
-            <select id="inGatedColony" name="inGatedColony">
-                <option value="">Loading...</option>
-            </select>
+            <label for="inGatedColony">In Gated Colony:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="inGatedColony" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="inGatedColony" value="false">
         </div>
 
         <div>
@@ -170,36 +187,182 @@
         </div>
 
         <div>
-            <label for="NearSchool">Near School:</label>
-            <select id="NearSchool" name="NearSchool">
-                <option value="">Loading...</option>
-            </select>
+            <label for="NearSchool">Near School:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="NearSchool" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="NearSchool" value="false">
         </div>
 
         <div>
-            <label for="NearHospital">Near Hospital:</label>
-            <select id="NearHospital" name="NearHospital">
-                <option value="">Loading...</option>
-            </select>
+            <label for="NearHospital">Near Hospital:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="NearHospital" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="NearHospital" value="false">
         </div>
 
         <div>
-            <label for="nearMarket">Near Market:</label>
-            <select id="nearMarket" name="nearMarket">
-                <option value="">Loading...</option>
-            </select>
+            <label for="nearMarket">Near Market:</label><br>
+            <label for="">yes</label>
+            <input type="radio" name="nearMarket" value="ture">
+            <label for="">no</label>
+            <input type="radio" name="nearMarket" value="false">
         </div>
 
         <div>
             <label for="propertyImage">Upload Property Images:</label>
             <input type="file" id="propertyImage" name="propertyImage[]" multiple><br><br>
         </div>
-
+        <!-- <div class="">
+            <label for="category">Select Category</label>
+            <select class="form-control" id="category" name="category" required>
+                <option value="site_view">Site View</option>
+                <option value="exterior_view">Exterior View</option>
+                <option value="common_area">Common Area</option>
+                <option value="living_room">Living Room</option>
+                <option value="bedrooms">Bedrooms</option>
+                <option value="bathrooms">Bathrooms</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="floor_plan">Floor Plan</option>
+                <option value="master_plan">Master Plan</option>
+                <option value="location_map">Location Map</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="images">Choose Images</label>
+            <input type="file" class="form-control-file" id="images" name="images[]" multiple required>
+        </div> -->
         <div>
             <button type="submit" name="submit">Submit Details</button>
         </div>
-    </for
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Populate dropdowns on page load
+            populateDropdowns();
 
+            // Add form submission event listener
+            document.getElementById('propertyForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                submitForm();
+            });
+        });
+
+        function populateDropdowns() {
+            const dropdownConfigs = [
+                { id: 'sharedOfficeSpace', filter: 'SharedOfficeSpace' },
+                { id: 'Month', filter: 'Month' },
+                { id: 'PossessionStatus', filter: 'PossessionStatus' },
+                { id: 'PriceIncludes', filter: 'PriceIncludes' },
+                { id: 'TransactionType', filter: 'TransactionType' },
+                { id: 'anyConstructionDone', filter: 'anyConstructionDone' },
+                { id: 'attachedBalcony', filter: 'attachedBalcony' },
+                { id: 'attachedBathroom', filter: 'attachedBathroom' },
+                { id: 'boundaryWallMade', filter: 'boundaryWallMade' },
+                { id: 'ShowPriceAs', filter: 'ShowPriceAs' },
+                { id: 'cabinMeetingRoom', filter: 'cabinMeetingRoom' },
+                { id: 'CommonArea', filter: 'CommonArea' },
+                { id: 'cornerShop', filter: 'cornerShop' },
+                { id: 'mainRoadFacing', filter: 'mainRoadFacing' },
+                { id: 'floor', filter: 'floor' },
+                { id: 'FurnishedStatus', filter: 'FurnishedStatus' },
+                { id: 'inGatedColony', filter: 'inGatedColony' },
+                { id: 'Bedroom', filter: 'Bedroom' },
+                { id: 'maintenanceChargeFrequency', filter: 'maintenanceChargeFrequency' },
+                { id: 'noticePeriod', filter: 'noticePeriod' },
+                { id: 'NearSchool', filter: 'NearSchool' },
+                { id: 'NearHospital', filter: 'NearHospital' },
+                { id: 'nearMarket', filter: 'nearMarket' },
+            ];
+
+            dropdownConfigs.forEach(config => {
+                fetchDropdownData(config.id, config.filter);
+            });
+        }
+
+        function fetchDropdownData(elementId, filter) {
+            fetch('https://nplled.smggreen.com/api/dropdown', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ filter: filter })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data) {
+                        populateDropdown(elementId, data.data);
+                    } else {
+                        console.error('Error fetching dropdown data', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function populateDropdown(elementId, data) {
+            const dropdown = document.getElementById(elementId);
+            dropdown.innerHTML = '';  // Clear existing options
+
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.ddlValue;
+                option.text = item.ddlText;
+                dropdown.add(option);
+            });
+        }
+
+        function submitForm() {
+            const form = document.getElementById('propertyForm');
+            const formData = new FormData(form);
+
+            const data = {};
+            formData.forEach((value, key) => {
+                // Handle boolean values
+                if (value === "true") {
+                    data[key] = true;
+                } else if (value === "false") {
+                    data[key] = false;
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            console.log('Submitting form data:', data);
+
+            fetch('{{ url("/api/property-registration") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(errorData => {
+                            throw new Error(errorData.message || 'Something went wrong');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        alert('Property registered successfully');
+                    } else {
+                        alert('Failed to register property: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred: ' + error.message);
+                });
+        }
+
+    </script>
 
 
     @include('includes/footer')
