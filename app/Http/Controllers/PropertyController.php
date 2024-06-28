@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Storage;
 
 class PropertyController extends Controller
 {
@@ -33,49 +34,6 @@ class PropertyController extends Controller
             // Handle any exceptions or errors
             Log::error('Exception while fetching property types: ' . $e->getMessage());
             return view('addproperty.addproperty', ['propertyTypes' => []])->withErrors(['error' => 'Failed to fetch property types.']);
-        }
-    }
-    public function filterData(Request $request)
-    {
-        // The filter data you need to send
-        $filterData = [
-            "filter" => "SharedOfficeSpace"
-        ];
-
-        // Send the POST request with the filter data
-        $client = new \GuzzleHttp\Client();
-
-        try {
-            $response = $client->post('https://nplled.smggreen.com/api/DropDown', [
-                'headers' => [
-                    'Content-Type' => 'application/json'
-                ],
-                'json' => $filterData
-            ]);
-
-            if ($response->getStatusCode() === 200) {
-                $data = json_decode($response->getBody(), true);
-
-                if (isset($data['success']) && $data['success']) {
-                    // Prepare options for the dropdown based on the API response
-                    $options = [];
-                    foreach ($data['data'] as $item) {
-                        $options[] = [
-                            'value' => $item['ddlValue'],
-                            'text' => $item['ddlText'],
-                        ];
-                    }
-
-                    // Pass the options and data to the view
-                    return view('property.form', compact('options', 'data'));
-                } else {
-                    return back()->withErrors(['error' => 'API response unsuccessful: ' . ($data['message'] ?? 'Unknown error')]);
-                }
-            } else {
-                return back()->withErrors(['error' => 'API returned status code ' . $response->getStatusCode()]);
-            }
-        } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'API request failed: ' . $e->getMessage()]);
         }
     }
     public function filterData1(Request $request)
@@ -1047,47 +1005,48 @@ class PropertyController extends Controller
             // Add other validation rules for other fields as needed
         ]);
 
-        // Handle image uploads
-        $imagePaths = [];
+        // Handle image uploads and get URLs
+        $imageUrls = [];
         if ($request->hasFile('propertyImage')) {
             foreach ($request->file('propertyImage') as $file) {
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $filePath = $file->storeAs('uploads/property_images', $filename, 'public');
-                $imagePaths[] = $filePath;
+                $imageUrls[] = Storage::url($filePath);
             }
         }
 
         // Assuming you receive the property registration data from a form or request
         $propertyData = [
-            "propertyTypeID" => $request->input('sharedOfficeSpace'),
-            "propertyDetailsForID" => 5,
-            "month" => $request->input('Month'),
-            "bedroom" => $request->input('bedroom'),
+            "packageID" => 1,
+            "propertyTypeID" => 1,
+            "propertyDetailsForID" => 3,
+            "month" => $request->Month,
+            "bedroom" => $request->Bedroom,
             "balcony" => 1,
-            "floor" => $request->input('Month'),
+            "floor" => $request->floor,
             "bathroom" => 2,
-            "furnishedStatus" => $request->input('furnishedStatus'),
-            "cabinMeetingRoom" => $request->input('cabinMeetingRoom'),
-            "transactionType" => $request->input('transactionType'),
-            "possessionStatus" => $request->input('possessionStatus'),
-            "showPriceAs" => $request->input('showPriceAs'),
-            "priceIncludes" => $request->input('priceIncludes'),
-            "maintenanceChargeFrequency" => $request->input('maintenanceChargeFrequency'),
-            "noticePeriod" => $request->input('noticePeriod'),
+            "furnishedStatus" => $request->FurnishedStatus,
+            "cabinMeetingRoom" => $request->TransactionType,
+            "transactionType" => $request->TransactionType,
+            "possessionStatus" => $request->PossessionStatus,
+            "showPriceAs" => $request->ShowPriceAs,
+            "priceIncludes" => $request->PriceIncludes,
+            "maintenanceChargeFrequency" => $request->maintenanceChargeFrequency,
+            "noticePeriod" => $request->noticePeriod,
             "userID" => 123,
-            "cornerShop" => $request->input('cornerShop'),
-            "mainRoadFacing" => $request->input('mainRoadFacing'),
-            "sharedOfficeSpace" => true,
-            "attachedBathroom" => $request->input('attachedBathroom'),
-            "attachedBalcony" => $request->input('attachedBalcony'),
-            "commonArea" => $request->input('commonArea'),
-            "anyConstructionDone" => $request->input('anyConstructionDone'),
-            "boundaryWallMade" => $request->input('boundaryWallMade'),
-            "inGatedColony" => $request->input('inGatedColony'),
+            "cornerShop" => (bool) $request->cornerShop,
+            "mainRoadFacing" => (bool) $request->mainRoadFacing,
+            "sharedOfficeSpace" => (bool) $request->sharedOfficeSpace,
+            "attachedBathroom" => (bool) $request->attachedBathroom,
+            "attachedBalcony" => (bool) $request->attachedBalcony,
+            "commonArea" => (bool) $request->CommonArea,
+            "anyConstructionDone" => (bool) $request->anyConstructionDone,
+            "boundaryWallMade" => (bool) $request->boundaryWallMade,
+            "inGatedColony" => (bool) $request->inGatedColony,
             "addressLine1" => "123 Main St",
             "addressLine2" => "Apt 101",
-            "city" => "Bhopal",
-            "state" => "Madhya Pradesh",
+            "city" => $request->city,
+            "state" => $request->loction,
             "zipCode" => "462042",
             "country" => "India",
             "latitude" => 40.7128,
@@ -1098,9 +1057,9 @@ class PropertyController extends Controller
             "unitOfArea" => "sq.ft",
             "price" => 250000,
             "currency" => "INR",
-            "ownerName" => "ram",
+            "ownerName" => "shubhendra patel",
             "ownerContactNumber" => "6260322230",
-            "ownerEmail" => "ramsharma4981@gmail.com",
+            "ownerEmail" => "kkumar4981@gmail.com",
             "parkingSpaces" => 2,
             "powerBackup" => true,
             "waterSupply" => true,
@@ -1120,9 +1079,9 @@ class PropertyController extends Controller
             "ownershipType" => "Freehold",
             "registrationNumber" => "ABC123",
             "legalClearance" => true,
-            "nearSchool" => $request->input('nearSchool'),
-            "nearHospital" => $request->input('nearHospital'),
-            "nearMarket" => $request->input('nearMarket'),
+            "nearSchool" => (bool) $request->NearSchool,
+            "nearHospital" => (bool) $request->NearHospital,
+            "nearMarket" => (bool) $request->nearMarket,
             "nearPublicTransport" => true,
             "nearPark" => true,
             "earthquakeResistant" => true,
@@ -1148,26 +1107,26 @@ class PropertyController extends Controller
             "handicapAccessible" => false,
             "floorPlan" => "https://example.com/floor-plan.pdf",
             "virtualTour" => "https://example.com/virtual-tour",
-            "imageSiteView" => "https://example.com/virtual-tour",
-            "imageExteriorView" => "https://example.com/virtual-tour",
-            "imageCommonArea" => "https://example.com/virtual-tour",
-            "imageLivingRoom" => "https://example.com/virtual-tour",
-            "imageBedroom" => "https://example.com/virtual-tour",
-            "imageBathroom" => "https://example.com/virtual-tour",
-            "imageKitchen" => "https://example.com/virtual-tour",
-            "imageFloorPlan" => "https://example.com/virtual-tour",
-            "imageMasterPlan" => "https://example.com/virtual-tour",
-            "imageLocationMap" => "https://example.com/virtual-tour",
-            "imageOther" => "https://example.com/virtual-tour",
-            "askedPrice" => 500000,
-            // Add other relevant fields as needed
+            "imageSiteView" => $imageUrls[0] ?? "https://example.com/virtual-tour",
+            "imageExteriorView" => $imageUrls[1] ?? "https://example.com/virtual-tour",
+            "imageCommonArea" => $imageUrls[2] ?? "https://example.com/virtual-tour",
+            "imageLivingRoom" => $imageUrls[3] ?? "https://example.com/virtual-tour",
+            "imageBedroom" => $imageUrls[4] ?? "https://example.com/virtual-tour",
+            "imageBathroom" => $imageUrls[5] ?? "https://example.com/virtual-tour",
+            "imageKitchen" => $imageUrls[6] ?? "https://example.com/virtual-tour",
+            "imageFloorPlan" => $imageUrls[7] ?? "https://example.com/virtual-tour",
+            "imageMasterPlan" => $imageUrls[8] ?? "https://example.com/virtual-tour",
+            "imageLocationMap" => $imageUrls[9] ?? "https://example.com/virtual-tour",
+            "imageOther" => $imageUrls[10] ?? "https://example.com/virtual-tour",
+            "askedPrice" => 500000
         ];
 
         // Send the POST request to the API
+        // dd($propertyData);
         try {
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer YOUR_API_TOKEN', // Replace with your actual API token if required
+                //'Authorization' => 'Bearer YOUR_API_TOKEN', // Replace with your actual API token if required
             ])->post('https://nplled.smggreen.com/api/PropertyRegistration', $propertyData);
 
             if ($response->successful()) {
@@ -1189,5 +1148,6 @@ class PropertyController extends Controller
             return response()->json(['error' => 'API request failed: ' . $e->getMessage()], 500);
         }
     }
+
 
 }

@@ -198,7 +198,7 @@
         <div>
             <button type="submit" name="submit">Submit Details</button>
         </div>
-    </form>
+    </for
 
 
 
