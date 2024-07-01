@@ -1,91 +1,60 @@
 @extends('layouts.master')
 
-
 @section('title')
-dashbord matrabhumi
+Dashboard Matrabhumi
 @endsection
 
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Listings</title>
-    <style>
-        .property {
-            border: 1px solid #ddd;
-            margin: 10px;
-            padding: 10px;
-        }
-
-        .property img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
-
-<body>
+<div class="container">
     <h1>Property Listings</h1>
     <div id="properties"></div>
-
-    <script src="property-listings.js"></script>
-</body>
-
-</html>
-
-
-
-
-
+</div>
 @endsection
 
-
-
-
-
-
 @section('scripts')
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const apiEndpoint = 'https://nplled.smggreen.com/api/PropertyRegistration';
+        // Fetch properties from the Laravel endpoint
+        axios.get('/properties')
+            .then(function (response) {
+                // Get the properties data
+                const properties = response.data;
 
-        // Fetch property data
-        fetch(apiEndpoint)
-            .then(response => response.json())
-            .then(data => {
-                if (data && data.success && data.data) {
-                    const properties = data.data;
-                    const propertiesContainer = document.getElementById('properties');
+                // Get the properties div
+                const propertiesDiv = document.getElementById('properties');
 
-                    // Loop through the properties and create HTML elements for each
-                    properties.forEach(property => {
-                        const propertyElement = document.createElement('div');
-                        propertyElement.classList.add('property');
+                // Loop through the properties and display them
+                properties.data.forEach(function (property) {
+                    const propertyDiv = document.createElement('div');
+                    propertyDiv.classList.add('property');
 
-                        propertyElement.innerHTML = `
-                        <h2>${property.listingTitle}</h2>
-                        <p>${property.listingDescription}</p>
-                        <img src="${property.imageSiteView}" alt="Site View">
-                        <div>
-                            <p><strong>Price:</strong> ${property.price} ${property.currency}</p>
-                            <p><strong>Owner Name:</strong> ${property.ownerName}</p>
-                            <p><strong>Contact:</strong> ${property.ownerContactNumber}</p>
-                            <p><strong>Email:</strong> ${property.ownerEmail}</p>
-                            <p><strong>Location:</strong> ${property.addressLine1}, ${property.addressLine2}, ${property.city}, ${property.state}, ${property.zipCode}, ${property.country}</p>
-                        </div>
-                    `;
-
-                        propertiesContainer.appendChild(propertyElement);
-                    });
-                } else {
-                    console.error('Failed to fetch property data');
-                }
+                    propertyDiv.innerHTML = `
+                            <h2>${property.listingTitle}</h2>
+                            <p>${property.listingDescription}</p>
+                            <p>Price: ${property.price} ${property.currency}</p>
+                            <p>Location: ${property.addressLine1}, ${property.city}, ${property.state}, ${property.country}</p>
+                            <img src="${property.imageSiteView}" alt="Site View" class="property-image">
+                            <hr>
+                        `;
+                    propertiesDiv.appendChild(propertyDiv);
+                });
             })
-            .catch(error => console.error('Error fetching property data:', error));
+            .catch(function (error) {
+                console.error('Error fetching properties:', error);
+            });
     });
 </script>
+<style>
+    .property {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .property-image {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
 @endsection

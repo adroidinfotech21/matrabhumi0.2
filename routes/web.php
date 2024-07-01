@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\propertyshowcontroller;
 
 
 /*
@@ -71,6 +72,7 @@ Route::get('/allproperty', function () {
 Route::get('/pandingproperty', function () {
     return view('admin.pandingproperty');
 });
+Route::get('/allproperty', [propertyshowcontroller::class, 'fetchProperties']);
 
 Route::get('/registeruser', [RegisterController::class, 'fetchData']);
 
