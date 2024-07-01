@@ -66,6 +66,44 @@ Route::get('/registeruser', function () {
 Route::get('/AdvertisementBlock1', function () {
     return view('admin.Add_block');
 });
+
+Route::get('/AdvertisementBlock2', function () {
+    return view('admin.Add_block2');
+});
+
+Route::get('/AdvertisementBlock3', function () {
+    return view('admin.Add_block3');
+});
+
+Route::get('/AdvertisementBlock4', function () {
+    return view('admin.Add_block4');
+});
+
+Route::get('/AdvertisementBlock5', function () {
+    return view('admin.Add_block5');
+});
+
+Route::get('/AdvertisementBlock6', function () {
+    return view('admin.Add_block6');
+});
+
+Route::get('/AdvertisementBlock7', function () {
+    return view('admin.Add_block7');
+});
+
+Route::get('/AdvertisementBlock8', function () {
+    return view('admin.Add_block8');
+});
+
+Route::get('/AdvertisementBlock9', function () {
+    return view('admin.Add_block9');
+});
+
+Route::get('/AdvertisementBlock10', function () {
+    return view('admin.Add_block10');
+});
+
+
 Route::get('/allproperty', function () {
     return view('admin.allproperty');
 });

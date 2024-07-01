@@ -157,7 +157,7 @@ dashbord matrabhumi
     <main class="form-container">
         <section class="form-section">
             <div class="form-intro">
-                <p>Welcome to our property advertisement block 1 platform. Please fill out the form to list your property with us.</p>
+                <p>Welcome to our property advertisement block 4 platform. Please fill out the form to list your property with us.</p>
             </div>
             <form class="ad-registration-form">
                 <div class="form-group">
