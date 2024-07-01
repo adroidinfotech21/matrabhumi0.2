@@ -64,15 +64,15 @@
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="{{ url('AdvertisementBlock1')}}">Advertisement Block 1</a></li>
-                            <li><a href="restaurant-menu-two.html">Advertisement Block 2</a></li>
-                            <li><a href="restaurant-menu-three.html">Advertisement Block 3</a></li>
-                            <li><a href="restaurant-favourite-list.html">Advertisement Block 4</a></li>
-                            <li><a href="restaurant-order-list.html">Advertisement Block 5</a></li>
-                            <li><a href="restaurant-booking.html">Advertisement Block 6</a></li>
-                            <li><a href="restaurant-upload-menu1.html">Advertisement Block 7</a></li>
-                            <li><a href="restaurant-upload-menu2.html">Advertisement Block 8</a></li>
-                            <li><a href="restaurant-upload-menu3.html">Advertisement Block 9</a></li>
-                            <li><a href="restaurant-upload-menu4.html">Advertisement Block 10</a></li>
+                            <li><a href="{{ url('AdvertisementBlock2')}}">Advertisement Block 2</a></li>
+                            <li><a href="{{ url('AdvertisementBlock3')}}">Advertisement Block 3</a></li>
+                            <li><a href="{{ url('AdvertisementBlock4')}}">Advertisement Block 4</a></li>
+                            <li><a href="{{ url('AdvertisementBlock5')}}">Advertisement Block 5</a></li>
+                            <li><a href="{{ url('AdvertisementBlock6')}}">Advertisement Block 6</a></li>
+                            <li><a href="{{ url('AdvertisementBlock7')}}">Advertisement Block 7</a></li>
+                            <li><a href="{{ url('AdvertisementBlock8')}}">Advertisement Block 8</a></li>
+                            <li><a href="{{ url('AdvertisementBlock9')}}">Advertisement Block 9</a></li>
+                            <li><a href="{{ url('AdvertisementBlock10')}}">Advertisement Block 10</a></li>
                         </ul>
 
 
