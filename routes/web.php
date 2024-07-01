@@ -68,6 +68,9 @@ Route::get('/AdvertisementBlock1', function () {
 Route::get('/allproperty', function () {
     return view('admin.allproperty');
 });
+Route::get('/pandingproperty', function () {
+    return view('admin.pandingproperty');
+});
 
 Route::get('/registeruser', [RegisterController::class, 'fetchData']);
 

@@ -54,7 +54,7 @@
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="{{ url('allproperty')}}">all property </a></li>
-                            <li><a href="school-student-profile.html">Panding property</a></li>
+                            <li><a href="{{ url('pandingproperty')}}">Panding property</a></li>
                             <li><a href="school-student-profile.html">rejected property</a></li>
 
                         </ul>
@@ -181,7 +181,8 @@
 
     <div class="header">
         <div class="pull-left">
-            <div class="logo"><a href="index.html"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Matrabhumi
+            <div class="logo"><a
+                    href="{{ url('admin') }}"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Matrabhumi
                         Admin</span></a></div>
             <div class="hamburger sidebar-toggle">
                 <span class="line"></span>
