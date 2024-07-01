@@ -42,7 +42,7 @@
         <div class="container-3">
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <h2 class="text-uppercase bottom30" style="color:black;">my profile</h2>
+                    <!-- <h2 class="text-uppercase bottom30" style="color:black;">my profile</h2> -->
                     <div class="agent-p-img">
                         <img src="images/profile.jpg" class="img-responsive" alt="image" />
                         <a href="#" class="top10 bottom20">Update Profile Pict ure</a>

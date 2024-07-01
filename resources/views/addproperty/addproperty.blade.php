@@ -214,26 +214,7 @@
             <label for="propertyImage">Upload Property Images:</label>
             <input type="file" id="propertyImage" name="propertyImage[]" multiple><br><br>
         </div>
-        <!-- <div class="">
-            <label for="category">Select Category</label>
-            <select class="form-control" id="category" name="category" required>
-                <option value="site_view">Site View</option>
-                <option value="exterior_view">Exterior View</option>
-                <option value="common_area">Common Area</option>
-                <option value="living_room">Living Room</option>
-                <option value="bedrooms">Bedrooms</option>
-                <option value="bathrooms">Bathrooms</option>
-                <option value="kitchen">Kitchen</option>
-                <option value="floor_plan">Floor Plan</option>
-                <option value="master_plan">Master Plan</option>
-                <option value="location_map">Location Map</option>
-                <option value="others">Others</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="images">Choose Images</label>
-            <input type="file" class="form-control-file" id="images" name="images[]" multiple required>
-        </div> -->
+
         <div>
             <button type="submit" name="submit">Submit Details</button>
         </div>
@@ -361,6 +342,7 @@
                     alert('An error occurred: ' + error.message);
                 });
         }
+
 
     </script>
 

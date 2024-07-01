@@ -1,39 +1,39 @@
 @include('includes/header')
 
 @if (session('status'))
-        <p style="color: green;">{{ session('status') }}</p>
-    @endif
+    <p style="color: green;">{{ session('status') }}</p>
+@endif
 
-    @if ($errors->any())
-        <div style="color: red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+@if ($errors->any())
+    <div style="color: red;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 
-    <div class="center-wrapper">
+<div class="center-wrapper">
     <div class="form-container">
-        <h2>Registration Form</h2>
+        <h2 style="color:white;">Registration Form</h2>
         <form action="{{ route('register.submit') }}" method="post">
             @csrf
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <label for="name" style="color:white;">Name:</label>
+                <input type="text" id="name" name="name" required class="namefield">
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email" style="color:white;">Email:</label>
+                <input type="email" id="email" name="email" required class="namefield">
             </div>
             <div class="form-group">
-                <label for="number">Phone Number:</label>
-                <input type="tel" id="number" name="phonenumber" required>
+                <label for="number" style="color:white;">Phone Number:</label>
+                <input type="tel" id="number" name="phonenumber" required class="namefield">
             </div>
             <div class="form-group">
-                <label for="role">Role:</label>
+                <label for="role" style="color:white;">Role:</label>
                 <select id="role" name="role" required>
                     <option value="agent">Agent</option>
                     <option value="owner">Owner</option>
@@ -46,13 +46,13 @@
         </form>
     </div>
     <div class="image-container">
-            <img src="{{asset('images/signup/singup1-removebg-preview.png')}}" alt="Image Description" width="500px">
-        </div>
+        <img src="{{asset('images/signup/singup1-removebg-preview.png')}}" alt="Image Description" width="500px">
+    </div>
 </div>
 
-        
-      
-    </div>
+
+
+</div>
 
 
 

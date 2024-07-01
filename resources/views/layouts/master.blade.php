@@ -49,49 +49,21 @@
                             <li><a href="index-ecommerce-v2.html">Dashboard 6</a></li>
                         </ul>
                     </li>
-                    <li class="label">Property approved</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i>Management <span
-                                class="badge badge-primary">28</span><span
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i>Property approved <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="school-student.html">Student</a></li>
-                            <li><a href="school-student-profile.html">Student Profile</a></li>
-                            <li><a href="school-student-details.html">Student Detail</a></li>
-                            <li><a href="school-hostel-room.html">Hostel</a></li>
-                            <li><a href="school-all-student-table.html">Students Table</a></li>
-                            <li><a href="school-student-search.html">search</a></li>
-                            <li><a href="school-teacher-information.html">Teacher Info</a></li>
-                            <li><a href="school-student-profile.html">Teacher Details</a></li>
-                            <li><a href="school-all-teacher-table.html">Teacher Table</a></li>
-                            <li><a href="school-class-information.html">Class Info</a></li>
-                            <li><a href="school-subject.html">Subject</a></li>
-                            <li><a href="school-class-routine.html">Routine</a></li>
-                            <li><a href="school-attendace-sheet.html">Attendance</a></li>
-                            <li><a href="school-grade-list.html">Exam Result</a></li>
-                            <li><a href="school-new-exam.html">Exam Schedule</a></li>
-                            <li><a href="school-account-setting.html">Setting</a></li>
-                            <li><a href="school-student-fees-collection.html">Collection Fees</a></li>
-                            <li><a href="school-payment-information.html">Payment info</a></li>
-                            <li><a href="school-add-new-expenses.html">New Expense</a></li>
-                            <li><a href="school-all-expense-list.html">Expense</a></li>
-                            <li><a href="school-attendace-sheet.html">Attendance</a></li>
-                            <li><a href="school-book-information.html">Book Info</a></li>
-                            <li><a href="school-book-list.html">Book List</a></li>
-                            <li><a href="school-all-parents-list.html">Parents List</a></li>
-                            <li><a href="school-parents.html">Parents</a></li>
-                            <li><a href="school-form.html">Form</a></li>
-                            <li><a href="school-notice.html">Notice</a></li>
-                            <li><a href="school-transport.html">Transport</a></li>
+                            <li><a href="{{ url('allproperty')}}">all property </a></li>
+                            <li><a href="school-student-profile.html">Panding property</a></li>
+                            <li><a href="school-student-profile.html">rejected property</a></li>
+
                         </ul>
                     </li>
 
-<<<<<<< HEAD
-                    <li class="label">Advertisement_Block</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Advertisement Block<span
-                                class="badge badge-primary">7</span> <span
+                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Advertisement Block <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="restaurant-menu-one.html">Advertisement Block 1</a></li>
+                            <li><a href="{{ url('AdvertisementBlock1')}}">Advertisement Block 1</a></li>
                             <li><a href="restaurant-menu-two.html">Advertisement Block 2</a></li>
                             <li><a href="restaurant-menu-three.html">Advertisement Block 3</a></li>
                             <li><a href="restaurant-favourite-list.html">Advertisement Block 4</a></li>
@@ -101,20 +73,8 @@
                             <li><a href="restaurant-upload-menu2.html">Advertisement Block 8</a></li>
                             <li><a href="restaurant-upload-menu3.html">Advertisement Block 9</a></li>
                             <li><a href="restaurant-upload-menu4.html">Advertisement Block 10</a></li>
-=======
-                    <!-- <li class="label">Advertisement Block</li> -->
-                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> Advertisement Block </a>
-                        <ul>
-                            <li><a href="{{ url('Add_block')}}">Advertisement Block 1</a></li>
-                            <li><a href="restaurant-menu-two.html">Menu Two</a></li>
-                            <li><a href="restaurant-menu-three.html">Menu Three</a></li>
-                            <li><a href="restaurant-favourite-list.html">Favourite</a></li>
-                            <li><a href="restaurant-order-list.html">Order List</a></li>
-                            <li><a href="restaurant-booking.html">Booking</a></li>
-                            <li><a href="restaurant-upload-menu.html">Upload Menu</a></li>
->>>>>>> 328fd00632d1ac9e8eaf2ab732c3c80e7fca952f
                         </ul>
-                    </li>
+
 
                     <li class="label">Apps</li>
                     <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Charts <span
