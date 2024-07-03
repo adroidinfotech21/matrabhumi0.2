@@ -1057,7 +1057,7 @@ class PropertyController extends Controller
             "unitOfArea" => "sq.ft",
             "price" => 250000,
             "currency" => "INR",
-            "ownerName" => "shubhendra patel",
+            "ownerName" => "shivam majoka ",
             "ownerContactNumber" => "6260322230",
             "ownerEmail" => "kkumar4981@gmail.com",
             "parkingSpaces" => 2,

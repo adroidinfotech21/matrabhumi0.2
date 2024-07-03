@@ -107,10 +107,12 @@ Route::get('/AdvertisementBlock10', function () {
 Route::get('/allproperty', function () {
     return view('admin.allproperty');
 });
+Route::get('/property-details', [propertyshowcontroller::class, 'show'])->name('showPropertyDetails');
 Route::get('/pandingproperty', function () {
     return view('admin.pandingproperty');
 });
 Route::get('/allproperty', [propertyshowcontroller::class, 'fetchProperties']);
+Route::get('/pandingproperty', [propertyshowcontroller::class, 'fetchProperties']);
 
 Route::get('/registeruser', [RegisterController::class, 'fetchData']);
 

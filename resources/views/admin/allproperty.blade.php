@@ -5,56 +5,73 @@ Dashboard Matrabhumi
 @endsection
 
 @section('content')
-<div class="container">
-    <h1>Property Listings</h1>
-    <div id="properties"></div>
-</div>
-@endsection
 
-@section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Fetch properties from the Laravel endpoint
-        axios.get('/properties')
-            .then(function (response) {
-                // Get the properties data
-                const properties = response.data;
-
-                // Get the properties div
-                const propertiesDiv = document.getElementById('properties');
-
-                // Loop through the properties and display them
-                properties.data.forEach(function (property) {
-                    const propertyDiv = document.createElement('div');
-                    propertyDiv.classList.add('property');
-
-                    propertyDiv.innerHTML = `
-                            <h2>${property.listingTitle}</h2>
-                            <p>${property.listingDescription}</p>
-                            <p>Price: ${property.price} ${property.currency}</p>
-                            <p>Location: ${property.addressLine1}, ${property.city}, ${property.state}, ${property.country}</p>
-                            <img src="${property.imageSiteView}" alt="Site View" class="property-image">
-                            <hr>
-                        `;
-                    propertiesDiv.appendChild(propertyDiv);
-                });
-            })
-            .catch(function (error) {
-                console.error('Error fetching properties:', error);
-            });
-    });
-</script>
 <style>
-    .property {
-        border: 1px solid #ddd;
-        padding: 20px;
-        margin-bottom: 20px;
+    table {
+        display: block;
+        overflow-x: auto;
+        margin-left: 150px;
     }
 
-    .property-image {
-        max-width: 100%;
-        height: auto;
+    th,
+    td {
+        white-space: nowrap;
     }
 </style>
-@endsection
+
+<div class="container mt-5">
+    <h2>All Properties</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Property ID</th>
+                <th>city</th>
+                <!-- <th>state</th> -->
+                <!-- <th>zipCode</th>
+                <th>country</th> -->
+                <th>ownerName</th>
+                <th>ownerContactNumber</th>
+                <th>ownerEmail</th>
+                <th>price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($properties as $property)
+                <tr>
+                    <td>{{ $property['propertyID'] }}</td>
+                    <td>{{ $property['city'] }}</td>
+                    <!-- <td>{{ $property['state'] }}</td> -->
+                    <!-- <td>{{ $property['zipCode'] }}</td>
+                                                            <td>{{ $property['country'] }}</td> -->
+
+                    <td>{{ $property['ownerName'] }}</td>
+                    <td>{{ $property['ownerContactNumber'] }}</td>
+                    <td>{{ $property['ownerEmail'] }}</td>
+                    <td>{{ $property['askedPrice'] }}</td>
+
+                    <td>
+
+
+                        <a href="{{ route('showPropertyDetails', ['propertyID' => $property['propertyID']]) }} "
+                            class="btn btn-warning btn-sm">View</a>
+                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5" class="text-center">No properties found.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+</script>
+
+< @section('scripts')
+
+    @endsection

@@ -5,7 +5,7 @@
 dashbord matrabhumi
 @endsection
 
-@section('content')
+@section('content1')
 
 
 
