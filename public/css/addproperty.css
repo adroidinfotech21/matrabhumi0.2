@@ -1,55 +1,245 @@
-.addpropertyform {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-
-    max-width: 600px;
-
+/* Container Styling */
+.container-addproperty {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 00px;
+    border-radius: 1px;
 }
 
-.form-group {
-    margin-bottom: 1em;
+/* Form Header */
+.add-property-form h1 {
+    text-align: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
 }
 
-.form-group label {
+/* Form Groups */
+.add-property-form .property-type,
+.add-property-form .owner-name,
+.add-property-form .owner-contact,
+.add-property-form .owner-email,
+.add-property-form .city,
+.add-property-form .location,
+.add-property-form .office-space,
+.add-property-form .month,
+.add-property-form .possession,
+.add-property-form .include-price,
+.add-property-form .show-price,
+.add-property-form .transaction,
+.add-property-form .construction,
+.add-property-form .balcony,
+.add-property-form .bathroom,
+.add-property-form .wall,
+.add-property-form .meeting-room,
+.add-property-form .common-area,
+.add-property-form .corner-shop,
+.add-property-form .main-road,
+.add-property-form .floor,
+.add-property-form .furnished,
+.add-property-form .ingatedbalcony,
+.add-property-form .bedroom,
+.add-property-form .maintanance,
+.add-property-form .notice-period,
+.add-property-form .near-school,
+.add-property-form .rent-value,
+.add-property-form .foodcourt,
+.add-property-form .property-image,
+.add-property-form .submit {
+    margin-bottom: 20px;
+}
 
-    margin-bottom: 0.5em;
+/* Labels */
+.add-property-form label {
+    display: block;
     font-weight: bold;
+    margin-bottom: 4px;
+    color: #555;
 }
 
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group select {
-    width: 100%;
-    padding: 10px;
+/* Inputs and Selects */
+.add-property-form input[type="text"],
+.add-property-form input[type="email"],
+.add-property-form input[type="file"],
+.add-property-form select,
+.add-property-form input[type="radio"] {
+    width: 40%;
+    padding: 1px;
+    font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
+    margin-bottom: 4px;
     box-sizing: border-box;
 }
 
-.form-group input[type="checkbox"] {
+/* Radio Buttons Styling */
+.add-property-form input[type="radio"] {
+    width: auto;
     margin-right: 10px;
 }
 
-.form-group h3 {
-    margin-top: 1.5em;
+/* Error Messages */
+.alert.alert-danger {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+/* Submit Button */
+.add-property-form .submit input[type="submit"] {
+    width: 80%;
+    padding: 10px;
+    background-color: #F88017;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-property-form .submit input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .add-property-form .property-type,
+    .add-property-form .owner-name,
+    .add-property-form .owner-contact,
+    .add-property-form .owner-email,
+    .add-property-form .city,
+    .add-property-form .location,
+    .add-property-form .office-space,
+    .add-property-form .month,
+    .add-property-form .possession,
+    .add-property-form .include-price,
+    .add-property-form .show-price,
+    .add-property-form .transaction,
+    .add-property-form .construction,
+    .add-property-form .balcony,
+    .add-property-form .bathroom,
+    .add-property-form .wall,
+    .add-property-form .meeting-room,
+    .add-property-form .common-area,
+    .add-property-form .corner-shop,
+    .add-property-form .main-road,
+    .add-property-form .floor,
+    .add-property-form .furnished,
+    .add-property-form .ingatedbalcony,
+    .add-property-form .bedroom,
+    .add-property-form .maintanance,
+    .add-property-form .notice-period,
+    .add-property-form .near-school,
+    .add-property-form .rent-value,
+    .add-property-form .foodcourt,
+    .add-property-form .property-image,
+    .add-property-form .submit {
+        margin-bottom: 15px;
+    }
+
+    .add-property-form input[type="text"],
+    .add-property-form input[type="email"],
+    .add-property-form input[type="file"],
+    .add-property-form select,
+    .add-property-form input[type="radio"] {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .add-property-form .submit input[type="submit"] {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+
+/* Radio Buttons Styling */
+.add-property-form input[type="radio"] {
+    width: auto;
+    display: inline-block; /* Display inline-block to align Yes/No options */
+    margin-right: 10px;
+}
+
+/* Labels for Radio Buttons */
+.add-property-form .construction label,
+.add-property-form .balcony label,
+.add-property-form .bathroom label,
+.add-property-form .wall label,
+.add-property-form .meeting-room label,
+.add-property-form .common-area label,
+.add-property-form .corner-shop label,
+.add-property-form .main-road label,
+.add-property-form .ingatedbalcony label,
+.add-property-form .near-school label {
+    display: inline-block; /* Ensure labels align with radio buttons */
+    margin-right: 15px;
+}
+
+
+
+
+/* CSS for City and Location Sections */
+.city,
+.location {
+    margin-bottom: 20px;
+}
+
+.city span,
+.location span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
     color: #333;
 }
 
-.submitproperty {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.city input[type="text"],
+.location input[type="text"] {
+    width: calc(40% - 10px); /* Adjust width as needed */
+    padding: 10px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.submitproperty:hover {
-    background-color: #0056b3;
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .city input[type="text"],
+    .location input[type="text"] {
+        font-size: 14px;
+    }
 }
 
-.hidden {
-    display: none;
+
+/* CSS for Office Space Section */
+.office-space {
+    margin-bottom: 20px;
 }
+
+.office-space label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.office-space input[type="radio"] {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .office-space label {
+        margin-bottom: 5px;
+    }
+}
+
+
+
