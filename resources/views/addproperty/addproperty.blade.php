@@ -1,224 +1,278 @@
 @include('includes/header')
-<div class="">
-    <h1>Add Property</h1>
 
-    <!-- Display error messages, if any -->
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+<style>
+    /* Flex container for form and ad column */
+    .container-addproperty {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 0 auto;
+        max-width: 1200px; /* Adjust based on your design */
+    }
 
-    <!-- Property form -->
-    <form action="{{ route('property.form')}}" method="POST" enctype="multipart/form-data">
-        @csrf
+    /* Form styling */
+    .add-property-form {
+        width: 60%; /* Adjust width based on your design */
+        padding: 10px;
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 4px;
+    }
 
-        <!-- Property Type Dropdown -->
-        <div>
-            <label for="propertyType">Property Type</label>
-            <select id="propertyType" name="propertyType" class="" required>
-                <option value="">Select a property type</option>
-                @foreach ($propertyTypes as $propertyType)
-                    <option value="{{ $propertyType['id'] }}">{{ $propertyType['name'] }}</option>
-                @endforeach
-            </select>
-        </div>
+    /* Advertisement column styling */
+    .ad-column {
+        width: 35%; /* Adjust width based on your design */
+        padding: 10px;
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 8px;
+        margin-left: 20px;
+    }
 
-        <div>
-            <span>citiy</span><input type="text" name="city">
-        </div>
-        <div>
-            <span>loction</span><input type="text" name="loction">
-        </div>
-        <!-- Other Dropdowns -->
-        <div>
-            <label for="sharedOfficeSpace">Shared Office Space:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="sharedOfficeSpace" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="sharedOfficeSpace" value="false">
-        </div>
-        <div>
+    .ad-column img {
+        width: 90%;
+        height: auto;
+        border-radius: 8px;
+    }
 
-        </div>
-        <div>
-            <label for="Month">Month:</label>
-            <select id="Month" name="Month">
-                <option value="">Loading...</option>
-            </select>
-        </div>
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
 
-        <div>
-            <label for="PossessionStatus">Possession Status:</label>
-            <select id="PossessionStatus" name="PossessionStatus">
-                <option value="">Loading...</option>
-            </select>
-        </div>
+        .add-property-form, .ad-column {
+            width: 90%;
+            margin: 0;
+        }
+    }
+</style>
 
-        <div>
-            <label for="PriceIncludes">Price Includes:</label>
-            <select id="PriceIncludes" name="PriceIncludes">
-                <option value="">Loading...</option>
-            </select>
-        </div>
 
-        <div>
-            <label for="ShowPriceAs">Show Price As:</label>
-            <select id="ShowPriceAs" name="ShowPriceAs">
-                <option value="">Loading...</option>
-            </select>
-        </div>
+<div class="container-addproperty">
+    <!-- Form Column -->
+    <div class="add-property-form">
+        <h1>Add Property</h1>
 
-        <div>
-            <label for="TransactionType">Transaction Type:</label>
-            <select id="TransactionType" name="TransactionType">
-                <option value="">Loading...</option>
-            </select>
-        </div>
+        <!-- Display error messages, if any -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <div>
-            <label for="anyConstructionDone">Any Construction Done:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="anyConstructionDone" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="anyConstructionDone" value="false">
-        </div>
+        <!-- Property form -->
+        <form action="{{ route('property.form')}}" method="POST" enctype="multipart/form-data" id="propertyForm">
+            @csrf
 
-        <div>
-            <label for="attachedBalcony">Attached Balcony:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="attachedBalcony" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="attachedBalcony" value="false">
-        </div>
+            <!-- Property Type Dropdown -->
+            <div class="property-type">
+                <label for="propertyType">Property Type</label>
+                <select id="propertyType" name="propertyType" required>
+                    <option value="">Select a property type</option>
+                    @foreach ($propertyTypes as $propertyType)
+                        <option value="{{ $propertyType['id'] }}">{{ $propertyType['name'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="owner-name">
+                <label for="ownerName">Owner Name</label>
+                <input type="text" id="ownerName" name="ownerName" required>
+            </div>
 
-        <div>
-            <label for="attachedBathroom">Attached Bathroom:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="attachedBathroom" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="attachedBathroom" value="false">
-        </div>
+            <div class="owner-contact">
+                <label for="ownerContact">Owner Contact Number</label>
+                <input type="text" id="ownerContact" name="ownerContact" required>
+            </div>
 
-        <div>
-            <label for="boundaryWallMade">Boundary Wall Made:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="boundaryWallMade" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="boundaryWallMade" value="false">
-        </div>
+            <div class="owner-email">
+                <label for="ownerEmail">Owner Email ID</label>
+                <input type="email" id="ownerEmail" name="ownerEmail" required>
+            </div>
 
-        <div>
-            <label for="cabinMeetingRoom">Cabin Meeting Room:</label><br>
-            <select id="cabinMeetingRoom" name="cabinMeetingRoom">
-                <option value="">Loading...</option>
-            </select>
-        </div>
+            <div class="city">
+                <span>City</span><input type="text" name="city">
+            </div>
+            <div class="location">
+                <span>Location</span><input type="text" name="location">
+            </div>
 
-        <div>
-            <label for="CommonArea">Common Area:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="CommonArea" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="CommonArea" value="false">
-        </div>
+            <!-- Other Dropdowns -->
+            <div class="office-space">
+                <label for="sharedOfficeSpace">Shared Office Space:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="sharedOfficeSpace" value="true">
+                <label>No</label>
+                <input type="radio" name="sharedOfficeSpace" value="false">
+            </div>
+            <div class="month">
+                <label for="Month">Month:</label>
+                <select id="Month" name="Month">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="possession">
+                <label for="PossessionStatus">Possession Status:</label>
+                <select id="PossessionStatus" name="PossessionStatus">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="include-price">
+                <label for="PriceIncludes">Price Includes:</label>
+                <select id="PriceIncludes" name="PriceIncludes">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="show-price">
+                <label for="ShowPriceAs">Show Price As:</label>
+                <select id="ShowPriceAs" name="ShowPriceAs">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="transaction">
+                <label for="TransactionType">Transaction Type:</label>
+                <select id="TransactionType" name="TransactionType">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="construction">
+                <label for="anyConstructionDone">Any Construction Done:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="anyConstructionDone" value="true">
+                <label>No</label>
+                <input type="radio" name="anyConstructionDone" value="false">
+            </div>
+            <div class="balcony">
+                <label for="attachedBalcony">Attached Balcony:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="attachedBalcony" value="true">
+                <label>No</label>
+                <input type="radio" name="attachedBalcony" value="false">
+            </div>
+            <div class="bathroom">
+                <label for="attachedBathroom">Attached Bathroom:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="attachedBathroom" value="true">
+                <label>No</label>
+                <input type="radio" name="attachedBathroom" value="false">
+            </div>
+            <div class="wall">
+                <label for="boundaryWallMade">Boundary Wall Made:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="boundaryWallMade" value="true">
+                <label>No</label>
+                <input type="radio" name="boundaryWallMade" value="false">
+            </div>
+            <div class="meeting-room">
+                <label for="cabinMeetingRoom">Cabin Meeting Room:</label><br>
+                <select id="cabinMeetingRoom" name="cabinMeetingRoom">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="common-area">
+                <label for="CommonArea">Common Area:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="CommonArea" value="true">
+                <label>No</label>
+                <input type="radio" name="CommonArea" value="false">
+            </div>
+            <div class="corner-shop">
+                <label for="cornerShop">Corner Shop:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="cornerShop" value="true">
+                <label>No</label>
+                <input type="radio" name="cornerShop" value="false">
+            </div>
+            <div class="main-road">
+                <label for="mainRoadFacing">Main Road Facing:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="mainRoadFacing" value="true">
+                <label>No</label>
+                <input type="radio" name="mainRoadFacing" value="false">
+            </div>
+            <div class="floor">
+                <label for="floor">Floor:</label>
+                <select id="floor" name="floor">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="furnished">
+                <label for="FurnishedStatus">Furnished Status:</label>
+                <select id="FurnishedStatus" name="FurnishedStatus">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="ingatedbalcony">
+                <label for="inGatedColony">In Gated Colony:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="inGatedColony" value="true">
+                <label>No</label>
+                <input type="radio" name="inGatedColony" value="false">
+            </div>
+            <div class="bedroom">
+                <label for="Bedroom">Bedroom:</label>
+                <select id="Bedroom" name="Bedroom">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="maintanance">
+                <label for="maintenanceChargeFrequency">Maintenance Charge Frequency:</label>
+                <select id="maintenanceChargeFrequency" name="maintenanceChargeFrequency">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="notice-period">
+                <label for="noticePeriod">Notice Period:</label>
+                <select id="noticePeriod" name="noticePeriod">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="near-school">
+                <label for="nearSchool">Near School:</label><br>
+                <label>Yes</label>
+                <input type="radio" name="nearSchool" value="true">
+                <label>No</label>
+                <input type="radio" name="nearSchool" value="false">
+            </div>
+            <div class="rent-value">
+                <label for="RentValue">Rent Value:</label>
+                <input type="text" id="RentValue" name="RentValue">
+            </div>
+            <div class="foodcourt">
+                <label for="numberOfSeatsInFoodCourt">Number of Seats in Food Court:</label>
+                <select id="numberOfSeatsInFoodCourt" name="numberOfSeatsInFoodCourt">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="property-image">
+                <label for="propertyImage">Property Image</label>
+                <input type="file" id="propertyImage" name="propertyImage" accept="image/*">
+            </div>
+            <div class="submit">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 
-        <div>
-            <label for="cornerShop">Corner Shop:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="cornerShop" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="cornerShop" value="false">
-        </div>
+    <!-- Advertisement Column -->
+    <div class="ad-column">
+        <!-- Placeholder for advertisement -->
+        <h2>Advertisement</h2>
+        <img src="https://via.placeholder.com/300" alt="Advertisement">
+        <img src="https://via.placeholder.com/300" alt="Advertisement">
+        <img src="https://via.placeholder.com/300" alt="Advertisement">
+        
+        <!-- Add more ads or promotional content here -->
+    </div>
+</div>
 
-        <div>
-            <label for="mainRoadFacing">Main Road Facing:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="mainRoadFacing" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="mainRoadFacing" value="false">
-        </div>
-
-        <div>
-            <label for="floor">Floor:</label>
-            <select id="floor" name="floor">
-                <option value="">Loading...</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="FurnishedStatus">Furnished Status:</label>
-            <select id="FurnishedStatus" name="FurnishedStatus">
-                <option value="">Loading...</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="inGatedColony">In Gated Colony:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="inGatedColony" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="inGatedColony" value="false">
-        </div>
-
-        <div>
-            <label for="Bedroom">Bedroom:</label>
-            <select id="Bedroom" name="Bedroom">
-                <option value="">Loading...</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="maintenanceChargeFrequency">Maintenance Charge Frequency:</label>
-            <select id="maintenanceChargeFrequency" name="maintenanceChargeFrequency">
-                <option value="">Loading...</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="noticePeriod">Notice Period:</label>
-            <select id="noticePeriod" name="noticePeriod">
-                <option value="">Loading...</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="NearSchool">Near School:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="NearSchool" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="NearSchool" value="false">
-        </div>
-
-        <div>
-            <label for="NearHospital">Near Hospital:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="NearHospital" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="NearHospital" value="false">
-        </div>
-
-        <div>
-            <label for="nearMarket">Near Market:</label><br>
-            <label for="">yes</label>
-            <input type="radio" name="nearMarket" value="ture">
-            <label for="">no</label>
-            <input type="radio" name="nearMarket" value="false">
-        </div>
-
-        <div>
-            <label for="propertyImage">Upload Property Images:</label>
-            <input type="file" id="propertyImage" name="propertyImage[]" multiple><br><br>
-        </div>
-
-        <div>
-            <button type="submit" name="submit">Submit Details</button>
-        </div>
-    </form>
+</form>
+     
+</div>        
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Populate dropdowns on page load
