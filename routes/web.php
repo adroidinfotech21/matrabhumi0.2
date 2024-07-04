@@ -116,7 +116,7 @@ Route::get('/pandingproperty', [propertyshowcontroller::class, 'fetchProperties'
 
 Route::get('/registeruser', [RegisterController::class, 'fetchData']);
 
-
+Route::delete('/api/record/{id}', [propertyshowcontroller::class, 'destroy']);
 //user register route
 
 Route::post('register', [RegisterController::class, 'register'])->name('register.submit');

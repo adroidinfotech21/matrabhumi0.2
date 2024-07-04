@@ -38,4 +38,15 @@ class propertyshowcontroller extends Controller
             return view('admin.showpropertydetails')->withErrors(['msg' => 'Error fetching property details.']);
         }
     }
+
+    // public function destroy($id)
+    // {
+    //     $record = Record::find($id);
+    //     if ($record) {
+    //         $record->delete();
+    //         return response()->json(['message' => 'Record deleted successfully'], 200);
+    //     } else {
+    //         return response()->json(['message' => 'Record not found'], 404);
+    //     }
+    // }
 }
