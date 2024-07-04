@@ -1,91 +1,77 @@
 @extends('layouts.master')
 
-
 @section('title')
-dashbord matrabhumi
+Dashboard Matrabhumi
 @endsection
 
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Listings</title>
-    <style>
-        .property {
-            border: 1px solid #ddd;
-            margin: 10px;
-            padding: 10px;
-        }
+<style>
+    table {
+        display: block;
+        overflow-x: auto;
+        margin-left: 150px;
+    }
 
-        .property img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
+    th,
+    td {
+        white-space: nowrap;
+    }
+</style>
 
-<body>
-    <h1>Property Listings</h1>
-    <div id="properties"></div>
+<div class="container mt-5">
+    <h2>All Properties</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Property ID</th>
+                <th>city</th>
+                <!-- <th>state</th> -->
+                <!-- <th>zipCode</th>
+                <th>country</th> -->
+                <th>ownerName</th>
+                <th>ownerContactNumber</th>
+                <th>ownerEmail</th>
+                <th>price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($properties as $property)
+                <tr>
+                    <td>{{ $property['propertyID'] }}</td>
+                    <td>{{ $property['city'] }}</td>
+                    <!-- <td>{{ $property['state'] }}</td> -->
+                    <!-- <td>{{ $property['zipCode'] }}</td>
+                                                            <td>{{ $property['country'] }}</td> -->
 
-    <script src="property-listings.js"></script>
-</body>
+                    <td>{{ $property['ownerName'] }}</td>
+                    <td>{{ $property['ownerContactNumber'] }}</td>
+                    <td>{{ $property['ownerEmail'] }}</td>
+                    <td>{{ $property['askedPrice'] }}</td>
 
-</html>
-
-
-
-
-
-@endsection
+                    <td>
 
 
-
-
-
-
-@section('scripts')
+                        <a href="{{ route('showPropertyDetails', ['propertyID' => $property['propertyID']]) }} "
+                            class="btn btn-warning btn-sm">View</a>
+                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5" class="text-center">No properties found.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const apiEndpoint = 'https://nplled.smggreen.com/api/PropertyRegistration';
 
-        // Fetch property data
-        fetch(apiEndpoint)
-            .then(response => response.json())
-            .then(data => {
-                if (data && data.success && data.data) {
-                    const properties = data.data;
-                    const propertiesContainer = document.getElementById('properties');
-
-                    // Loop through the properties and create HTML elements for each
-                    properties.forEach(property => {
-                        const propertyElement = document.createElement('div');
-                        propertyElement.classList.add('property');
-
-                        propertyElement.innerHTML = `
-                        <h2>${property.listingTitle}</h2>
-                        <p>${property.listingDescription}</p>
-                        <img src="${property.imageSiteView}" alt="Site View">
-                        <div>
-                            <p><strong>Price:</strong> ${property.price} ${property.currency}</p>
-                            <p><strong>Owner Name:</strong> ${property.ownerName}</p>
-                            <p><strong>Contact:</strong> ${property.ownerContactNumber}</p>
-                            <p><strong>Email:</strong> ${property.ownerEmail}</p>
-                            <p><strong>Location:</strong> ${property.addressLine1}, ${property.addressLine2}, ${property.city}, ${property.state}, ${property.zipCode}, ${property.country}</p>
-                        </div>
-                    `;
-
-                        propertiesContainer.appendChild(propertyElement);
-                    });
-                } else {
-                    console.error('Failed to fetch property data');
-                }
-            })
-            .catch(error => console.error('Error fetching property data:', error));
-    });
 </script>
-@endsection
+
+< @section('scripts')
+
+    @endsection
