@@ -3,6 +3,7 @@
 @section('title')
 dashbord matrabhumi
 @endsection
+
 @section('content')
 <head>
     <style>
@@ -157,9 +158,22 @@ dashbord matrabhumi
     <main class="form-container">
         <section class="form-section">
             <div class="form-intro">
-                <p>Welcome to our property advertisement block 1 platform. Please fill out the form to list your property with us.</p>
+                <p>Welcome to our property advertisement platform. Please fill out the form to list your property with us.</p>
             </div>
             <form class="ad-registration-form">
+                
+                <div class="form-group">
+                    <label for="advertisement">Advertisement:</label>
+                    <select id="advertisement" name="advertisement" required>
+                        @for ($i = 1; $i <= 10; $i++)
+                            <option value="block{{ $i }}">Advertisement Block {{ $i }}</option>
+                        @endfor
+                    </select>
+                </div>
+                
+                
+                
+                
                 <div class="form-group">
                     <label for="propertyName">Name of the Property:</label>
                     <input type="text" id="propertyName" name="propertyName" required>
@@ -219,6 +233,7 @@ dashbord matrabhumi
                         <label><input type="checkbox" name="amenities" value="lift"> Lift</label>
                     </div>
                 </div>
+                
                 <div class="form-group">
                     <label for="photos">Upload Photos:</label>
                     <input type="file" id="photos" name="photos" accept="image/*" multiple onchange="limitFiles(this, 4)">
@@ -243,9 +258,7 @@ dashbord matrabhumi
     </script>
 </body>
 </html>
-
 @endsection
 
 @section('scripts')
-
 @endsection
