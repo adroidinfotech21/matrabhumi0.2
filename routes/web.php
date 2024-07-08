@@ -48,6 +48,10 @@ Route::get('legal_title_check', function () {
 Route::get('property_lawyers', function () {
     return view('property_lawyers');
 });
+Route::get('/favoriteproperty', function () {
+    return view('favoriteproperty');
+});
+
 
 
 
