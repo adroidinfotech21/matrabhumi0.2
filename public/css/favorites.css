@@ -1,0 +1,82 @@
+/* General Styles */
+.text-uppercase {
+    text-transform: uppercase;
+    color: #4A6D67; /* Teal for headings */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.padding {
+    padding: 20px;
+}
+
+.padding_top {
+    padding-top: 20px;
+}
+
+.margin_bottom {
+    margin-bottom: 20px;
+}
+
+.padding_bottom {
+    padding-bottom: 20px;
+}
+
+/* Page Banner */
+.page-banner {
+    background-color: #F88017; /* Orange for the banner background */
+    color: white;
+    padding: 40px 0;
+}
+
+.page-banner h1 {
+    color: #4A6D67; /* Teal for the main heading */
+    font-size: 36px;
+    margin: 0;
+}
+
+.page-banner p {
+    color: white;
+    margin: 10px 0;
+}
+
+.breadcrumb {
+    background: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.breadcrumb a {
+    color: white; /* White for breadcrumb links */
+    text-decoration: none;
+}
+
+.breadcrumb .active {
+    color: #4A6D67; /* Teal for active breadcrumb */
+}
+
+/* Favorite Properties Section */
+#property .listing1 {
+    background-color: #FFF; /* White background for the listing section */
+}
+
+.f-p-links a {
+    color: #4A6D67; /* Teal for profile links */
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.f-p-links a.active {
+    background-color: #F88017; /* Orange background for active link */
+    color: white;
+}
+
+.f-p-links a:hover {
+    background-color: #F88017;
+    color: white;
+}
+

@@ -26,7 +26,7 @@
   <link rel="stylesheet" type="text/css" href="css/legaltitlecheck.css">
   <link rel="stylesheet" type="text/css" href="css/propertylawyers.css">
   <link rel="stylesheet" type="text/css" href="css/Addblock.css">
-
+  <link rel="stylesheet" type="text/css" href="css/favorites.css">
   <link rel="icon" href="images/icon.png">
 
 </head>
