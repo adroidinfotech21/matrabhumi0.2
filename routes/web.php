@@ -21,6 +21,8 @@ use App\Http\Controllers\propertyshowcontroller;
 Route::get('/', function () {
     return view('index');
 });
+// Route::get('/index', [propertyshowcontroller::class, 'showIndex']);
+
 Route::get('/index', function () {
     return view('index');
 });
@@ -113,6 +115,8 @@ Route::get('/pandingproperty', function () {
 });
 Route::get('/allproperty', [propertyshowcontroller::class, 'fetchProperties']);
 Route::get('/pandingproperty', [propertyshowcontroller::class, 'fetchProperties']);
+Route::get('/test', [propertyshowcontroller::class, 'fetchProperties']);
+
 
 Route::get('/registeruser', [RegisterController::class, 'fetchData']);
 

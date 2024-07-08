@@ -320,8 +320,11 @@
 </div>
 <!--Slider ends-->
 
+
 <section id="property" class="padding index2 bg_light">
+
   <div class="container">
+
     <div class="row">
       <div class="col-xs-12 col-sm-10">
         <h2 class="" style="color:black;">Featured properties</h2>
@@ -335,9 +338,9 @@
         <div class="item">
           <div class="property_item">
             <!-- <div class="property_head text-center">
-                <h3 class="captlize"><a href="property_detail1.html">Historic Town House</a></h3>
-                <p>45 Regent Street, London, UK</p>
-              </div> -->
+      <h3 class="captlize"><a href="property_detail1.html">Historic Town House</a></h3>
+      <p>45 Regent Street, London, UK</p>
+      </div> -->
             <div class="image">
               <a href="#"><img src="images/f1.png" alt="latest property" class="img-responsive"></a>
               <div class="price lighter clearfix">
@@ -375,10 +378,10 @@
         <div class="item">
           <div class="property_item">
             <!-- <div class="property_head default_clr text-center">
-                <img src="images/favruite.png" alt="property" class="start_tag">
-                <h3 class="captlize"><a href="property_detail2.html">Historic Town House</a></h3>
-                <p>45 Regent Street, London, UK</p>
-              </div> -->
+      <img src="images/favruite.png" alt="property" class="start_tag">
+      <h3 class="captlize"><a href="property_detail2.html">Historic Town House</a></h3>
+      <p>45 Regent Street, London, UK</p>
+      </div> -->
             <div class="image">
               <a href="#"> <img src="images/f2.png" alt="latest property" class="img-responsive"></a>
               <div class="price lighter clearfix">
@@ -416,9 +419,9 @@
         <div class="item">
           <div class="property_item">
             <!-- <div class="property_head text-center">
-                <h3 class="captlize"><a href="property_detail3.html">Historic Town House</a></h3>
-                <p>45 Regent Street, London, UK</p>
-              </div> -->
+      <h3 class="captlize"><a href="property_detail3.html">Historic Town House</a></h3>
+      <p>45 Regent Street, London, UK</p>
+      </div> -->
             <div class="image">
               <a href="#"><img src="images/f3.png" alt="latest property" class="img-responsive"></a>
               <div class="price lighter clearfix">
@@ -456,9 +459,9 @@
         <div class="item">
           <div class="property_item">
             <!-- <div class="property_head text-center">
-                <h3 class="captlize"><a href="property_detail1.html">Historic Town House</a></h3>
-                <p>45 Regent Street, London, UK</p>
-              </div> -->
+      <h3 class="captlize"><a href="property_detail1.html">Historic Town House</a></h3>
+      <p>45 Regent Street, London, UK</p>
+      </div> -->
             <div class="image">
               <a href="#"><img src="images/f4.png" alt="latest property" class="img-responsive"></a>
               <div class="price lighter clearfix">
@@ -496,10 +499,10 @@
         <div class="item">
           <div class="property_item">
             <!-- <div class="property_head default_clr text-center">
-                <img src="images/favruite.png" alt="property" class="start_tag">
-                <h3 class="captlize"><a href="property_detail2.html">Historic Town House</a></h3>
-                <p>45 Regent Street, London, UK</p>
-              </div> -->
+      <img src="images/favruite.png" alt="property" class="start_tag">
+      <h3 class="captlize"><a href="property_detail2.html">Historic Town House</a></h3>
+      <p>45 Regent Street, London, UK</p>
+      </div> -->
             <div class="image">
               <a href="#"> <img src="images/f5.png" alt="latest property" class="img-responsive"></a>
               <div class="price lighter clearfix">
@@ -537,9 +540,9 @@
         <div class="item">
           <div class="property_item">
             <!-- <div class="property_head text-center">
-                <h3 class="captlize"><a href="#.">Historic Town House</a></h3>
-                <p>45 Regent Street, London, UK</p>
-              </div> -->
+      <h3 class="captlize"><a href="#.">Historic Town House</a></h3>
+      <p>45 Regent Street, London, UK</p>
+      </div> -->
             <div class="image">
               <a href="#"><img src="images/f6.png" alt="latest property" class="img-responsive"></a>
               <div class="price lighter clearfix">
@@ -576,8 +579,12 @@
         </div>
       </div>
     </div>
+
   </div>
+
 </section>
+<!-- test slider -->
+<!--  -->
 <!-- Latest Property Ends -->
 <!--Deals-->
 <section id="deal" class="padding">

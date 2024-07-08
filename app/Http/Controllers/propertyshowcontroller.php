@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class propertyshowcontroller extends Controller
 {
+
+
+
     public function fetchProperties()
     {
         // Make a GET request to the external API
@@ -22,7 +25,22 @@ class propertyshowcontroller extends Controller
 
         return view('admin.allproperty', ['properties' => $properties]);
     }
+    public function showIndex()
+    {
+        // Make a GET request to the external API
+        $response = Http::get('https://nplled.smggreen.com/api/PropertyRegistration');
 
+        if ($response->successful()) {
+            $data = $response->collect();
+            $properties = $data['data'];
+        } else {
+            // Handle the error, you can log it or return a default value
+            $properties = collect(); // Return an empty collection
+        }
+      
+
+        return view('index', ['properties' => $properties]);
+    }
 
     public function show(Request $request)
     {

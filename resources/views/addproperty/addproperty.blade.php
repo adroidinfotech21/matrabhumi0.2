@@ -7,12 +7,14 @@
         justify-content: space-between;
         align-items: flex-start;
         margin: 0 auto;
-        max-width: 1200px; /* Adjust based on your design */
+        max-width: 1200px;
+        /* Adjust based on your design */
     }
 
     /* Form styling */
     .add-property-form {
-        width: 60%; /* Adjust width based on your design */
+        width: 60%;
+        /* Adjust width based on your design */
         padding: 10px;
         box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
         background-color: #fff;
@@ -21,7 +23,8 @@
 
     /* Advertisement column styling */
     .ad-column {
-        width: 35%; /* Adjust width based on your design */
+        width: 35%;
+        /* Adjust width based on your design */
         padding: 10px;
         box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
         background-color: #fff;
@@ -41,7 +44,8 @@
             flex-direction: column;
         }
 
-        .add-property-form, .ad-column {
+        .add-property-form,
+        .ad-column {
             width: 90%;
             margin: 0;
         }
@@ -78,6 +82,14 @@
                         <option value="{{ $propertyType['id'] }}">{{ $propertyType['name'] }}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="owner-name">
+                <label for="ownerName">Title </label>
+                <input type="text" id="ownerName" name="titleproperty" required>
+            </div>
+            <div class="owner-name">
+                <label for="ownerName">Description </label>
+                <input type="text" id="ownerName" name="descriptionproprty" required>
             </div>
             <div class="owner-name">
                 <label for="ownerName">Owner Name</label>
@@ -265,140 +277,140 @@
         <img src="https://via.placeholder.com/300" alt="Advertisement">
         <img src="https://via.placeholder.com/300" alt="Advertisement">
         <img src="https://via.placeholder.com/300" alt="Advertisement">
-        
+
         <!-- Add more ads or promotional content here -->
     </div>
 </div>
 
 </form>
-     
-</div>        
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Populate dropdowns on page load
-            populateDropdowns();
 
-            // Add form submission event listener
-            document.getElementById('propertyForm').addEventListener('submit', function (event) {
-                event.preventDefault();
-                submitForm();
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Populate dropdowns on page load
+        populateDropdowns();
+
+        // Add form submission event listener
+        document.getElementById('propertyForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            submitForm();
+        });
+    });
+
+    function populateDropdowns() {
+        const dropdownConfigs = [
+            { id: 'sharedOfficeSpace', filter: 'SharedOfficeSpace' },
+            { id: 'Month', filter: 'Month' },
+            { id: 'PossessionStatus', filter: 'PossessionStatus' },
+            { id: 'PriceIncludes', filter: 'PriceIncludes' },
+            { id: 'TransactionType', filter: 'TransactionType' },
+            { id: 'anyConstructionDone', filter: 'anyConstructionDone' },
+            { id: 'attachedBalcony', filter: 'attachedBalcony' },
+            { id: 'attachedBathroom', filter: 'attachedBathroom' },
+            { id: 'boundaryWallMade', filter: 'boundaryWallMade' },
+            { id: 'ShowPriceAs', filter: 'ShowPriceAs' },
+            { id: 'cabinMeetingRoom', filter: 'cabinMeetingRoom' },
+            { id: 'CommonArea', filter: 'CommonArea' },
+            { id: 'cornerShop', filter: 'cornerShop' },
+            { id: 'mainRoadFacing', filter: 'mainRoadFacing' },
+            { id: 'floor', filter: 'floor' },
+            { id: 'FurnishedStatus', filter: 'FurnishedStatus' },
+            { id: 'inGatedColony', filter: 'inGatedColony' },
+            { id: 'Bedroom', filter: 'Bedroom' },
+            { id: 'maintenanceChargeFrequency', filter: 'maintenanceChargeFrequency' },
+            { id: 'noticePeriod', filter: 'noticePeriod' },
+            { id: 'NearSchool', filter: 'NearSchool' },
+            { id: 'NearHospital', filter: 'NearHospital' },
+            { id: 'nearMarket', filter: 'nearMarket' },
+        ];
+
+        dropdownConfigs.forEach(config => {
+            fetchDropdownData(config.id, config.filter);
+        });
+    }
+
+    function fetchDropdownData(elementId, filter) {
+        fetch('https://nplled.smggreen.com/api/dropdown', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ filter: filter })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.data) {
+                    populateDropdown(elementId, data.data);
+                } else {
+                    console.error('Error fetching dropdown data', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
+    }
+
+    function populateDropdown(elementId, data) {
+        const dropdown = document.getElementById(elementId);
+        dropdown.innerHTML = '';  // Clear existing options
+
+        data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.ddlValue;
+            option.text = item.ddlText;
+            dropdown.add(option);
+        });
+    }
+
+    function submitForm() {
+        const form = document.getElementById('propertyForm');
+        const formData = new FormData(form);
+
+        const data = {};
+        formData.forEach((value, key) => {
+            // Handle boolean values
+            if (value === "true") {
+                data[key] = true;
+            } else if (value === "false") {
+                data[key] = false;
+            } else {
+                data[key] = value;
+            }
         });
 
-        function populateDropdowns() {
-            const dropdownConfigs = [
-                { id: 'sharedOfficeSpace', filter: 'SharedOfficeSpace' },
-                { id: 'Month', filter: 'Month' },
-                { id: 'PossessionStatus', filter: 'PossessionStatus' },
-                { id: 'PriceIncludes', filter: 'PriceIncludes' },
-                { id: 'TransactionType', filter: 'TransactionType' },
-                { id: 'anyConstructionDone', filter: 'anyConstructionDone' },
-                { id: 'attachedBalcony', filter: 'attachedBalcony' },
-                { id: 'attachedBathroom', filter: 'attachedBathroom' },
-                { id: 'boundaryWallMade', filter: 'boundaryWallMade' },
-                { id: 'ShowPriceAs', filter: 'ShowPriceAs' },
-                { id: 'cabinMeetingRoom', filter: 'cabinMeetingRoom' },
-                { id: 'CommonArea', filter: 'CommonArea' },
-                { id: 'cornerShop', filter: 'cornerShop' },
-                { id: 'mainRoadFacing', filter: 'mainRoadFacing' },
-                { id: 'floor', filter: 'floor' },
-                { id: 'FurnishedStatus', filter: 'FurnishedStatus' },
-                { id: 'inGatedColony', filter: 'inGatedColony' },
-                { id: 'Bedroom', filter: 'Bedroom' },
-                { id: 'maintenanceChargeFrequency', filter: 'maintenanceChargeFrequency' },
-                { id: 'noticePeriod', filter: 'noticePeriod' },
-                { id: 'NearSchool', filter: 'NearSchool' },
-                { id: 'NearHospital', filter: 'NearHospital' },
-                { id: 'nearMarket', filter: 'nearMarket' },
-            ];
+        console.log('Submitting form data:', data);
 
-            dropdownConfigs.forEach(config => {
-                fetchDropdownData(config.id, config.filter);
-            });
-        }
-
-        function fetchDropdownData(elementId, filter) {
-            fetch('https://nplled.smggreen.com/api/dropdown', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ filter: filter })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success && data.data) {
-                        populateDropdown(elementId, data.data);
-                    } else {
-                        console.error('Error fetching dropdown data', data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
-
-        function populateDropdown(elementId, data) {
-            const dropdown = document.getElementById(elementId);
-            dropdown.innerHTML = '';  // Clear existing options
-
-            data.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.ddlValue;
-                option.text = item.ddlText;
-                dropdown.add(option);
-            });
-        }
-
-        function submitForm() {
-            const form = document.getElementById('propertyForm');
-            const formData = new FormData(form);
-
-            const data = {};
-            formData.forEach((value, key) => {
-                // Handle boolean values
-                if (value === "true") {
-                    data[key] = true;
-                } else if (value === "false") {
-                    data[key] = false;
-                } else {
-                    data[key] = value;
+        fetch('{{ url("/api/propertyregistration") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.message || 'Something went wrong');
+                    });
                 }
-            });
-
-            console.log('Submitting form data:', data);
-
-            fetch('{{ url("/api/property-registration") }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify(data)
+                return response.json();
             })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.json().then(errorData => {
-                            throw new Error(errorData.message || 'Something went wrong');
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        alert('Property registered successfully');
-                    } else {
-                        alert('Failed to register property: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred: ' + error.message);
-                });
-        }
+            .then(data => {
+                if (data.success) {
+                    alert('Property registered successfully');
+                } else {
+                    alert('Failed to register property: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred: ' + error.message);
+            });
+    }
 
 
-    </script>
+</script>
 
 
-    @include('includes/footer')
+@include('includes/footer')
