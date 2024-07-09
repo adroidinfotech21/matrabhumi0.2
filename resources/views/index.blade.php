@@ -5,30 +5,52 @@
     <div class="row">
       <div class="property-query-area">
 
-        <form class="callus clearfix">
+        <form class="callus clearfix" id="propertyFilterForm">
           <div class="col-md-6 col-sm-6">
-            <div class="single-query form-group">
-              <input type="text" class="keyword-input" placeholder="Keyword (e.g. 'office')">
+            <div class="intro">
+              <select id="city" name="city">
+                <option selected="" value="any">City</option>
+                <option value="Bhopal">Bhopal</option>
+                <option value="Indore">Indore</option>
+                <option value="Sagar">Sagar</option>
+                <option value="Jabalpur">Jabalpur</option>
+                <option value="Mandideep">Mandideep</option>
+                <option value="Katni">Katni</option>
+              </select>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="single-query form-group">
               <div class="intro">
-                <select>
-                  <option selected="" value="any">Location</option>
-                  <option>All areas</option>
-                  <option>Bayonne </option>
-                  <option>Greenville</option>
-                  <option>Manhattan</option>
-                  <option>Queens</option>
-                  <option>The Heights</option>
+                <select name="propertyTypeID" id="propertyTypeID">
+                  <option selected="" value="any">property type </option>
+                  <option value="1">Flat/ Apartment</option>
+                  <option value="2">Residential House </option>
+                  <option value="">Villa</option>
+                  <option value="3">Builder Floor Apartment</option>
+                  <option value="4">Residential Land/ Plot</option>
+                  <option value="5">Penthouse</option>
+                  <option value="6">Studio Apartment</option>
+                  <option value="7">Commercial Office Space</option>
+                  <option value="8">Office in IT Park/ SEZ</option>
+                  <option value="9">Commercial Shop</option>
+                  <option value="10">Commercial Showroom</option>
+                  <option value="11">Commercial Land</option>
+                  <option value="12">Warehouse/ Godown</option>
+                  <option value="13">Industrial Land</option>
+                  <option value="14">Industrial Building</option>
+                  <option value="15">Industrial Shed</option>
+                  <option value="16">Agricultural Land</option>
+                  <option value="17">Farm House</option>
                 </select>
               </div>
             </div>
           </div>
+
           <div class="col-md-2 col-sm-12 text-right">
-            <button type="button" class="advanced text-center text-uppercase border_radius"><i
-                class="icon-settings"></i>advanced</button>
+
+            <button type="button" id="searchButton" class=" text-center text-uppercase border_radius"
+              style="color:white;"><i class="icon-settings"></i>search</button>
           </div>
         </form>
         <div class="opened">
@@ -1302,6 +1324,20 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.getElementById('searchButton').addEventListener('click', function () {
+    // Get selected values
+    var city = document.getElementById('city').value;
+    var propertyTypeID = document.getElementById('propertyTypeID').value;
+
+    // Redirect to the route with query parameters
+    var url = '/properties?city=' + encodeURIComponent(city) + '&propertyTypeID=' + encodeURIComponent(propertyTypeID);
+    window.location.href = url;
+  });
+</script>
+
+
 <!--Partners Ends-->
 @include('includes/footer')
 

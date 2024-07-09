@@ -250,16 +250,8 @@
                 <label>No</label>
                 <input type="radio" name="nearSchool" value="false">
             </div>
-            <div class="rent-value">
-                <label for="RentValue">Rent Value:</label>
-                <input type="text" id="RentValue" name="RentValue">
-            </div>
-            <div class="foodcourt">
-                <label for="numberOfSeatsInFoodCourt">Number of Seats in Food Court:</label>
-                <select id="numberOfSeatsInFoodCourt" name="numberOfSeatsInFoodCourt">
-                    <option value="">Loading...</option>
-                </select>
-            </div>
+
+
             <div class="property-image">
                 <label for="propertyImage">Property Image</label>
                 <input type="file" id="propertyImage" name="propertyImage" accept="image/*">

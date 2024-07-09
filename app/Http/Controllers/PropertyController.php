@@ -1121,6 +1121,7 @@ class PropertyController extends Controller
             "askedPrice" => 500000
         ];
 
+        dd($propertyData);
         // Send the POST request to the API
         // dd($propertyData);
         try {

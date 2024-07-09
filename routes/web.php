@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\propertyshowcontroller;
+use App\Http\Controllers\fillterpropertycontroller;
 
 
 /*
@@ -174,3 +175,8 @@ Route::post('/addproperty', [PropertyController::class, 'registerProperty']);
 
 // Route::post('/addproperty', [PropertyController::class, 'propertyAddSubmit'])->name('submit.property');
 
+//properrty fillter route
+// Route::get('/index', [PropertyController::class, 'fetchAndFilterProperties']);
+Route::get('/properties', [fillterpropertycontroller::class, 'fetchAndFilterProperties']);
+
+Route::get('/property-detailview', [fillterpropertycontroller::class, 'showui'])->name('detailview');
