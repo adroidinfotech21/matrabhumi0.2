@@ -28,10 +28,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="f-p-links margin_bottom">
-                        <li><a href="profile.html" class="active"><i class="icon-icons230"></i>Profile</a></li>
-                        <li><a href="my_properties.html"><i class="icon-icons215"></i> My Properties</a></li>
-                        <li><a href="submit_property.html"><i class="icon-icons215"></i> Submit Property</a></li>
-                        <li><a href="favorite_properties.html"><i class="icon-icons43"></i> Favorite Properties</a></li>
+                        <li><a href="{{url('user-profile') }}" class="active"><i class="icon-icons230"></i>Profile</a>
+                        </li>
+                        <li><a href=""><i class="icon-icons215"></i> My Properties</a></li>
+                        <li><a href="{{url('addproperty') }}"><i class="icon-icons215"></i> Add Property</a></li>
+                        <li><a href="{{url('favoriteproperty') }}"><i class="icon-icons43"></i> Favorite Properties</a>
+                        </li>
                         <li><a href="login.html">
                                 <form action="{{ route('logout') }}"> <button>Logout</button> </form>
                             </a></li>
@@ -41,15 +43,15 @@
         </div>
         <div class="container-3">
             <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <!-- <h2 class="text-uppercase bottom30" style="color:black;">my profile</h2> -->
+                <!-- <div class="col-md-4 col-sm-6 col-xs-12">
+                   
                     <div class="agent-p-img">
                         <img src="images/profile.jpg" class="img-responsive" alt="image" />
                         <a href="#" class="top10 bottom20">Update Profile Pict ure</a>
                         <p class="text-center">Minimum 215px x 215px<span>*</span></p>
                     </div>
-                </div>
-                <div class="col-md-8">
+                </div> -->
+                <div class="col-md-12">
                     <div class="profile-form">
                         <div class="row">
                             <form class="callus">
@@ -60,17 +62,17 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="single-query form-group">
-                                        <input type="text" placeholder="Bohdan Kononets" class="keyword-input">
+                                        <p style="color:black;">Shivam Beldar</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="single-query">
-                                        <label>Phone:</label>
+                                        <label>Roll:</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="single-query form-group">
-                                        <input type="text" placeholder="(+01) 34 56 7890" class="keyword-input">
+                                        <p style="color:black;">Agent</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -80,7 +82,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="single-query form-group">
-                                        <input type="text" placeholder="(+033) 34 56 7890" class="keyword-input">
+                                        <p style="color:black;">8821954778</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -90,34 +92,34 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="single-query form-group">
-                                        <input type="text" placeholder="bohdan@realtyhomes.com" class="keyword-input">
+                                        <p style="color:black;">shivambeldar1988@gmail.com</p>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                                <!-- <div class="col-sm-4">
                                     <div class="single-query">
                                         <label>Skype:</label>
                                     </div>
-                                </div>
-                                <div class="col-sm-8">
+                                </div> -->
+                                <!-- <div class="col-sm-8">
                                     <div class="single-query form-group">
                                         <input type="text" placeholder="bohdan.kononets" class="keyword-input">
                                     </div>
-                                </div>
-                                <div class="col-sm-4">
+                                </div> -->
+                                <!-- <div class="col-sm-4">
                                     <div class="single-query">
                                         <label>About:</label>
                                     </div>
-                                </div>
-                                <div class="col-sm-8">
+                                </div> -->
+                                <!-- <div class="col-sm-8">
                                     <div class="single-query form-group">
                                         <textarea placeholder="Write here somthing about yours"
                                             class="form-control"></textarea>
 
                                     </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                                </div> -->
+                                <!-- <div class="col-md-12 col-sm-12 col-xs-12 text-right">
                                     <a class="btn-blue border_radius" href="#.">Save Changes</a>
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                     </div>

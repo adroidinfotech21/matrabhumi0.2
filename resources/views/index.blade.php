@@ -14,8 +14,16 @@
                 <option value="Indore">Indore</option>
                 <option value="Sagar">Sagar</option>
                 <option value="Jabalpur">Jabalpur</option>
-                <option value="Mandideep">Mandideep</option>
+                <option value="Mandideep">Ujjain
+                </option>
                 <option value="Katni">Katni</option>
+                <option value="Katni">Dewas </option>
+                <option value="Katni">Ratlam </option>
+                <option value="Katni">Satna </option>
+                <option value="Katni">Rewa </option>
+
+
+
               </select>
             </div>
           </div>

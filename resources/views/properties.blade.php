@@ -114,9 +114,9 @@
                             <div class="single-query-slider">
                                 <label>Price Range:</label>
                                 <div class="price text-right">
-                                    <span>$</span>
+                                    <span></span>
                                     <div class="leftLabel"></div>
-                                    <span>to $</span>
+                                    <span>to </span>
                                     <div class="rightLabel"></div>
                                 </div>
                                 <div data-range_min="0" data-range_max="1500000" data-cur_min="0" data-cur_max="1500000"
@@ -233,7 +233,7 @@
                                 <span><i class="icon-garage"></i>{{ $property['parkingSpaces'] ?? 'N/A' }} Garage</span>
                             </div>
                             <div class="favroute clearfix">
-                                <p><i class="icon-calendar2"></i>&nbsp;5 Days ago </p>
+                                <!-- <p><i class="icon-calendar2"></i>&nbsp;5 Days ago </p> -->
                                 <ul class="pull-right">
                                     <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
                                     <li>
