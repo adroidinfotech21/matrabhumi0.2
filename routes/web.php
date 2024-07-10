@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\propertyshowcontroller;
 use App\Http\Controllers\fillterpropertycontroller;
-
+use App\Http\Controllers\deletecontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -165,6 +165,12 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/addproperty', function () {
     return view('addproperty.addproperty');
 });
+Route::get('/Agent-subscription', function () {
+    return view('Agent-subscription');
+});
+Route::get('/Builder-subscriptions', function () {
+    return view('Builder-subscriptions');
+});
 // routes/web.php
 
 
@@ -180,3 +186,5 @@ Route::post('/addproperty', [PropertyController::class, 'registerProperty']);
 Route::get('/properties', [fillterpropertycontroller::class, 'fetchAndFilterProperties']);
 
 Route::get('/property-detailview', [fillterpropertycontroller::class, 'showui'])->name('detailview');
+
+Route::delete('/users/{id}', [deletecontroller::class, 'destroy']);
