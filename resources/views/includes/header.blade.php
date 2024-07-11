@@ -27,6 +27,8 @@
   <link rel="stylesheet" type="text/css" href="css/propertylawyers.css">
   <link rel="stylesheet" type="text/css" href="css/Addblock.css">
   <link rel="stylesheet" type="text/css" href="css/favorites.css">
+  <link rel="stylesheet" type="text/css" href="css/Agentsubscription.css">
+  <link rel="stylesheet" type="text/css" href="css/Buildersubscriptions.css">
   <link rel="icon" href="images/icon.png">
 
 </head>
