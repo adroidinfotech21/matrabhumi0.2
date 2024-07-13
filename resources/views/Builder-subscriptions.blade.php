@@ -6,6 +6,13 @@
     <header>
         <h1>Builder Subscription Plans</h1>
     </header>
+
+    <div class="header">
+        <h2>Don't let your property lost in crowd -<mark class="custom-mark"> Subscribe now</mark> </h2>
+        <p>Select a plan that suits your needs</p>
+    </div>
+
+
     <section class="plans">
         <div class="plan">
             <h2>Starter Builder Plan</h2>

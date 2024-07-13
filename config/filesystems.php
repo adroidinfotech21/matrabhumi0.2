@@ -28,6 +28,20 @@ return [
     |
     */
 
+    /* updated by ashu to update advertisement form  */
+    'disks' => [
+    'public' => [
+        'driver' => 'local',
+        'root' => storage_path('app/public'),
+        'url' => env('APP_URL').'/storage',
+        'visibility' => 'public',
+            ],
+        ],    
+    
+    
+    
+    
+    
     'disks' => [
 
         'local' => [

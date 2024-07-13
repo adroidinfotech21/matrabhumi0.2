@@ -152,6 +152,19 @@ dashbord matrabhumi
     <title>Advertisement Registration Form | Matrabhoomi</title>
 </head>
 <body>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
+
     <header class="form-header">
         <h1>Advertisement Registration Form</h1>
     </header>
@@ -160,7 +173,8 @@ dashbord matrabhumi
             <div class="form-intro">
                 <p>Welcome to our property advertisement platform. Please fill out the form to list your property with us.</p>
             </div>
-            <form class="ad-registration-form">
+            <form class="ad-registration-form" action="{{ route('submit.ad') }}" method="POST" enctype="multipart/form-data">
+            @csrf
                 
                 <div class="form-group">
                     <label for="advertisement">Advertisement:</label>

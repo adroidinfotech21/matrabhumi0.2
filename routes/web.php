@@ -7,7 +7,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\propertyshowcontroller;
 use App\Http\Controllers\fillterpropertycontroller;
 use App\Http\Controllers\deletecontroller;
-
+use App\Http\Controllers\AdRegistrationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,12 @@ use App\Http\Controllers\deletecontroller;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* Advertisement Registration routes */
+
+Route::post('/submit-ad', [AdRegistrationController::class, 'submitForm'])->name('submit.ad');
+
+
 
 Route::get('/', function () {
     return view('index');
