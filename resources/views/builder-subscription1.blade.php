@@ -6,12 +6,11 @@
     </header>
 
     <div class="header">
-        <h2>Don't let your property lost in crowd -<mark class="custom-mark1"> Subscribe now</mark> </h2>
+        <h2>Connect with serious buyers and boost your sales -<mark class="custom-mark1"> Subscribe</mark> and grow your business! </h2>
         <p>Select a plan that suits your needs</p>
     </div>
 
     <div class="container-builderplan">
-        
         <table>
             <thead>
                 <tr>
@@ -27,12 +26,12 @@
             <tbody>
                 <tr>
                     <td></td>
-                    <td><button class="buy-button">Buy Now</button></td>
-                    <td><button class="buy-button">Buy Now</button></td>
-                    <td><button class="buy-button">Buy Now</button></td>
-                    <td><button class="buy-button">Buy Now</button></td>
-                    <td><button class="buy-button">Buy Now</button></td>
-                    <td><button class="buy-button">Buy Now</button></td>
+                    <td class="plan-column"><button class="buy-button">Buy Now</button></td>
+                    <td class="plan-column"><button class="buy-button">Buy Now</button></td>
+                    <td class="plan-column"><button class="buy-button">Buy Now</button></td>
+                    <td class="plan-column"><button class="buy-button">Buy Now</button></td>
+                    <td class="plan-column"><button class="buy-button">Buy Now</button></td>
+                    <td class="plan-column"><button class="buy-button">Buy Now</button></td>
                 </tr>
                 <tr>
                     <td>Price (Per Property Listing)</td>
@@ -60,7 +59,6 @@
                     <td>Top Placement</td>
                     <td>Exclusive Placement</td>
                     <td>Exclusive Top Placement</td>
-                    
                 </tr>
                 <tr>
                     <td>Contact Details</td>
@@ -73,12 +71,12 @@
                 </tr>
                 <tr>
                     <td>Support</td>
-                    <td class="checkmark">Basic</td>
-                    <td class="cross">Basic</td>
-                    <td class="cross">Standard</td>
-                    <td class="cross">Premium</td>
-                    <td class="cross">Platinum</td>
-                    <td class="cross">Platinum Pro</td>
+                    <td>Basic</td>
+                    <td>Basic</td>
+                    <td>Standard</td>
+                    <td>Premium</td>
+                    <td>Platinum</td>
+                    <td>Platinum Pro</td>
                 </tr>
                 <tr>
                     <td>40% Refundable Amount (Rental & Sale)</td>
@@ -132,7 +130,7 @@
                     <td class="cross">✖</td>
                     <td class="cross">✖</td>
                     <td class="checkmark">✔</td>
-                    <td class="cross">✔</td>
+                    <td class="checkmark">✔</td>
                 </tr>
                 <tr>
                     <td>Professional Photography and 3D Virtual Tours</td>
@@ -149,8 +147,8 @@
                     <td class="cross">✖</td>
                     <td class="cross">✖</td>
                     <td class="checkmark">✔</td>
-                    <td class="cross">✔</td>
-                    <td class="cross">✔</td>
+                    <td class="checkmark">✔</td>
+                    <td class="checkmark">✔</td>
                 </tr>
                 <tr>
                     <td>Financing Solutions</td>
@@ -176,10 +174,9 @@
                     <td class="cross">✖</td>
                     <td class="cross">✖</td>
                     <td class="checkmark">✔</td>
-                    <td class="cross">✔</td>
-                    <td class="cross">✔</td>
+                    <td class="checkmark">✔</td>
+                    <td class="checkmark">✔</td>
                 </tr>
-                
                 <tr>
                     <td>Project Showcase in Monthly Newsletters</td>
                     <td class="cross">✖</td>
@@ -189,7 +186,6 @@
                     <td class="checkmark">✔</td>
                     <td class="checkmark">✔</td>
                 </tr>
-                
                 <tr>
                     <td>Advertising Management and SEO Optimization</td>
                     <td class="cross">✖</td>
@@ -204,7 +200,5 @@
     </div>
 </body>
 </html>
-
-
 
 @include('includes/footer')
