@@ -59,6 +59,9 @@ Route::get('/favoriteproperty', function () {
     return view('favoriteproperty');
 });
 
+Route::get('/builder-subscription1', function () {
+    return view('builder-subscription1');
+});
 
 
 
