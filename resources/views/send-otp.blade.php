@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <p>Wellcome To Matrabhumi</p>
     <p>Your OTP for login is: {{ $otp }}</p>
 </body>
 

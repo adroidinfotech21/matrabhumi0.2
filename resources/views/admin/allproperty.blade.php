@@ -43,7 +43,7 @@ Dashboard Matrabhumi
                     <td>{{ $property['city'] }}</td>
                     <!-- <td>{{ $property['state'] }}</td> -->
                     <!-- <td>{{ $property['zipCode'] }}</td>
-                                                            <td>{{ $property['country'] }}</td> -->
+                                                                                                                                <td>{{ $property['country'] }}</td> -->
 
                     <td>{{ $property['ownerName'] }}</td>
                     <td>{{ $property['ownerContactNumber'] }}</td>
@@ -56,7 +56,12 @@ Dashboard Matrabhumi
                         <a href="{{ route('showPropertyDetails', ['propertyID' => $property['propertyID']]) }} "
                             class="btn btn-warning btn-sm">View</a>
                         <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                        <form action="{{ route('properties.delete', $property['propertyID']) }}" method="POST"
+                            class="d-inline delete-property-form" data-property-id="{{ $property['propertyID'] }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @empty
@@ -67,9 +72,37 @@ Dashboard Matrabhumi
         </tbody>
     </table>
 </div>
-
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 <script>
+    $(document).ready(function () {
+        $('.delete-property').on('click', function (event) {
+            event.preventDefault();
 
+            var propertyId = $(this).data('id');
+            var token = "{{ csrf_token() }}";
+
+            if (confirm('Are you sure you want to delete this property?')) {
+                $.ajax({
+                    url: '/property/' + propertyId,
+                    type: 'DELETE',
+                    data: {
+                        "_token": token,
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Property deleted successfully');
+                            location.reload();
+                        } else {
+                            alert('Failed to delete property');
+                        }
+                    },
+                    error: function (response) {
+                        alert('An error occurred: ' + response.responseText);
+                    }
+                });
+            }
+        });
+    });
 </script>
 
 < @section('scripts')

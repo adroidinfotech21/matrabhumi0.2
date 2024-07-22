@@ -233,13 +233,15 @@
                                 <span><i class="icon-garage"></i>{{ $property['parkingSpaces'] ?? 'N/A' }} Garage</span>
                             </div>
                             <div class="favroute clearfix">
-                                <!-- <p><i class="icon-calendar2"></i>&nbsp;5 Days ago </p> -->
                                 <ul class="pull-right">
-                                    <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
+                                    <li>
+                                        <a href="#" class="add-to-favorites" data-property-id="{{ $property['propertyID'] }}">
+                                            <i class="icon-like"></i> Add to Favorites
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('detailview', ['propertyID' => $property['propertyID']]) }}"
-                                            class="btn btn-primary">View
-                                            Details</a>
+                                            class="btn btn-primary">View Details</a>
                                     </li>
                                 </ul>
                             </div>
@@ -249,8 +251,6 @@
             @endforeach
         </div>
     </section>
-
-
 @else
     <h3 style="color:red; padding:30px;">No properties found matching your criteria.</h3>
 @endif

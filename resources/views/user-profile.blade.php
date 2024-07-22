@@ -51,80 +51,44 @@
                         <p class="text-center">Minimum 215px x 215px<span>*</span></p>
                     </div>
                 </div> -->
-                <div class="col-md-12">
-                    <div class="profile-form">
-                        <div class="row">
-                            <form class="callus">
-                                <div class="col-sm-4">
-                                    <div class="single-query">
-                                        <label>Your Name:</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="single-query form-group">
-                                        <p style="color:black;">Shivam Beldar</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="single-query">
-                                        <label>Roll:</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="single-query form-group">
-                                        <p style="color:black;">Agent</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="single-query">
-                                        <label>Mobile:</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="single-query form-group">
-                                        <p style="color:black;">8821954778</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="single-query">
-                                        <label>Email Adress:</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="single-query form-group">
-                                        <p style="color:black;">shivambeldar1988@gmail.com</p>
-                                    </div>
-                                </div>
-                                <!-- <div class="col-sm-4">
+                <div class="container">
+                    <h1>User Profile</h1>
+                    <p><strong>ID:</strong> {{ $user->id }}</p>
+                    <p><strong>Email:</strong> {{ $user->email }}</p>
+                    <p><strong>Name:</strong> {{ $user->name }}</p>
+                    <p><strong>Phone:</strong> {{ $user->phone }}</p>
+                    <p><strong>Role:</strong> {{ $user->role }}</p>
+                </div>
+                <!-- <div class="col-sm-4">
                                     <div class="single-query">
                                         <label>Skype:</label>
                                     </div>
                                 </div> -->
-                                <!-- <div class="col-sm-8">
+                <!-- <div class="col-sm-8">
                                     <div class="single-query form-group">
                                         <input type="text" placeholder="bohdan.kononets" class="keyword-input">
                                     </div>
                                 </div> -->
-                                <!-- <div class="col-sm-4">
+                <!-- <div class="col-sm-4">
                                     <div class="single-query">
                                         <label>About:</label>
                                     </div>
                                 </div> -->
-                                <!-- <div class="col-sm-8">
+                <!-- <div class="col-sm-8">
                                     <div class="single-query form-group">
                                         <textarea placeholder="Write here somthing about yours"
                                             class="form-control"></textarea>
 
                                     </div>
                                 </div> -->
-                                <!-- <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                <!-- <div class="col-md-12 col-sm-12 col-xs-12 text-right">
                                     <a class="btn-blue border_radius" href="#.">Save Changes</a>
                                 </div> -->
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
+        </div>
+        </div>
+        </div>
         </div>
         {{-- <div class="container">
             <div class="row">

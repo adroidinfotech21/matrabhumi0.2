@@ -7,6 +7,8 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\propertyshowcontroller;
 use App\Http\Controllers\fillterpropertycontroller;
 use App\Http\Controllers\deletecontroller;
+use App\Http\Controllers\profilecontroller;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -154,9 +156,7 @@ Route::get('/verify-login-otp', function () {
 Route::post('/verify-login-otp', [LoginController::class, 'verifyOtp'])->name('verify.otp.login.new');
 
 
-Route::get('/user-profile', function () {
-    return view('user-profile'); // Ensure you have a user-profile.blade.php file
-})->name('user.profile');
+Route::get('/user-profile', [UserController::class, 'profileshow'])->name('user.profile');
 //logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -188,3 +188,6 @@ Route::get('/properties', [fillterpropertycontroller::class, 'fetchAndFilterProp
 Route::get('/property-detailview', [fillterpropertycontroller::class, 'showui'])->name('detailview');
 
 Route::delete('/users/{id}', [deletecontroller::class, 'destroy']);
+// routes/web.php
+Route::delete('/properties/{propertyID}', [deletecontroller::class, 'deleteProperty'])->name('properties.delete'); // Delete a specific property route
+Route::get('/profile', [profilecontroller::class, 'profileshow'])->name('profile')->middleware('auth');

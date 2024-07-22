@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -35,8 +37,9 @@ class LoginController extends Controller
                 // Log the generated OTP for debugging (remove this in production)
                 Log::debug('Generated OTP: ' . $otp);
 
-                // Store OTP in session
+                // Store OTP and user data in session
                 $request->session()->put('otp', $otp);
+                $request->session()->put('user_data', $responseData['data']); // Store the user data from the API response
 
                 // Send OTP via email
                 try {
@@ -62,30 +65,49 @@ class LoginController extends Controller
     }
 
 
-
     public function verifyOtp(Request $request)
     {
-        // Get the OTP entered by the user from the request
+        // Retrieve OTP and user data from session
         $otp = $request->input('otp');
-
-        // Get the user's OTP from the session
         $userOtp = $request->session()->get('otp');
+        $userData = $request->session()->get('user_data');
 
-        // Log the OTPs for debugging
-        Log::debug('User entered OTP: ' . $otp);
-        Log::debug('Session OTP: ' . $userOtp);
+        // Log the event without exposing sensitive data
+        Log::debug('User entered OTP attempt.');
 
-        // Check if the OTP entered by the user matches the stored OTP
-        if ($otp === strval($userOtp)) { // Convert to string to avoid strict comparison issues
-            // OTP is verified, perform necessary actions (e.g., log the user in, update user data, etc.)
-            // Redirect to index page after successful verification
-            return redirect()->route('user.profile')->with('message', 'OTP verification successful');
+        // Validate the OTP format
+        if (!is_numeric($otp) || strlen($otp) !== 6) {
+            return back()->withErrors(['otp' => 'Invalid OTP format.']);
+        }
+
+        // Check if the OTP matches
+        if ($otp === strval($userOtp)) {
+            // Ensure user data is present in the session
+            if (!$userData) {
+                return back()->withErrors(['otp' => 'User data not found. Please try logging in again.']);
+            }
+
+            // Create a mock user instance using the API response data
+            $user = new User();
+            $user->id = $userData['id'];
+            $user->email = $userData['email'];
+            $user->name = $userData['userName'];
+            $user->phone = $userData['phoneNumber'];
+            $user->role = $userData['roleName'];
+
+            // Manually set the authenticated user in the session
+            Auth::login($user);
+
+            // Clear OTP from session
+            $request->session()->forget('otp');
+
+            // Redirect to user profile with user data
+            return redirect()->route('user.profile');
         } else {
-            // OTP verification failed, return an error response
+            // OTP did not match
             return back()->withErrors(['otp' => 'Invalid OTP']);
         }
     }
-
     public function logout(Request $request)
     {
         // Clear the user's session
