@@ -264,3 +264,163 @@
         width: 100%;
     }
 }
+
+
+
+header {
+    background: linear-gradient(135deg, #4A6D67, #3B5954);
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+section.plans {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.plan {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1.5rem;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    
+    position: relative;
+    z-index: 1;
+}
+
+.plan:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+}
+
+.plan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(135deg, #4A6D67, #F88017);
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.plan:hover::before {
+    height: 100%;
+    opacity: 0.2;
+}
+
+.plan h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: #4A6D67;
+    text-align: center;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #F88017;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.duration {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+.plan ul li {
+    padding-left: 24px;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    position: relative;
+    color: #333;
+}
+
+.plan ul li::before {
+    content: '✔';
+    color: #F88017;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2rem;
+}
+
+footer {
+    background: linear-gradient(135deg, #f9fafa, #f3f5f4);
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 2rem;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer h2 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .plan {
+        width: calc(100% - 2rem);
+        margin: 1rem;
+    }
+}
+
+
+
+
+
+.buy-now {
+    background-color: #F88017; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 20px; /* Padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.buy-now:hover {
+    background-color: #4A6D67; /* Darker background on hover */
+}
+
+.buy-now:active {
+    background-color: rgb(19, 75, 19); /* Even darker background on click */
+}

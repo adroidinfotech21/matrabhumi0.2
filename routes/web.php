@@ -7,9 +7,13 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\propertyshowcontroller;
 use App\Http\Controllers\fillterpropertycontroller;
 use App\Http\Controllers\deletecontroller;
+// HEAD
 use App\Http\Controllers\profilecontroller;
 use App\Http\Controllers\UserController;
 
+//=======
+use App\Http\Controllers\AdRegistrationController;
+//>>>>>>> b8649883b621597f05a4b95966f50487d56761eb
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +24,15 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* Advertisement Registration routes */
+
+Route::post('/submit-ad', [AdRegistrationController::class, 'submitForm'])->name('submit.ad');
+
+/*fetch data from API */
+Route::get('/ads', [AdRegistrationController::class, 'fetchAds'])->name('fetch.ads');
+
+
 
 Route::get('/', function () {
     return view('index');
@@ -55,6 +68,9 @@ Route::get('/favoriteproperty', function () {
     return view('favoriteproperty');
 });
 
+Route::get('/builder-subscription1', function () {
+    return view('builder-subscription1');
+});
 
 
 

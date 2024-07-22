@@ -54,6 +54,7 @@
 
 
 <div class="container-addproperty">
+    
     <!-- Form Column -->
     <div class="add-property-form">
         <h1>Add Property</h1>
@@ -274,7 +275,7 @@
     </div>
 </div>
 
-</form>
+    
 
 </div>
 <script>
