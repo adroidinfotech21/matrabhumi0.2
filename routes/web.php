@@ -23,6 +23,9 @@ use App\Http\Controllers\AdRegistrationController;
 
 Route::post('/submit-ad', [AdRegistrationController::class, 'submitForm'])->name('submit.ad');
 
+/*fetch data from API */
+Route::get('/ads', [AdRegistrationController::class, 'fetchAds'])->name('fetch.ads');
+
 
 
 Route::get('/', function () {
