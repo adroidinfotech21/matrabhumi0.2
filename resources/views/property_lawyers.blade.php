@@ -11,7 +11,7 @@
     </header>
     <main class="lawyers-main">
         <section class="lawyers-content">
-            <p>Navigating property transactions can be complex and challenging, requiring expert legal assistance to ensure a smooth and secure process. At [Your Real Estate Website Name], our team of experienced property lawyers is dedicated to providing comprehensive legal services tailored to your specific needs.</p>
+            <p>Navigating property transactions can be complex and challenging, requiring expert legal assistance to ensure a smooth and secure process. At Matrabhoomi, our team of experienced property lawyers is dedicated to providing comprehensive legal services tailored to your specific needs.</p>
 
             <p>Our property lawyers specialize in all aspects of real estate law, including property acquisition, title verification, drafting and reviewing legal documents, and handling disputes. Whether you are buying, selling, or leasing a property, our legal experts ensure that every step is in compliance with applicable laws and regulations, safeguarding your interests.</p>
 

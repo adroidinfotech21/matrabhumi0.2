@@ -19,11 +19,10 @@ use App\Http\Controllers\AdRegistrationController;
 |
 */
 
-/* Advertisement Registration routes */
-
+// Advertisement Registration routes
 Route::post('/submit-ad', [AdRegistrationController::class, 'submitForm'])->name('submit.ad');
 
-/*fetch data from API */
+// Fetch data from API
 Route::get('/ads', [AdRegistrationController::class, 'fetchAds'])->name('fetch.ads');
 
 
@@ -53,7 +52,7 @@ Route::get('privacy_policies', function () {
 
 Route::get('legal_title_check', function () {
     return view('legal_title_check');
-});
+})->name('legal_title_check');
 
 Route::get('property_lawyers', function () {
     return view('property_lawyers');
@@ -87,40 +86,9 @@ Route::get('/AdvertisementBlock1', function () {
 });
 
 Route::get('/AdvertisementBlock2', function () {
-    return view('admin.Add_block2');
+    return view('admin.Add_blockDetails');
 });
 
-Route::get('/AdvertisementBlock3', function () {
-    return view('admin.Add_block3');
-});
-
-Route::get('/AdvertisementBlock4', function () {
-    return view('admin.Add_block4');
-});
-
-Route::get('/AdvertisementBlock5', function () {
-    return view('admin.Add_block5');
-});
-
-Route::get('/AdvertisementBlock6', function () {
-    return view('admin.Add_block6');
-});
-
-Route::get('/AdvertisementBlock7', function () {
-    return view('admin.Add_block7');
-});
-
-Route::get('/AdvertisementBlock8', function () {
-    return view('admin.Add_block8');
-});
-
-Route::get('/AdvertisementBlock9', function () {
-    return view('admin.Add_block9');
-});
-
-Route::get('/AdvertisementBlock10', function () {
-    return view('admin.Add_block10');
-});
 
 
 Route::get('/allproperty', function () {
