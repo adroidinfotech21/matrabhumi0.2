@@ -167,11 +167,11 @@
                 <tr>
                   <td>
                     <ul class="links">
-                      <li><a href="#."><i></i>About</a></li>
-                      <li class="active"><a href="#."><i></i>News</a></li>
+                      <li class="active"><a href="{{ route('about') }}"><i></i>About Us</a></li>
+                      <li class="active"><a href="{{ route('privacy_policies') }}"><i></i>Privacy Policy</a></li>
                       <li><a href="#."> <i></i>Contacts</a></li>
                       <li><a href="#."><i></i>Testimonials</a></li>
-                      <li><a href="#."><i></i>Typography</a></li>
+                      <li><a href="#."><i></i>Terms and conditions</a></li>
                     </ul>
                   </td>
                   <td class="text-right">

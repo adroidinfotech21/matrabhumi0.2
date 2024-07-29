@@ -1176,7 +1176,7 @@
             <h3>property lawyers</h3>
             <p>sales executive</p>
             <p class="bottom20">Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam</p>
-            <a class="btn-more" href="javascript:void(0)">
+            <a class="btn-more" href="{{ route('property_lawyers') }}">
               <i><img alt="arrow" src="images/arrowlY.png"></i><span>Contact Me</span><i><img alt="arrow"
                   src="images/arrowrY.png"></i>
             </a>

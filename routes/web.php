@@ -46,9 +46,9 @@ Route::get('/terms_&_condition', function () {
     return view('terms_&_condition');
 });
 
-Route::get('privacy_policies', function () {
+Route::get('/privacy_policies', function () {
     return view('privacy_policies');
-});
+})->name('privacy_policies');
 
 Route::get('legal_title_check', function () {
     return view('legal_title_check');
@@ -56,10 +56,17 @@ Route::get('legal_title_check', function () {
 
 Route::get('property_lawyers', function () {
     return view('property_lawyers');
-});
+})->name('property_lawyers');
+
 Route::get('/favoriteproperty', function () {
     return view('favoriteproperty');
 });
+
+Route::get('about', function () {
+    return view('about');
+})->name('about');
+
+
 
 Route::get('/builder-subscription1', function () {
     return view('builder-subscription1');
