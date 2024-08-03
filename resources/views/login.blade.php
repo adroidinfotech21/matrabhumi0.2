@@ -4,31 +4,25 @@
 <div class="center-wrapper">
     <div class="form-container">
         <h2>Registration Form</h2>
-        @if (session('status'))
-            <div style="color: green;">{{ session('status') }}</div>
-        @endif
 
-        @if ($errors->any())
-            <div style="color: red;">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <form action="{{ route('login') }}" method="post">
-
+        <form method="POST" action="{{ route('login') }}">
             @csrf
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Send OTP</button>
 
+            @if (session('status'))
+                <div style="color: green;">{{ session('status') }}</div>
+            @endif
 
-            <div class="form-group">
-                <button type="submit">Login</button>
-            </div>
+            @if ($errors->any())
+                <div style="color: red;">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </form>
     </div>
     <div class="image-container">

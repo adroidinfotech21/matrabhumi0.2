@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 
 //=======
 use App\Http\Controllers\AdRegistrationController;
+
 //>>>>>>> b8649883b621597f05a4b95966f50487d56761eb
 /*
 |--------------------------------------------------------------------------
@@ -116,6 +117,7 @@ Route::get('/AdvertisementBlock7', function () {
     return view('admin.Add_block7');
 });
 
+
 Route::get('/AdvertisementBlock8', function () {
     return view('admin.Add_block8');
 });
@@ -172,7 +174,7 @@ Route::get('/verify-login-otp', function () {
 Route::post('/verify-login-otp', [LoginController::class, 'verifyOtp'])->name('verify.otp.login.new');
 
 
-Route::get('/user-profile', [UserController::class, 'profileshow'])->name('user.profile');
+//Route::get('/user-profile', [LoginController::class, 'verifyOtp']);
 //logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -206,4 +208,7 @@ Route::get('/property-detailview', [fillterpropertycontroller::class, 'showui'])
 Route::delete('/users/{id}', [deletecontroller::class, 'destroy']);
 // routes/web.php
 Route::delete('/properties/{propertyID}', [deletecontroller::class, 'deleteProperty'])->name('properties.delete'); // Delete a specific property route
-Route::get('/profile', [profilecontroller::class, 'profileshow'])->name('profile')->middleware('auth');
+
+//Route::get('/profile', [LoginController::class, 'showProfile'])->name('profile');
+//Route::get('/user-profile', [LoginController::class, 'verifyOtp'])->name('userprofile');
+Route::get('/loginuser', [LoginController::class, 'verifyOtp'])->name('loginuser');

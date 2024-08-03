@@ -51,14 +51,7 @@
                         <p class="text-center">Minimum 215px x 215px<span>*</span></p>
                     </div>
                 </div> -->
-                <div class="container">
-                    <h1>User Profile</h1>
-                    <p><strong>ID:</strong> {{ $user->id }}</p>
-                    <p><strong>Email:</strong> {{ $user->email }}</p>
-                    <p><strong>Name:</strong> {{ $user->name }}</p>
-                    <p><strong>Phone:</strong> {{ $user->phone }}</p>
-                    <p><strong>Role:</strong> {{ $user->role }}</p>
-                </div>
+
                 <!-- <div class="col-sm-4">
                                     <div class="single-query">
                                         <label>Skype:</label>

@@ -54,7 +54,7 @@
 
 
 <div class="container-addproperty">
-    
+
     <!-- Form Column -->
     <div class="add-property-form">
         <h1>Add Property</h1>
@@ -275,15 +275,13 @@
     </div>
 </div>
 
-    
+
 
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Populate dropdowns on page load
         populateDropdowns();
 
-        // Add form submission event listener
         document.getElementById('propertyForm').addEventListener('submit', function (event) {
             event.preventDefault();
             submitForm();
@@ -361,7 +359,6 @@
 
         const data = {};
         formData.forEach((value, key) => {
-            // Handle boolean values
             if (value === "true") {
                 data[key] = true;
             } else if (value === "false") {
@@ -373,7 +370,7 @@
 
         console.log('Submitting form data:', data);
 
-        fetch('{{ url("/api/propertyregistration") }}', {
+        fetch('{{ url("https://nplled.smggreen.com/api/propertyregistration") }}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -382,8 +379,10 @@
             body: JSON.stringify(data)
         })
             .then(response => {
+                console.log('Response status:', response.status);
                 if (!response.ok) {
                     return response.json().then(errorData => {
+                        console.error('Error data:', errorData);
                         throw new Error(errorData.message || 'Something went wrong');
                     });
                 }
@@ -397,11 +396,10 @@
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Fetch error:', error);
                 alert('An error occurred: ' + error.message);
             });
     }
-
 
 </script>
 

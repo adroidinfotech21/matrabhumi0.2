@@ -4,39 +4,34 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
-class usercontroller extends Controller
+class UserController extends Controller
 {
-    public function profileshow()
+    public function profileShow(Request $request)
     {
-        $user = Auth::user();
 
-        if (!$user) {
-            return redirect()->route('login')->withErrors(['message' => 'Please login to access your profile.']);
-        }
+
 
         try {
-            // Initialize Guzzle client
-            $client = new Client();
+            // Make API call to fetch user data
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' // Adjust based on your auth method
+            ])->get('https://nplled.smggreen.com/api/login'); // Replace with your API endpoint
 
-            // Make a request to the external API to fetch user data
-            $response = $client->get('https://api.example.com/user/' . $user->id, [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $user->api_token,
-                    'Accept' => 'application/json',
-                ],
-            ]);
+            $userData = $response->json();
 
-            // Decode the JSON response to an array
-            $apiUser = json_decode($response->getBody(), true);
+            // Check if the API response indicates successful authentication (adjust logic as needed)
+            if (!$userData || !$userData['is_authenticated']) {
+                return redirect()->route('login')->withErrors(['message' => 'Please login to access your profile.']);
+            }
 
-            // Pass the API user data to the view
-            return view('user.profile', compact('apiUser'));
+            return view('user.profile', compact('userData'));
         } catch (\Exception $e) {
-            // Handle errors (e.g., API not reachable, invalid response, etc.)
-            return redirect()->route('login')->withErrors(['message' => 'Unable to retrieve profile information. Please try again later.']);
+            // Handle API errors
+            return redirect()->route('login')->withErrors(['message' => 'Error fetching user data.']);
         }
     }
 }
