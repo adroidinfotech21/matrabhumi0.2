@@ -26,11 +26,10 @@ use App\Http\Controllers\AdRegistrationController;
 |
 */
 
-/* Advertisement Registration routes */
-
+// Advertisement Registration routes
 Route::post('/submit-ad', [AdRegistrationController::class, 'submitForm'])->name('submit.ad');
 
-/*fetch data from API */
+// Fetch data from API
 Route::get('/ads', [AdRegistrationController::class, 'fetchAds'])->name('fetch.ads');
 
 
@@ -54,20 +53,28 @@ Route::get('/terms_&_condition', function () {
     return view('terms_&_condition');
 });
 
-Route::get('privacy_policies', function () {
+Route::get('/privacy_policies', function () {
     return view('privacy_policies');
-});
+})->name('privacy_policies');
 
 Route::get('legal_title_check', function () {
     return view('legal_title_check');
-});
+})->name('legal_title_check');
 
 Route::get('property_lawyers', function () {
     return view('property_lawyers');
-});
+})->name('property_lawyers');
+
 Route::get('/favoriteproperty', function () {
     return view('favoriteproperty');
 });
+
+Route::get('about', function () {
+    return view('about');
+})->name('about');
+
+
+
 
 Route::get('/builder-subscription1', function () {
     return view('builder-subscription1');
@@ -94,8 +101,9 @@ Route::get('/AdvertisementBlock1', function () {
 });
 
 Route::get('/AdvertisementBlock2', function () {
-    return view('admin.Add_block2');
+    return view('admin.Add_blockDetails');
 });
+
 
 Route::get('/AdvertisementBlock3', function () {
     return view('admin.Add_block3');
@@ -129,6 +137,7 @@ Route::get('/AdvertisementBlock9', function () {
 Route::get('/AdvertisementBlock10', function () {
     return view('admin.Add_block10');
 });
+
 
 
 Route::get('/allproperty', function () {
@@ -206,9 +215,14 @@ Route::get('/properties', [fillterpropertycontroller::class, 'fetchAndFilterProp
 Route::get('/property-detailview', [fillterpropertycontroller::class, 'showui'])->name('detailview');
 
 Route::delete('/users/{id}', [deletecontroller::class, 'destroy']);
-// routes/web.php
-Route::delete('/properties/{propertyID}', [deletecontroller::class, 'deleteProperty'])->name('properties.delete'); // Delete a specific property route
 
-//Route::get('/profile', [LoginController::class, 'showProfile'])->name('profile');
-//Route::get('/user-profile', [LoginController::class, 'verifyOtp'])->name('userprofile');
+
+// Route::delete('/property/{propertyID}', [deletecontroller::class, 'deleteProperty'])->name('property.delete');
+// ;
+Route::delete('/property/{propertyID}', [DeleteController::class, 'deleteProperty'])->name('property.delete');
+
 Route::get('/loginuser', [LoginController::class, 'verifyOtp'])->name('loginuser');
+
+Route::get('/thankyou', function () {
+    return view('thankyou');
+})->name('thankyou');

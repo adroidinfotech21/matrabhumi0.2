@@ -167,11 +167,12 @@
                 <tr>
                   <td>
                     <ul class="links">
-                      <li><a href="#."><i></i>About</a></li>
-                      <li class="active"><a href="#."><i></i>News</a></li>
+                      <li class="active"><a href=""><i></i>About Us</a></li>
+                      <li class="active"><a href=""><i></i>Privacy Policy</a></li>
                       <li><a href="#."> <i></i>Contacts</a></li>
                       <li><a href="#."><i></i>Testimonials</a></li>
-                      <li><a href="#."><i></i>Typography</a></li>
+                      <li><a href="{{ url('pdf/Terms-and-Conditions-for-matrabhumi.pdf') }}"
+                          target="_blank"><i></i>Terms and conditions</a></li>
                     </ul>
                   </td>
                   <td class="text-right">
@@ -241,30 +242,31 @@
 
 
 
-<script src="js/jquery-2.1.4.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.appear.js"></script>
-<script src="js/jquery-countTo.js"></script>
-<script src="js/bootsnav.js"></script>
-<script src="js/masonry.pkgd.min.js"></script>
-<script src="js/jquery.parallax-1.1.3.js"></script>
-<script src="js/jquery.cubeportfolio.min.js"></script>
-<script src="js/range-Slider.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/selectbox-0.2.min.js"></script>
-<script src="js/zelect.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script src="js/jquery.themepunch.tools.min.js"></script>
-<script src="js/jquery.themepunch.revolution.min.js"></script>
-<script src="js/revolution.extension.layeranimation.min.js"></script>
-<script src="js/revolution.extension.navigation.min.js"></script>
-<script src="js/revolution.extension.parallax.min.js"></script>
-<script src="js/revolution.extension.slideanims.min.js"></script>
-<script src="js/revolution.extension.video.min.js"></script>
-<script src="js/custom.js"></script>
-<script src="js/functions.js"></script>
-<script src="js/addproperty.js"></script>
-<script src="js/propertyadd.js"></script>
+<script src="{{asset('asset/js/jquery-2.1.4.js')}}"></script>
+<script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('asset/js/jquery.appear.js')}}"></script>
+<script src="{{asset('asset/js/jquery-countTo.js')}}"></script>
+<script src="{{asset('asset/js/bootsnav.js')}}"></script>
+<script src="{{asset('asset/js/masonry.pkgd.min.js')}}"></script>
+<script src="{{asset('asset/js/jquery.parallax-1.1.3.js')}}"></script>
+<script src="{{asset('asset/js/jquery.cubeportfolio.min.js')}}"></script>
+<script src="{{asset('asset/js/range-Slider.min.js')}}"></script>
+<script src="{{asset('asset/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('asset/js/selectbox-0.2.min.js')}}"></script>
+<script src="{{asset('asset/js/zelect.js')}}"></script>
+<script src="{{asset('asset/js/jquery.fancybox.js')}}"></script>
+<script src="{{asset('asset/js/jquery.themepunch.tools.min.js')}}"></script>
+<script src="{{asset('asset/js/jquery.themepunch.revolution.min.js')}}"></script>
+<script src="{{asset('asset/js/revolution.extension.layeranimation.min.js')}}"></script>
+<script src="{{asset('asset/js/revolution.extension.navigation.min.js')}}"></script>
+<script src="{{asset('asset/js/revolution.extension.parallax.min.js')}}"></script>
+<script src="{{asset('asset/js/revolution.extension.slideanims.min.js')}}"></script>
+<script src="{{asset('asset/js/revolution.extension.video.min.js')}}"></script>
+<script src="{{asset('asset/js/custom.js')}}"></script>
+<script src="{{asset('asset/js/functions.js')}}"></script>
+<script src="{{asset('asset/js/addproperty.js')}}"></script>
+<script src="{{asset('asset/js/propertyadd.js')}}"></script>
+
 
 
 </body>

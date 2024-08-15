@@ -5105,7 +5105,8 @@ footer .footer_panel .media-body span>i {
   top: 0;
   z-index: 1100;
   overflow: hidden;
-  background: #173471;
+  background: url('/images/b-1.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 .loader .span {

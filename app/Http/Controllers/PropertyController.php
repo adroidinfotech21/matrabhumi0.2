@@ -1002,7 +1002,7 @@ class PropertyController extends Controller
         $request->validate([
             'propertyImage' => 'required|array|min:3|max:10',
             'propertyImage.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            // Add other validation rules for other fields as needed
+            //Add other validation rules for other fields as needed
         ]);
 
         // Handle image uploads and get URLs
@@ -1017,6 +1017,7 @@ class PropertyController extends Controller
 
         // Assuming you receive the property registration data from a form or request
         $propertyData = [
+            "propertyID" => 8,
             "packageID" => 1,
             "propertyTypeID" => 1,
             "propertyDetailsForID" => 3,
@@ -1026,7 +1027,7 @@ class PropertyController extends Controller
             "floor" => $request->floor,
             "bathroom" => 2,
             "furnishedStatus" => $request->FurnishedStatus,
-            "cabinMeetingRoom" => $request->TransactionType,
+            "cabinMeetingRoom" => $request->cabinMeetingRoom,
             "transactionType" => $request->TransactionType,
             "possessionStatus" => $request->PossessionStatus,
             "showPriceAs" => $request->ShowPriceAs,
@@ -1046,7 +1047,7 @@ class PropertyController extends Controller
             "addressLine1" => "123 Main St",
             "addressLine2" => "Apt 101",
             "city" => $request->city,
-            "state" => $request->loction,
+            "state" => "mp",
             "zipCode" => "462042",
             "country" => "India",
             "latitude" => 40.7128,
@@ -1072,8 +1073,7 @@ class PropertyController extends Controller
             "listingDescription" => $request->descriptionproprty,
             "propertyStatus" => "Available",
             "listingType" => "Sale",
-            "dateAvailable" => "2024-07-01",
-            "CreatedDate" => "2024-07-01",
+
             "agentID" => 456,
             "propertyAge" => 5,
             "ownershipType" => "Freehold",
@@ -1107,21 +1107,21 @@ class PropertyController extends Controller
             "handicapAccessible" => false,
             "floorPlan" => "https://example.com/floor-plan.pdf",
             "virtualTour" => "https://example.com/virtual-tour",
-            "imageSiteView" => $imageUrls[0] ?? "https://example.com/virtual-tour",
-            "imageExteriorView" => $imageUrls[1] ?? "https://example.com/virtual-tour",
-            "imageCommonArea" => $imageUrls[2] ?? "https://example.com/virtual-tour",
-            "imageLivingRoom" => $imageUrls[3] ?? "https://example.com/virtual-tour",
-            "imageBedroom" => $imageUrls[4] ?? "https://example.com/virtual-tour",
-            "imageBathroom" => $imageUrls[5] ?? "https://example.com/virtual-tour",
-            "imageKitchen" => $imageUrls[6] ?? "https://example.com/virtual-tour",
-            "imageFloorPlan" => $imageUrls[7] ?? "https://example.com/virtual-tour",
-            "imageMasterPlan" => $imageUrls[8] ?? "https://example.com/virtual-tour",
-            "imageLocationMap" => $imageUrls[9] ?? "https://example.com/virtual-tour",
+            "imageSiteView" => $imageUrls[0] ?? null,
+            "imageExteriorView" => $imageUrls[1] ?? null,
+            "imageCommonArea" => $imageUrls[2] ?? null,
+            "imageLivingRoom" => $imageUrls[3] ?? null,
+            "imageBedroom" => $imageUrls[4] ?? null,
+            "imageBathroom" => $imageUrls[5] ?? null,
+            "imageKitchen" => $imageUrls[6] ?? null,
+            "imageFloorPlan" => $imageUrls[7] ?? null,
+            "imageMasterPlan" => $imageUrls[8] ?? null,
+            "imageLocationMap" => $imageUrls[9] ?? null,
             "imageOther" => $imageUrls[10] ?? "https://example.com/virtual-tour",
             "askedPrice" => 500000
         ];
 
-        dd($propertyData);
+        // dd($propertyData);
         // Send the POST request to the API
         // dd($propertyData);
         try {
@@ -1134,15 +1134,12 @@ class PropertyController extends Controller
                 $responseData = $response->json();
 
                 if (isset($responseData['success']) && $responseData['success']) {
-                    // Handle successful registration
-                    return response()->json(['message' => 'Property registered successfully', 'data' => $responseData['data']], $response->status());
+                    return response()->json(['message' => 'Property registered successfully', 'data' => $responseData['data']]);
                 } else {
-                    // Handle API response indicating failure
-                    return response()->json(['error' => 'Failed to register property. API response: ' . ($responseData['message'] ?? 'Unknown error')], $response->status());
+                    return response()->json(['error' => 'Failed to register property. API response: ' . ($responseData['message'] ?? 'Unknown error')]);
                 }
             } else {
-                // Handle non-success status codes
-                return response()->json(['error' => 'API returned status code ' . $response->status()], $response->status());
+                return response()->json(['error' => 'API returned status code ' . $response->status()]);
             }
         } catch (\Exception $e) {
             // Handle exceptions
@@ -1150,5 +1147,16 @@ class PropertyController extends Controller
         }
     }
 
+    public function deleteProperty($propertyID)
+    {
+        $response = Http::delete('https://nplled.smggreen.com/api/Delete/PropertyRegistration', [
+            'propertyID' => $propertyID,
+        ]);
 
+        if ($response->successful()) {
+            return redirect()->back()->with('success', 'Property deleted successfully');
+        } else {
+            return redirect()->back()->with('error', 'Failed to delete property');
+        }
+    }
 }

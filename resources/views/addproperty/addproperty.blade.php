@@ -86,11 +86,11 @@
             </div>
             <div class="owner-name">
                 <label for="ownerName">Title </label>
-                <input type="text" id="ownerName" name="titleproperty" required>
+                <input type="text" id="title" name="titleproperty" required>
             </div>
             <div class="owner-name">
                 <label for="ownerName">Description </label>
-                <input type="text" id="ownerName" name="descriptionproprty" required>
+                <input type="text" id="Description" name="descriptionproprty" required>
             </div>
             <div class="owner-name">
                 <label for="ownerName">Owner Name</label>
@@ -255,7 +255,7 @@
 
             <div class="property-image">
                 <label for="propertyImage">Property Image</label>
-                <input type="file" id="propertyImage" name="propertyImage" accept="image/*">
+                <input type="file" id="propertyImage" name="propertyImage[]" accept="image/*" multiple>
             </div>
             <div class="submit">
                 <input type="submit" value="Submit">
@@ -281,11 +281,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         populateDropdowns();
-
-        document.getElementById('propertyForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            submitForm();
-        });
     });
 
     function populateDropdowns() {
@@ -330,6 +325,7 @@
         })
             .then(response => response.json())
             .then(data => {
+                console.log('Dropdown data:', data);
                 if (data.success && data.data) {
                     populateDropdown(elementId, data.data);
                 } else {
@@ -353,53 +349,7 @@
         });
     }
 
-    function submitForm() {
-        const form = document.getElementById('propertyForm');
-        const formData = new FormData(form);
 
-        const data = {};
-        formData.forEach((value, key) => {
-            if (value === "true") {
-                data[key] = true;
-            } else if (value === "false") {
-                data[key] = false;
-            } else {
-                data[key] = value;
-            }
-        });
-
-        console.log('Submitting form data:', data);
-
-        fetch('{{ url("https://nplled.smggreen.com/api/propertyregistration") }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => {
-                console.log('Response status:', response.status);
-                if (!response.ok) {
-                    return response.json().then(errorData => {
-                        console.error('Error data:', errorData);
-                        throw new Error(errorData.message || 'Something went wrong');
-                    });
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    alert('Property registered successfully');
-                } else {
-                    alert('Failed to register property: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Fetch error:', error);
-                alert('An error occurred: ' + error.message);
-            });
-    }
 
 </script>
 

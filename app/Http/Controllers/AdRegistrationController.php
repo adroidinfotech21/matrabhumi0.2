@@ -1,8 +1,5 @@
-<?php
-
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -11,7 +8,7 @@ class AdRegistrationController extends Controller
 {
     public function submitForm(Request $request)
     {
-        /* Validate the form data */
+        // Validate the form data
         $request->validate([
             'AdBlock' => 'required',
             'propertyName' => 'required|string|max:255',
@@ -26,7 +23,7 @@ class AdRegistrationController extends Controller
             'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        /* Prepare the data to send to the API */
+        // Prepare the data to send to the API
         $data = [
             'AdBlock' => $request->AdBlock,
             'propertyName' => $request->propertyName,
@@ -39,7 +36,7 @@ class AdRegistrationController extends Controller
             'amenities' => $request->amenities,
         ];
 
-        /* Handle photo uploads */
+        // Handle photo uploads
         $photos = $request->file('photos');
         if ($photos) {
             foreach ($photos as $index => $photo) {
@@ -48,10 +45,10 @@ class AdRegistrationController extends Controller
             }
         }
 
-        /* Log the data being sent for debugging */
+        // Log the data being sent for debugging
         Log::info('Sending data to API: ', $data);
 
-        /* Send the data to the API */
+        // Send the data to the API
         try {
             $response = Http::withOptions(['verify' => false])->post('https://nplled.smggreen.com/api/AdRegistration', $data);
 
@@ -61,7 +58,7 @@ class AdRegistrationController extends Controller
                 'body' => $response->body()
             ]);
 
-            /* Check for successful response */
+            // Check for successful response
             if ($response->successful()) {
                 return redirect()->back()->with('success', 'Advertisement registered successfully!');
             } else {
@@ -73,6 +70,7 @@ class AdRegistrationController extends Controller
             return redirect()->back()->with('error', 'Failed to register advertisement. Please try again later.');
         }
     }
+
     public function fetchAds()
     {
         try {
@@ -92,18 +90,22 @@ class AdRegistrationController extends Controller
                 Log::info('Ads Data: ', $ads);
 
                 // Ensure ads data is an array and contains the expected structure
-                if (is_array($ads) && count($ads) > 0) {
-                    return view('Add_Block2', ['ads' => $ads]);
+                if (is_array($ads) && !empty($ads)) {
+                    // Handle case if the ads data is wrapped in another array
+                    $ads = isset($ads[0]) && is_array($ads[0]) ? $ads : [$ads];
+                    return view('admin.Add_blockDetails', ['ads' => $ads]);
                 } else {
-                    return view('Add_Block2')->with('error', 'No advertisements found.');
+                    Log::info('No advertisements found in the response.');
+                    return view('admin.Add_blockDetails', ['ads' => []])->with('error', 'No advertisements found.');
                 }
             } else {
                 $error = $response->json();
-                return view('Add_Block2')->with('error', 'Failed to fetch advertisements. Error: ' . json_encode($error));
+                Log::error('Failed to fetch advertisements. Error: ' . json_encode($error));
+                return view('admin.Add_blockDetails', ['ads' => []])->with('error', 'Failed to fetch advertisements. Error: ' . json_encode($error));
             }
         } catch (\Exception $e) {
             Log::error('API Fetch Request Failed: ' . $e->getMessage());
-            return view('Add_Block2')->with('error', 'Failed to fetch advertisements. Please try again later.');
+            return view('admin.Add_blockDetails', ['ads' => []])->with('error', 'Failed to fetch advertisements. Please try again later.');
         }
     }
 }

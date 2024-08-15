@@ -247,7 +247,7 @@
     <ul>
       <!-- SLIDE  -->
       <li data-transition="fade">
-        <img src="images/main1.png" alt="" data-bgposition="center center" data-bgfit="cover">
+        <img src="images/b-1.jpg" alt="" data-bgposition="center center" data-bgfit="cover">
         <div class=" tp-caption tp-resizeme" data-start="1300" data-x="['left','center','center','center']"
           data-hoffset="['0','0','0','15']" data-y="['center','center','center','center']"
           data-voffset="['0','0','0','0']" data-responsive_offset="on" data-transform_idle="o:1;"
@@ -1151,7 +1151,7 @@
             <h3>Legal Title Check</h3>
             <p>sales executive</p>
             <p class="bottom20">Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam</p>
-            <a class="btn-more" href="javascript:void(0)">
+            <a class="btn-more" href="">
               <i><img alt="arrow" src="images/arrowlY.png"></i><span>Contact Me</span><i><img alt="arrow"
                   src="images/arrowrY.png"></i>
             </a>
@@ -1177,7 +1177,7 @@
             <h3>property lawyers</h3>
             <p>sales executive</p>
             <p class="bottom20">Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam</p>
-            <a class="btn-more" href="javascript:void(0)">
+            <a class="btn-more" href="">
               <i><img alt="arrow" src="images/arrowlY.png"></i><span>Contact Me</span><i><img alt="arrow"
                   src="images/arrowrY.png"></i>
             </a>

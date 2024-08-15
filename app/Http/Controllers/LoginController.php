@@ -73,28 +73,22 @@ class LoginController extends Controller
 
     public function verifyOtp(Request $request)
     {
-        $otp = (int) $request->input('otp');
-        $userOtp = $request->session()->get('otp');
+        $enteredOtp = (int) $request->input('otp');
+        $sessionOtp = $request->session()->get('otp');
         $verifiedUserData = $request->session()->get('verified_user_data');
+        //dd($enteredOtp);
+        // Log::debug('User entered OTP attempt.', ['entered_otp' => $enteredOtp]);
+        //Log::debug('OTP from session:', ['session_otp' => $sessionOtp]);
+        //Log::debug('Verified user data from session:', ['verified_user_data' => $verifiedUserData]);
+        //dd($request->session()->all());
+        // dd($sessionOtp);
 
-        Log::debug('User entered OTP attempt.', ['entered_otp' => $otp]);
-        Log::debug('OTP from session:', ['session_otp' => $userOtp]);
-        Log::debug('Verified user data from session:', ['verified_user_data' => $verifiedUserData]);
 
-        // Uncomment to inspect session data
-
-
-        if (!is_numeric($otp) || strlen($otp) !== 6) {
-            Log::warning('Invalid OTP format entered.');
-            return back()->withErrors(['otp' => 'Invalid OTP format.']);
-        }
-
-        if ($otp === $userOtp) {
-            Log::debug('OTP matched');
+        if ($enteredOtp === $sessionOtp) {
+            Log::info('OTP matched');
             $request->session()->put('user_data', $verifiedUserData);
-            //dd($request->session()->all());
+
             return redirect()->route('loginuser')->with('success', 'OTP verified successfully!');
-            // Rest of your code
         } else {
             Log::warning('OTP mismatch');
             return back()->withErrors(['otp' => 'Invalid OTP']);
